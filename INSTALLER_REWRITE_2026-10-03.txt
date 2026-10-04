@@ -1,4 +1,0 @@
-TRIPPAH installer revision 2.3 — 2026-10-03
-INXOMNIA cards no longer jump when enabled. Sliders commit on release. Catalog is 200 unique FX.
-DreamShareLite installer checks Git, CMake, VS 2022 Build Tools, and WebView2 and offers download links.
-Site labels: V2 SSYYNNTTHH VST, DreamShareLite VST, INXOMNIA VST.
