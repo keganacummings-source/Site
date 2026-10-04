@@ -178,12 +178,8 @@ function render(){
   const f=$("q").value.trim().toLowerCase(),g=$("grid");g.innerHTML="";
   document.querySelectorAll("[data-f]").forEach(b=>b.classList.toggle("on",b.dataset.f===filt));
   const list=lib.filter(p=>{const n=(p.name||p.title||"");
-    if(n.toLowerCase().includes("dreamdrdrum")) return false;
-    return (!f||n.toLowerCase().includes(f))&&(filt==="all"||(filt==="beta"&&p.beta)||(filt==="stable"&&!p.beta)||(filt==="fav"&&favs.includes(n)))}).sort((a,b)=>{
-      const an=favs.includes(a.name||a.title||"")?1:0, bn=favs.includes(b.name||b.title||"")?1:0;
-      return bn-an;
-    });
-  $("count").textContent=lib.filter(p=>String(p.name||p.title||"").toLowerCase()!=="dreamdrdrum").length;
+    return (!f||n.toLowerCase().includes(f))&&(filt==="all"||(filt==="beta"&&p.beta)||(filt==="stable"&&!p.beta)||(filt==="fav"&&favs.includes(n)))});
+  $("count").textContent=lib.length;
   if(!list.length){g.innerHTML='<div id="status">no machines found</div>';return}
   list.forEach((p,i)=>{
     const name=p.name||p.title||"unnamed",file=p.fileName||p.file||"";
@@ -201,8 +197,8 @@ function render(){
 document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{filt=b.dataset.f;render()});
 $("site").onclick=()=>openMachine("https://www.dreamdaw.com/","DREAMDAW.COM");
 $("q").oninput=render;
-const BUILTIN_PLUGINS=[{"name":"DREAM3XOSC","fileName":"BetaDREAM3XOSC.html","beta":true},{"name":"DREAMANALOG","fileName":"BetaDREAMANALOG.html","beta":true},{"name":"DREAMARP","fileName":"BetaDREAMARP.html","beta":true},{"name":"DREAMARPBOX","fileName":"BetaDREAMARPBOX.html","beta":true},{"name":"DREAMBELL","fileName":"BetaDREAMBELL.html","beta":true},{"name":"DREAMBRASS","fileName":"BetaDREAMBRASS.html","beta":true},{"name":"DREAMCHOIR","fileName":"BetaDREAMCHOIR.html","beta":true},{"name":"DREAMCHORD","fileName":"BetaDREAMCHORD.html","beta":true},{"name":"DREAMCLAV","fileName":"BetaDREAMCLAV.html","beta":true},{"name":"DREAMDRAW","fileName":"BetaDREAMDRAW.html","beta":true},{"name":"DREAMDRONE","fileName":"BetaDREAMDRONE.html","beta":true},{"name":"DREAMHORN","fileName":"BetaDREAMHORN.html","beta":true},{"name":"DREAMKEYS","fileName":"BetaDREAMKEYS.html","beta":true},{"name":"DREAMLEAD","fileName":"BetaDREAMLEAD.html","beta":true},{"name":"DREAMMARIMBA","fileName":"BetaDREAMMARIMBA.html","beta":true},{"name":"DREAMMONO","fileName":"BetaDREAMMONO.html","beta":true},{"name":"DREAMNOISE","fileName":"BetaDREAMNOISE.html","beta":true},{"name":"DREAMORGAN","fileName":"BetaDREAMORGAN.html","beta":true},{"name":"DREAMPAD","fileName":"BetaDREAMPAD.html","beta":true},{"name":"DREAMPLUCK","fileName":"BetaDREAMPLUCK.html","beta":true},{"name":"DREAMPULSE","fileName":"BetaDREAMPULSE.html","beta":true},{"name":"DREAMSAW","fileName":"BetaDREAMSAW.html","beta":true},{"name":"DREAMSINE","fileName":"BetaDREAMSINE.html","beta":true},{"name":"DREAMSUB","fileName":"BetaDREAMSUB.html","beta":true},{"name":"DREAMTOY","fileName":"BetaDREAMTOY.html","beta":true},{"name":"DREAMABC","fileName":"DREAMABC.html","beta":false},{"name":"DREAMAXE","fileName":"DREAMAXE.html","beta":false},{"name":"DREAMBASS","fileName":"DREAMBASS.html","beta":false},{"name":"DREAMGLITCR","fileName":"DREAMGLITCR.html","beta":false},{"name":"DREAMMIRROR","fileName":"DREAMMIRROR.html","beta":false},{"name":"DREAMORACLE","fileName":"DREAMORACLE.html","beta":false},{"name":"DREAMPARASITE","fileName":"DREAMPARASITE.html","beta":false},{"name":"DREAMRACK","fileName":"DREAMRACK.html","beta":false},{"name":"DREAMRECORDER","fileName":"DREAMRECORDER.html","beta":false},{"name":"DREAMSHARE","fileName":"DREAMSHARE.html","beta":false},{"name":"DREAMSHARELITE","fileName":"DREAMSHARELITE.html","beta":false},{"name":"DREAMSSYYNNTTHH","fileName":"DREAMSSYYNNTTHH.html","beta":false},{"name":"DREAMSTRYNG","fileName":"DREAMSTRYNG.html","beta":false}];
-fetch(BASE+"library.json").then(r=>r.ok?r.json():null).then(j=>{lib=(j&&(j.plugins||j.machines))||BUILTIN_PLUGINS;render()}).catch(()=>{lib=BUILTIN_PLUGINS;render()});
+fetch(BASE+"library.json").then(r=>r.json()).then(j=>{lib=j.plugins||j.machines||[];render()})
+  .catch(e=>{$("grid").innerHTML='<div id="status">'+String(e)+'</div>'});
 
 /* ---------- themes + motion ---------- */
 const FX={embers:"bloodmoon ember amber rust copper sulfur cinder honey sand dawn",
