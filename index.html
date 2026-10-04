@@ -232,7 +232,7 @@ function apply(pk){
   for(const k in v)s.setProperty(k,v[k]);
   $("scene").style.background=pk.scene||"var(--bg)";$("veil").style.background=pk.veil||"none";
   setFx(pk.id,v["--accent-bright"]||v["--accent"]);
-  LS.setItem("SLEEPWELL_THEME",pk.id);$("tbtn").textContent="THEME: "+(pk.name||pk.id).toUpperCase();
+  LS.setItem("SLEEPWELL_THEME",pk.id);try{const j=JSON.stringify(pk);sessionStorage.setItem("SLEEPWELL_THEME",j);LS.setItem("dreamdaw.themepack",j)}catch(e){}$("tbtn").textContent="THEME: "+(pk.name||pk.id).toUpperCase();
   document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c.dataset.id===pk.id));
 }
 async function themes(){
