@@ -1,0 +1,3492 @@
+{
+  "plugins": [
+    {
+      "name": "DREAMFOG",
+      "fileName": "DREAMFOG.html",
+      "url": "Pluggins Folder/DREAMFOG.html"
+    },
+    {
+      "name": "DREAMABC",
+      "fileName": "DREAMABC.html",
+      "url": "Pluggins Folder/DREAMABC.html"
+    },
+    {
+      "name": "DREAMAXE",
+      "fileName": "DREAMAXE.html",
+      "url": "Pluggins Folder/DREAMAXE.html"
+    },
+    {
+      "name": "DREAMBASS",
+      "fileName": "DREAMBASS.html",
+      "url": "Pluggins Folder/DREAMBASS.html"
+    },
+    {
+      "name": "DREAMCHPPA",
+      "fileName": "DREAMCHPPA.html",
+      "url": "Pluggins Folder/DREAMCHPPA.html"
+    },
+    {
+      "name": "DREAMDRDRUM",
+      "fileName": "DREAMDRDRUM.html",
+      "url": "Pluggins Folder/DREAMDRDRUM.html"
+    },
+    {
+      "name": "DREAMGLITCR",
+      "fileName": "DREAMGLITCR.html",
+      "url": "Pluggins Folder/DREAMGLITCR.html"
+    },
+    {
+      "name": "DREAMMIRROR",
+      "fileName": "DREAMMIRROR.html",
+      "url": "Pluggins Folder/DREAMMIRROR.html"
+    },
+    {
+      "name": "DREAMORACLE",
+      "fileName": "DREAMORACLE.html",
+      "url": "Pluggins Folder/DREAMORACLE.html"
+    },
+    {
+      "name": "DREAMPARASITE",
+      "fileName": "DREAMPARASITE.html",
+      "url": "Pluggins Folder/DREAMPARASITE.html"
+    },
+    {
+      "name": "DREAMRECORDER",
+      "fileName": "DREAMRECORDER.html",
+      "url": "Pluggins Folder/DREAMRECORDER.html"
+    },
+    {
+      "name": "DREAMSHARE",
+      "fileName": "DREAMSHARE.html",
+      "url": "Pluggins Folder/DREAMSHARE.html"
+    },
+    {
+      "name": "DREAMSSYYNNTTHH",
+      "fileName": "DREAMSSYYNNTTHH.html",
+      "url": "Pluggins Folder/DREAMSSYYNNTTHH.html"
+    },
+    {
+      "name": "DREAMSTRYNG",
+      "fileName": "DREAMSTRYNG.html",
+      "url": "Pluggins Folder/DREAMSTRYNG.html"
+    },
+    {
+      "name": "DREAMFI",
+      "fileName": "DREAMFI.html",
+      "url": "Pluggins Folder/DREAMFI.html"
+    },
+    {
+      "name": "DREAMDRAW",
+      "fileName": "BetaDREAMDRAW.html",
+      "url": "Pluggins Folder/BetaDREAMDRAW.html"
+    },
+    {
+      "name": "DREAMLEAD",
+      "fileName": "BetaDREAMLEAD.html",
+      "url": "Pluggins Folder/BetaDREAMLEAD.html"
+    },
+    {
+      "name": "DREAMPAD",
+      "fileName": "BetaDREAMPAD.html",
+      "url": "Pluggins Folder/BetaDREAMPAD.html"
+    },
+    {
+      "name": "DREAMARP",
+      "fileName": "BetaDREAMARP.html",
+      "url": "Pluggins Folder/BetaDREAMARP.html"
+    },
+    {
+      "name": "DREAM3XOSC",
+      "fileName": "BetaDREAM3XOSC.html",
+      "url": "Pluggins Folder/BetaDREAM3XOSC.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMSINE",
+      "fileName": "BetaDREAMSINE.html",
+      "url": "Pluggins Folder/BetaDREAMSINE.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMSAW",
+      "fileName": "BetaDREAMSAW.html",
+      "url": "Pluggins Folder/BetaDREAMSAW.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMPULSE",
+      "fileName": "BetaDREAMPULSE.html",
+      "url": "Pluggins Folder/BetaDREAMPULSE.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMSUB",
+      "fileName": "BetaDREAMSUB.html",
+      "url": "Pluggins Folder/BetaDREAMSUB.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMANALOG",
+      "fileName": "BetaDREAMANALOG.html",
+      "url": "Pluggins Folder/BetaDREAMANALOG.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMKEYS",
+      "fileName": "BetaDREAMKEYS.html",
+      "url": "Pluggins Folder/BetaDREAMKEYS.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMORGAN",
+      "fileName": "BetaDREAMORGAN.html",
+      "url": "Pluggins Folder/BetaDREAMORGAN.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMPLUCK",
+      "fileName": "BetaDREAMPLUCK.html",
+      "url": "Pluggins Folder/BetaDREAMPLUCK.html",
+      "family": "Strings",
+      "beta": true
+    },
+    {
+      "name": "DREAMBELL",
+      "fileName": "BetaDREAMBELL.html",
+      "url": "Pluggins Folder/BetaDREAMBELL.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMBRASS",
+      "fileName": "BetaDREAMBRASS.html",
+      "url": "Pluggins Folder/BetaDREAMBRASS.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMFLUTE",
+      "fileName": "DREAMFLUTE.html",
+      "url": "Pluggins Folder/DREAMFLUTE.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMCHOIR",
+      "fileName": "BetaDREAMCHOIR.html",
+      "url": "Pluggins Folder/BetaDREAMCHOIR.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMMARIMBA",
+      "fileName": "BetaDREAMMARIMBA.html",
+      "url": "Pluggins Folder/BetaDREAMMARIMBA.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMCLAV",
+      "fileName": "BetaDREAMCLAV.html",
+      "url": "Pluggins Folder/BetaDREAMCLAV.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMHORN",
+      "fileName": "BetaDREAMHORN.html",
+      "url": "Pluggins Folder/BetaDREAMHORN.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMCHORD",
+      "fileName": "BetaDREAMCHORD.html",
+      "url": "Pluggins Folder/BetaDREAMCHORD.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMMONO",
+      "fileName": "BetaDREAMMONO.html",
+      "url": "Pluggins Folder/BetaDREAMMONO.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMARPBOX",
+      "fileName": "BetaDREAMARPBOX.html",
+      "url": "Pluggins Folder/BetaDREAMARPBOX.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMDRONE",
+      "fileName": "BetaDREAMDRONE.html",
+      "url": "Pluggins Folder/BetaDREAMDRONE.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMNOISE",
+      "fileName": "BetaDREAMNOISE.html",
+      "url": "Pluggins Folder/BetaDREAMNOISE.html",
+      "family": "FX",
+      "beta": true
+    },
+    {
+      "name": "DREAMTOY",
+      "fileName": "BetaDREAMTOY.html",
+      "url": "Pluggins Folder/BetaDREAMTOY.html",
+      "family": "Keys",
+      "beta": true
+    },
+    {
+      "name": "DREAMRACK",
+      "fileName": "DREAMRACK.html",
+      "url": "Pluggins Folder/DREAMRACK.html",
+      "family": "Drums"
+    }
+  ],
+  "samples": [
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_01_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_02_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_03_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_04_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_05_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_06_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_07_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_08_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "clap_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/clap_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_01_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_02_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_03_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_04_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_05_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_06_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_07_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_08_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "closedhat_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/closedhat_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_01_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_02_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_03_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_04_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_05_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_06_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_07_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_08_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_09_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_10_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "kick_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/kick_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_01_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_02_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_03_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_04_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_04_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_04_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_04_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_05_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_06_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "openhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/openhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_01_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_02_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_03_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_04_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_05_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_06_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_07_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_08_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "perc_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/perc_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_01_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_02_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_03_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_04_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_05_dry.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_06_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_07_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_08_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_09_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_10_wet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CLANKER",
+      "fileName": "snare_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CLANKER/snare_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_01_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_02_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_04_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_05_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_06_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_07_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_08_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "clap_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/clap_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_01_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_02_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_03_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_04_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_05_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_06_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_07_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_08_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "closedhat_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/closedhat_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_01_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_02_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_03_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_04_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_05_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_06_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_07_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_08_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_09_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_10_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "kick_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/kick_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_01_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_02_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_03_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_04_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_04_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_04_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_04_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_05_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_06_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "openhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/openhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_01_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_02_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_03_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_04_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_05_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_06_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_07_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_08_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "perc_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/perc_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_01_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_02_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_03_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_04_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_05_dry.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_06_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_07_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_08_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_09_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_10_wet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / CRUNCH",
+      "fileName": "snare_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/CRUNCH/snare_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_01_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_02_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_03_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_04_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_05_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_06_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_07_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_08_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "clap_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/clap_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_01_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_02_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_03_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_04_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_05_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_06_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_07_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_08_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "closedhat_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/closedhat_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_01_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_02_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_03_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_04_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_05_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_06_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_07_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_08_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_09_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_10_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "kick_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/kick_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_01_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_02_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_03_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_04_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_04_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_04_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_04_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_05_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_06_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "openhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/openhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_01_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_02_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_03_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_04_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_05_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_06_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_07_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_08_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "perc_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/perc_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_01_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_02_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_03_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_04_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_05_dry.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_06_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_07_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_08_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_09_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_10_wet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / HEAVY",
+      "fileName": "snare_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/HEAVY/snare_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_01_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_02_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_03_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_04_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_05_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_06_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_07_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_08_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "clap_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/clap_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_01_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_02_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_03_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_04_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_05_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_06_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_07_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_08_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "closedhat_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/closedhat_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_01_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_02_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_03_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_04_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_05_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_06_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_07_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_08_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_09_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_10_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "kick_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/kick_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_01_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_02_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_03_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_04_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_04_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_04_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_04_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_05_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_06_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "openhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/openhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_01_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_02_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_03_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_04_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_05_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_06_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_07_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_08_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "perc_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/perc_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_01_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_02_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_03_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_04_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_05_dry.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_06_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_07_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_08_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_09_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_10_wet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / LIQUID",
+      "fileName": "snare_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/LIQUID/snare_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_01_dry.wav",
+      "url": "samples/DreamDrums/PERKS/clap_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_02_dry.wav",
+      "url": "samples/DreamDrums/PERKS/clap_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_03_dry.wav",
+      "url": "samples/DreamDrums/PERKS/clap_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_04_dry.wav",
+      "url": "samples/DreamDrums/PERKS/clap_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_05_wet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_06_wet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_07_wet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_08_wet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "clap_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/clap_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_01_dry.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_02_dry.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_03_dry.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_04_dry.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_05_wet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_06_wet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_07_wet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_08_wet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "closedhat_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/closedhat_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_01_dry.wav",
+      "url": "samples/DreamDrums/PERKS/kick_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_02_dry.wav",
+      "url": "samples/DreamDrums/PERKS/kick_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_03_dry.wav",
+      "url": "samples/DreamDrums/PERKS/kick_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_04_dry.wav",
+      "url": "samples/DreamDrums/PERKS/kick_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_05_dry.wav",
+      "url": "samples/DreamDrums/PERKS/kick_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_06_wet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_07_wet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_08_wet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_09_wet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_10_wet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "kick_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/kick_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_01_dry.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_02_dry.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_03_dry.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_04_wet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_04_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_04_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_04_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_05_wet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_06_wet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "openhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/openhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_01_dry.wav",
+      "url": "samples/DreamDrums/PERKS/perc_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_02_dry.wav",
+      "url": "samples/DreamDrums/PERKS/perc_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_03_dry.wav",
+      "url": "samples/DreamDrums/PERKS/perc_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_04_dry.wav",
+      "url": "samples/DreamDrums/PERKS/perc_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_05_wet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_06_wet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_07_wet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_08_wet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "perc_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/perc_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_01_dry.wav",
+      "url": "samples/DreamDrums/PERKS/snare_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_02_dry.wav",
+      "url": "samples/DreamDrums/PERKS/snare_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_03_dry.wav",
+      "url": "samples/DreamDrums/PERKS/snare_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_04_dry.wav",
+      "url": "samples/DreamDrums/PERKS/snare_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_05_dry.wav",
+      "url": "samples/DreamDrums/PERKS/snare_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_06_wet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_07_wet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_08_wet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_09_wet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_10_wet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / PERKS",
+      "fileName": "snare_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/PERKS/snare_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_01_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_02_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_03_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_04_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_05_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_06_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_07_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_08_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "clap_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/clap_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_01_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_02_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_03_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_04_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_05_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_06_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_07_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_08_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "closedhat_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/closedhat_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_01_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_02_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_03_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_04_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_05_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_06_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_07_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_08_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_09_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_10_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "kick_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/kick_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_01_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_02_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_03_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_04_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_04_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_04_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_04_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_05_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_06_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "openhat_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/openhat_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_01_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_02_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_03_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_04_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_05_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_05_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_05_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_05_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_06_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_07_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_08_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "perc_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/perc_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_01_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_01_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_01_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_01_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_02_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_02_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_02_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_02_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_03_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_03_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_03_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_03_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_04_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_04_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_04_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_04_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_05_dry.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_05_dry.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_05_dry_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_05_dry_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_06_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_06_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_06_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_06_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_07_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_07_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_07_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_07_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_08_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_08_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_08_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_08_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_09_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_09_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_09_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_09_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_10_wet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_10_wet.wav"
+    },
+    {
+      "folder": "DreamDrums / SMOOTH",
+      "fileName": "snare_10_wet_doublewet.wav",
+      "url": "samples/DreamDrums/SMOOTH/snare_10_wet_doublewet.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "01_sine_c4.wav",
+      "url": "samples/DreamSynth/01_sine_c4.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "02_tri_c4.wav",
+      "url": "samples/DreamSynth/02_tri_c4.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "03_sq_c4.wav",
+      "url": "samples/DreamSynth/03_sq_c4.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "04_saw_c4.wav",
+      "url": "samples/DreamSynth/04_saw_c4.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "05_sine_c3.wav",
+      "url": "samples/DreamSynth/05_sine_c3.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "06_sine_c5.wav",
+      "url": "samples/DreamSynth/06_sine_c5.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "07_noise.wav",
+      "url": "samples/DreamSynth/07_noise.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "08_dust.wav",
+      "url": "samples/DreamSynth/08_dust.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "09_fifth.wav",
+      "url": "samples/DreamSynth/09_fifth.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "10_pluck.wav",
+      "url": "samples/DreamSynth/10_pluck.wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (1).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (1).wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (2).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (2).wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (3).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (3).wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (4).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (4).wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (5).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (5).wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (6).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (6).wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (7).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (7).wav"
+    },
+    {
+      "folder": "DreamSynth",
+      "fileName": "DreamSoundPack (8).wav",
+      "url": "samples/DreamSynth/DreamSoundPack (8).wav"
+    }
+  ],
+  "themes": [
+    {
+      "name": "ASH",
+      "fileName": "ASH.html",
+      "url": "Themes/ASH.html"
+    },
+    {
+      "name": "DEFAULT",
+      "fileName": "DEFAULT.html",
+      "url": "Themes/DEFAULT.html"
+    },
+    {
+      "name": "LIGHT",
+      "fileName": "LIGHT.html",
+      "url": "Themes/LIGHT.html"
+    },
+    {
+      "name": "SULFUR",
+      "fileName": "SULFUR.html",
+      "url": "Themes/SULFUR.html"
+    },
+    {
+      "name": "DAWN",
+      "fileName": "DAWN.html",
+      "url": "Themes/DAWN.html"
+    },
+    {
+      "name": "DUSK",
+      "fileName": "DUSK.html",
+      "url": "Themes/DUSK.html"
+    },
+    {
+      "name": "INK",
+      "fileName": "INK.html",
+      "url": "Themes/INK.html"
+    },
+    {
+      "name": "SAND",
+      "fileName": "SAND.html",
+      "url": "Themes/SAND.html"
+    },
+    {
+      "name": "PINE",
+      "fileName": "PINE.html",
+      "url": "Themes/PINE.html"
+    },
+    {
+      "name": "COPPER",
+      "fileName": "COPPER.html",
+      "url": "Themes/COPPER.html"
+    },
+    {
+      "name": "FOG",
+      "fileName": "FOG.html",
+      "url": "Themes/FOG.html"
+    },
+    {
+      "name": "PLUM",
+      "fileName": "PLUM.html",
+      "url": "Themes/PLUM.html"
+    },
+    {
+      "name": "MINT",
+      "fileName": "MINT.html",
+      "url": "Themes/MINT.html"
+    },
+    {
+      "name": "COBALT",
+      "fileName": "COBALT.html",
+      "url": "Themes/COBALT.html"
+    },
+    {
+      "name": "EMBER",
+      "fileName": "EMBER.html",
+      "url": "Themes/EMBER.html"
+    },
+    {
+      "name": "LILAC",
+      "fileName": "LILAC.html",
+      "url": "Themes/LILAC.html"
+    },
+    {
+      "name": "STEEL",
+      "fileName": "STEEL.html",
+      "url": "Themes/STEEL.html"
+    },
+    {
+      "name": "HONEY",
+      "fileName": "HONEY.html",
+      "url": "Themes/HONEY.html"
+    },
+    {
+      "name": "ABYSS",
+      "fileName": "ABYSS.html",
+      "url": "Themes/ABYSS.html"
+    },
+    {
+      "name": "PAPER",
+      "fileName": "PAPER.html",
+      "url": "Themes/PAPER.html"
+    },
+    {
+      "name": "CHERRY",
+      "fileName": "CHERRY.html",
+      "url": "Themes/CHERRY.html"
+    },
+    {
+      "name": "OLIVE",
+      "fileName": "OLIVE.html",
+      "url": "Themes/OLIVE.html"
+    },
+    {
+      "name": "GRAPHITE",
+      "fileName": "GRAPHITE.html",
+      "url": "Themes/GRAPHITE.html"
+    },
+    {
+      "name": "AURORA",
+      "fileName": "AURORA.html",
+      "url": "Themes/AURORA.html"
+    },
+    {
+      "name": "CINDER",
+      "fileName": "CINDER.html",
+      "url": "Themes/CINDER.html"
+    },
+    {
+      "name": "LAGOON",
+      "fileName": "LAGOON.html",
+      "url": "Themes/LAGOON.html"
+    },
+    {
+      "name": "MARROW",
+      "fileName": "MARROW.html",
+      "url": "Themes/MARROW.html"
+    },
+    {
+      "name": "STATIC",
+      "fileName": "STATIC.html",
+      "url": "Themes/STATIC.html"
+    },
+    {
+      "name": "VELVET",
+      "fileName": "VELVET.html",
+      "url": "Themes/VELVET.html"
+    }
+  ]
+}

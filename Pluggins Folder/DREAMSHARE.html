@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <title>DREAMSHARE</title>
+  <script src="../Themes/sleepwell-theme.js"></script>
+  <script src="../Themes/sleepwell-suite.js"></script>
+  <script src="../Themes/dreamhost-bridge.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Fraunces:opsz,wght@9..144,520;9..144,560&display=swap" rel="stylesheet">
+  <style>
+/* DREAMSHARE — night reel. Colors follow the active Sleepwell theme. */
+    :root {
+      --bg:#14080c; --panel:#241018; --accent:#c04068; --accent2:#e07090;
+      --text:#f4e6ea; --text-dim:#b89aa6; --dim:#b89aa6; --border:#3a2030;
+      --glow:rgba(192,64,104,0.28); --panel-2:#1a0c12;
+      --display:"Fraunces", "Iowan Old Style", Georgia, serif;
+      --sans:"Figtree", "Avenir Next", system-ui, sans-serif;
+      --shadow: 0 0 0 1px color-mix(in srgb, var(--text) 8%, transparent);
+    }
+    * { box-sizing:border-box; }
+    html, body { height:100%; width:100%; margin:0; }
+    body {
+      font-family:var(--sans); background:var(--bg); color:var(--text);
+      overflow:hidden;
+    }
+    button, input, textarea { font-family:inherit; }
+    .app {
+      width:100%;
+      flex:1 1 auto;
+      min-height:0;
+      height:auto;
+      max-height:none;
+      display:flex; flex-direction:column; overflow:hidden;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--panel) 55%, transparent), transparent 120px),
+        color-mix(in srgb, var(--panel) 88%, transparent);
+    }
+    .hidden { display:none !important; }
+    .top {
+      flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 16px 12px;
+      border-bottom:1px solid color-mix(in srgb, var(--border) 85%, transparent);
+    }
+    .brand { display:flex; align-items:center; gap:12px; min-width:0; }
+    .mark {
+      width:36px; height:36px; flex:0 0 auto; border-radius:10px;
+      background:
+        radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 80%, white), transparent 42%),
+        conic-gradient(from 210deg, var(--accent), color-mix(in srgb, var(--accent) 30%, var(--bg)), var(--accent));
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 18%, transparent);
+    }
+    .top h1 {
+      font-family:var(--display); font-weight:560; font-size:1.45rem;
+      letter-spacing:-0.03em; line-height:1; margin:0; color:var(--text);
+    }
+    .tag { margin:4px 0 0; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-dim); }
+    .top-actions { display:flex; align-items:center; gap:8px; }
+    .who-chip {
+      font-size:0.75rem; color:var(--text); background:color-mix(in srgb, var(--panel) 80%, transparent);
+      border:0; box-shadow:var(--shadow); padding:6px 10px; border-radius:999px; max-width:42vw;
+      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    }
+    .who-chip.guest { color:var(--text-dim); }
+    .badge {
+      font-size:0.6rem; letter-spacing:0.08em; padding:2px 6px; border-radius:999px;
+      margin-left:6px; vertical-align:middle; color:var(--bg); background:var(--accent);
+    }
+    .badge.mod { background:color-mix(in srgb, var(--accent) 70%, var(--text)); }
+    .badge.kyoto { background:#1a2438; color:#d5e0ff; }
+    .stage { flex:1 1 auto; min-height:0; min-width:0; display:grid; grid-template-columns:minmax(150px, 240px) minmax(0,1fr); }
+    .rail, .main, .brand, .top, .top-actions, .auth-box, .composer { min-width:0; }
+    .rail-lead, .rail-note, .rail-stat, .auth-box p, .auth-box h2, .top h1, .tag, .thread-head .title {
+      overflow-wrap:break-word; word-break:normal;
+    }
+    .top { flex-wrap:wrap; }
+    .rooms, .composer-row, .auth-actions { flex-wrap:wrap; }
+    .auth-view, .feed-view, .thread-view { min-width:0; }
+    .rail {
+      min-height:0; overflow:auto; padding:16px 14px;
+      border-right:1px solid color-mix(in srgb, var(--border) 80%, transparent);
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .kicker {
+      margin:0 0 6px; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent);
+    }
+    .rail-lead { margin:0; font-family:var(--display); font-size:1.35rem; font-weight:520; letter-spacing:-0.03em; line-height:1.15; }
+    .rail-stat { margin:0; font-size:0.92rem; color:var(--text); }
+    .rail-stat strong { font-family:var(--display); font-size:1.6rem; font-weight:560; display:block; letter-spacing:-0.03em; }
+    .rail-note { margin:0; font-size:0.78rem; line-height:1.45; color:var(--text-dim); }
+    .main { min-height:0; min-width:0; display:flex; flex-direction:column; }
+    .feed-view, .thread-view, .auth-view {
+      flex:1; min-height:0; display:flex; flex-direction:column; overflow:hidden;
+    }
+    .rooms { display:flex; gap:6px; padding:10px 14px 0; flex:0 0 auto; }
+    .rooms button {
+      border:0; box-shadow:var(--shadow); background:transparent; color:var(--text-dim);
+      border-radius:999px; padding:8px 12px; min-height:36px; font-size:0.78rem; cursor:pointer;
+    }
+    .rooms button.on { background:var(--text); color:var(--bg); box-shadow:none; }
+    .feed-scroll, .thread-scroll {
+      flex:1; min-height:0; overflow:auto; padding:12px 14px 18px;
+    }
+    .thread-card {
+      display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:12px; align-items:start;
+      padding:14px 12px; margin-bottom:8px; cursor:pointer; border-radius:16px;
+      background:color-mix(in srgb, var(--panel) 78%, transparent);
+      box-shadow:var(--shadow);
+    }
+    .thread-card:hover { background:color-mix(in srgb, var(--panel) 92%, var(--accent) 8%); }
+    .card-index {
+      font-family:var(--display); font-size:0.95rem; color:var(--text-dim); min-width:1.6rem; padding-top:2px;
+    }
+    .thread-card .title { margin:0 0 4px; font-size:1rem; font-weight:650; letter-spacing:-0.02em; line-height:1.25; }
+    .thread-card .snippet {
+      margin:0; font-size:0.84rem; line-height:1.45; color:var(--text-dim);
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    }
+    .meta, .post-meta {
+      display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center;
+      margin-top:8px; font-size:0.72rem; color:var(--text-dim);
+    }
+    .tape-flag {
+      align-self:center; font-size:0.65rem; letter-spacing:0.12em; color:var(--bg);
+      background:var(--accent); border-radius:999px; padding:6px 8px;
+    }
+    .uname { color:var(--text); font-weight:700; cursor:pointer; }
+    .uname:hover { color:var(--accent); }
+    .composer {
+      flex:0 0 auto; margin:0 14px 12px; padding:12px;
+      border-radius:18px; background:color-mix(in srgb, var(--panel) 88%, black);
+      box-shadow:var(--shadow); display:flex; flex-direction:column; gap:8px;
+    }
+    .composer.hot { outline:2px solid var(--accent); outline-offset:2px; }
+    .composer-head, .composer-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+    .meter { margin-left:auto; font-size:0.72rem; color:var(--text-dim); }
+    .composer input, .composer textarea, .sb-bar input, .auth-box input {
+      width:100%; background:color-mix(in srgb, var(--bg) 80%, black); color:var(--text);
+      border:0; box-shadow:var(--shadow); border-radius:12px; padding:11px 12px; font-size:0.92rem;
+    }
+    .composer textarea { min-height:72px; max-height:140px; resize:vertical; line-height:1.45; }
+    .composer input:focus, .composer textarea:focus, .sb-bar input:focus, .auth-box input:focus {
+      outline:2px solid color-mix(in srgb, var(--accent) 70%, transparent); outline-offset:1px;
+    }
+    button {
+      font-size:0.8rem; padding:10px 14px; border-radius:999px; border:0;
+      background:color-mix(in srgb, var(--panel) 70%, var(--bg)); color:var(--text);
+      box-shadow:var(--shadow); cursor:pointer; min-height:40px;
+    }
+    button:hover { filter:brightness(1.08); }
+    .btn-p { background:var(--accent); color:#fff8f6; box-shadow:none; font-weight:700; }
+    .btn-p:disabled { opacity:0.45; cursor:not-allowed; }
+    .btn-ghost { background:transparent; box-shadow:var(--shadow); }
+    .btn-danger { background:transparent; color:color-mix(in srgb, var(--accent) 75%, white); box-shadow:var(--shadow); }
+    .status {
+      flex:0 0 auto; font-size:0.72rem; color:var(--text-dim); padding:8px 16px 10px;
+      border-top:1px solid color-mix(in srgb, var(--border) 75%, transparent);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .thread-head { flex:0 0 auto; padding:14px 16px 8px; }
+    .thread-head .title { font-family:var(--display); font-size:1.7rem; font-weight:540; letter-spacing:-0.03em; line-height:1.15; margin:0 0 8px; }
+    .thread-head .body { font-size:0.95rem; line-height:1.5; white-space:pre-wrap; }
+    .player {
+      margin:10px 0; padding:10px; border-radius:14px;
+      background:color-mix(in srgb, var(--bg) 70%, black); box-shadow:var(--shadow);
+    }
+    .player audio { width:100%; }
+    .comment {
+      margin:0 0 8px; padding:12px 12px 12px 14px; border-radius:14px;
+      background:color-mix(in srgb, var(--panel) 70%, transparent);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+    .comment .ctext { margin-top:6px; font-size:0.88rem; line-height:1.45; white-space:pre-wrap; }
+    .empty { text-align:left; color:var(--text-dim); padding:28px 8px; font-size:0.9rem; line-height:1.45; }
+    .auth-view { align-items:center; justify-content:center; padding:24px 16px; overflow:auto; }
+    .auth-box { width:min(440px, 100%); }
+    .auth-box h2 { font-family:var(--display); font-weight:540; font-size:2rem; letter-spacing:-0.03em; margin:0 0 8px; }
+    .auth-box p { font-size:0.92rem; line-height:1.5; color:var(--text-dim); }
+    .auth-actions { display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; }
+    .umenu {
+      position:fixed; z-index:30; min-width:190px; padding:6px; border-radius:14px;
+      background:color-mix(in srgb, var(--panel) 94%, black); box-shadow:0 16px 40px rgba(0,0,0,0.35), var(--shadow);
+      display:none;
+    }
+    .umenu.open { display:block; }
+    .umenu button { display:block; width:100%; text-align:left; background:transparent; box-shadow:none; border-radius:10px; }
+    .umenu button:hover { background:color-mix(in srgb, var(--accent) 16%, transparent); }
+    .umenu .sep { height:1px; background:color-mix(in srgb, var(--border) 80%, transparent); margin:4px 0; }
+    .umenu .label { font-size:0.68rem; color:var(--text-dim); padding:6px 10px; }
+    .sub { font-size:0.75rem; color:var(--text-dim); }
+    .sample-browser {
+      display:flex; flex-direction:column; gap:6px; max-height:34vh;
+      padding:8px; border-radius:14px; background:color-mix(in srgb, var(--bg) 65%, black);
+    }
+    .sample-browser.collapsed { display:none; }
+    .sb-bar, .sb-chips { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+    .sb-bar input { flex:1; min-width:120px; }
+    .sb-chips button { min-height:32px; padding:4px 10px; font-size:0.72rem; }
+    .sb-chips button.on { background:var(--text); color:var(--bg); }
+    .sample-tree { overflow:auto; max-height:22vh; }
+    .sample-folder-label { display:flex; gap:6px; padding:6px 2px; cursor:pointer; font-size:0.78rem; font-weight:700; }
+    .sample-folder.collapsed .sample-items { display:none; }
+    .sample-item { display:flex; align-items:center; gap:6px; padding:4px 4px 4px 12px; border-radius:8px; }
+    .sample-item:hover, .sample-item.playing { background:color-mix(in srgb, var(--accent) 14%, transparent); }
+    .sample-item .s-name { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:0.75rem; color:var(--text-dim); }
+    .sample-item button { min-height:32px; padding:4px 8px; font-size:0.7rem; }
+    @media (max-width: 860px) {
+      .stage { grid-template-columns:1fr; }
+      .rail {
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        border-right:0;
+        border-bottom:1px solid color-mix(in srgb, var(--border) 80%, transparent);
+        max-height:30vh;
+        padding:10px 12px;
+      }
+      .rail-note { grid-column:1 / -1; }
+    }
+    @media (max-width: 560px) {
+      .rail { display:none; }
+      .top h1 { font-size:1.15rem; }
+      .auth-box h2 { font-size:1.35rem; }
+      .who-chip { max-width:40vw; }
+      .composer { margin:0 8px 8px; }
+      .feed-scroll, .thread-scroll { padding:10px 8px 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior:auto !important; }
+    }
+  
+    .reacts{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+    .reacts button{background:#140c10;border:1px solid #3a2428;color:#f2ece8;border-radius:999px;padding:2px 7px;cursor:pointer;font:inherit;font-size:0.72rem;}
+    .reacts button.on{border-color:#e62020;color:#fff;background:#3a1418;}
+
+</style>
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <div>
+          <h1 id="mainTitle">DREAMSHARE</h1>
+          <p class="tag">Night reel · tapes stay 100 days</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="who-chip guest" id="whoChip">not logged in</span>
+        <button type="button" class="btn-ghost" id="refreshBtn">Refresh</button>
+      </div>
+    </header>
+
+    <div class="stage">
+      <aside class="rail">
+        <div>
+          <p class="kicker">The floor</p>
+          <p class="rail-lead">A listening room. Not another timeline.</p>
+        </div>
+        <div>
+          <p class="kicker">Tape ceiling</p>
+          <p class="rail-stat"><strong>75 MB</strong> per WAV. The words stay after the tape expires.</p>
+        </div>
+        <p class="rail-note">Sign in on the GOODNIGHT homepage. DreamShare uses that name only — you cannot post as someone else.</p>
+      </aside>
+
+      <div class="main">
+        <div class="auth-view" id="authView">
+          <div class="auth-box">
+            <p class="kicker">Closed door</p>
+            <h2 id="authTitle">Use your homepage login</h2>
+            <p>
+              DreamShare does not keep a second password.
+              Close this machine, click <strong>Log In</strong> on the GOODNIGHT homepage,
+              then open DreamShare again.
+            </p>
+            <div class="auth-actions">
+              <button type="button" class="btn-p" id="retryUserBtn">Use homepage login</button>
+              <button type="button" class="btn-ghost" id="openHomeLoginBtn">Open homepage Log In</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-view hidden" id="feedView">
+          <div class="rooms" id="roomChips">
+            <button type="button" data-room="all" class="on">Floor</button>
+            <button type="button" data-room="tapes">Tapes</button>
+            <button type="button" data-room="mine">Mine</button>
+          </div>
+          <div class="feed-scroll" id="feedScroll">
+            <div class="empty" id="feedEmpty">The floor is empty. Name a reel and drop a tape.</div>
+            <div id="feedList"></div>
+          </div>
+          <div class="composer" id="feedComposer">
+            <div class="composer-head">
+              <span class="kicker">Drop a reel</span>
+              <span class="meter" id="wavMeter">no tape · 75 MB max</span>
+            </div>
+            <input id="threadTitle" maxlength="120" placeholder="Name the reel" />
+            <textarea id="threadBody" maxlength="1000" placeholder="What should they hear first?"></textarea>
+            <div class="sample-browser collapsed" id="sampleBrowser">
+              <div class="sb-bar">
+                <input id="sampleSearch" placeholder="Search the library" />
+                <span class="sub" id="sampleCount">loading samples…</span>
+                <button type="button" id="sampleStopBtn" hidden>Stop</button>
+              </div>
+              <div class="sb-chips" id="sampleChips">
+                <button type="button" data-sb="all" class="on">All</button>
+                <button type="button" data-sb="dreamdrums">Drums</button>
+                <button type="button" data-sb="dreamsynth">Synth</button>
+                <button type="button" data-sb="session">Session</button>
+              </div>
+              <div class="sample-tree" id="sampleTree"></div>
+            </div>
+            <div class="composer-row">
+              <button type="button" id="browseSamplesBtn">Library</button>
+              <button type="button" id="pickSampleBtn">Session</button>
+              <button type="button" id="wavFileBtn">Upload WAV</button>
+              <input type="file" id="wavFile" accept=".wav,.wave,audio/wav,audio/x-wav,audio/wave" hidden />
+              <select id="samplePick" hidden></select>
+              <span class="sub" id="wavLabel" style="display:none"></span>
+              <button type="button" id="wavClear" hidden>Remove</button>
+              <span class="sub" id="titleCount">0/120</span>
+              <span style="flex:1"></span>
+              <button type="button" class="btn-p" id="postThreadBtn">Post reel</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-view hidden" id="threadView">
+          <div class="thread-head" id="threadHead"></div>
+          <div class="thread-scroll" id="threadScroll">
+            <div id="commentList"></div>
+          </div>
+          <div class="composer">
+            <div class="composer-row">
+              <button type="button" class="btn-ghost" id="backFeedBtn">Back to floor</button>
+            </div>
+            <textarea id="commentBody" maxlength="500" placeholder="Answer under the tape"></textarea>
+            <div class="composer-row">
+              <span style="flex:1"></span>
+              <button type="button" class="btn-p" id="postCommentBtn">Comment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="status" id="status">DREAMSHARE ready</div>
+  </div>
+  <button type="button" id="dsChatToggle" style="position:fixed;right:0;top:42%;z-index:50;writing-mode:vertical-rl;transform:rotate(180deg);background:#2a1418;border:1px solid #e62020;color:#ffb0b0;padding:12px 6px;border-radius:8px 0 0 8px;cursor:pointer;font:inherit;font-size:0.7rem;letter-spacing:0.12em;font-weight:700;pointer-events:auto;touch-action:manipulation">LIVE CHAT</button>
+  <aside id="dsChatDrawer" style="position:fixed;right:0;top:0;bottom:0;width:min(320px,92vw);background:#120e12;border-left:1px solid #2e2024;display:flex;flex-direction:column;z-index:60;transform:translateX(100%);transition:transform .2s ease;box-shadow:-8px 0 24px rgba(0,0,0,.5)" aria-hidden="true">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px;border-bottom:1px solid #2e2024">
+      <b style="font-size:0.75rem;letter-spacing:0.1em;color:#ffb0b0">LIVE CHAT</b>
+      <span id="dsChatCount" style="font-size:0.6rem;color:#9a8e8e">0/100</span>
+      <button type="button" id="dsChatClose" style="margin-left:auto;background:transparent;border:1px solid #2e2024;color:#f2ece8;padding:4px 8px;border-radius:4px;cursor:pointer;font:inherit;font-size:0.7rem">Close</button>
+    </div>
+    <div id="dsChatList" style="flex:1;min-height:0;overflow-y:auto;padding:8px;-webkit-overflow-scrolling:touch"></div>
+    <div style="display:flex;gap:6px;padding:8px;border-top:1px solid #2e2024">
+      <input id="dsChatInput" maxlength="400" placeholder="Message…" style="flex:1;background:#0a0608;border:1px solid #2e2024;color:#f2ece8;border-radius:6px;padding:8px;font:inherit;font-size:0.78rem" />
+      <button type="button" id="dsChatSend" style="background:#e62020;color:#fff;border:0;padding:8px 12px;border-radius:6px;cursor:pointer;font:inherit;font-weight:700;font-size:0.72rem">Send</button>
+    </div>
+  </aside>
+  <div class="umenu" id="uMenu" role="menu"></div>
+
+<script>
+(function () {
+  const MAX_TITLE = 120, MAX_BODY = 1000, MAX_COMMENT = 500, COOLDOWN_MS = 4000;
+  const MAX_AUDIO_BYTES = 75 * 1024 * 1024;
+  const BIN_AUDIO_MAX = 6 * 1024 * 1024;
+  const PART_BYTES = 4 * 1024 * 1024;
+  const USER_RE = /^[A-Za-z][A-Za-z0-9_]{2,19}$/;
+  const RESERVED = /^(admin|moderator|system|sleepwell|dreamshare|owner|root|support|staff)$/i;
+  const BLOCK = /\b(https?:\/\/|javascript:|data:text|<\s*script|onerror\s*=|eval\s*\()/i;
+  const ABUSE_HARD = /\b(child\s*porn|csam|child\s*sex)\b/i;
+  const ABUSE_WORDS = [
+    'nigger','nigga','faggot','fag','kys','kill yourself','retard','retarded',
+    'tranny','chink','spic','kike','wetback','coon','beaner','gook',
+    'rape','rapist','molest','pedophile','pedo','nazi','hitler'
+  ];
+  const ABUSE_RE = new RegExp('\\b(' + ABUSE_WORDS.map(function (w) {
+    return w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+  }).join('|') + ')\\b', 'gi');
+
+  function censorText(raw) {
+    var t = String(raw || '');
+    if (ABUSE_HARD.test(t)) return null;
+    t = t.replace(ABUSE_RE, function (m) {
+      if (m.length <= 2) return '**';
+      return m[0] + '*'.repeat(Math.max(2, m.length - 1));
+    });
+    return t;
+  }
+
+  const $ = function (id) { return document.getElementById(id); };
+  const statusEl = $('status');
+  let session = null;
+  let threads = [];
+  let dsChat = [];
+  let mods = [];
+  let roles = {};
+  let supers = ['Trippah', 'Goonr'];
+  let openThreadId = null;
+  let lastSend = 0;
+  let menuTarget = null;
+
+  // ★ PUT YOUR WORKER URL HERE (same as before)
+  const WORKER_URL = 'https://dreamshare-api.keganacummings.workers.dev/';
+  // Durable feed. The worker used to keep threads only in Cloudflare's cache,
+  // which gets wiped overnight. This bin still has the real lounge.
+  const BIN_URL = 'https://extendsclass.com/api/json-storage/bin/abffdbc';
+  const BIN_API = 'https://extendsclass.com/api/json-storage/bin';
+  const FEED_BIN_ID = 'abffdbc';
+  const DURABLE = 'durable-v4';
+  const META_ID = '_dreamshare_meta';
+  const AUDIO_KEEP_MS = 100 * 24 * 60 * 60 * 1000;
+  const CHUNK_B64 = 68000;
+  let workerDurable = false;
+  let audioSink = 'bin';
+  let audioVault = false;
+  let room = 'all';
+
+  function setStatus(m) { statusEl.textContent = m; }
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c];
+    });
+  }
+
+  function fmtBytes(n) {
+    n = Number(n) || 0;
+    if (n < 1024) return n + ' B';
+    if (n < 1048576) return (n / 1024).toFixed(n < 10240 ? 1 : 0) + ' KB';
+    return (n / 1048576).toFixed(2) + ' MB';
+  }
+  function explainNet(err, fallback) {
+    var m = String(err && err.message || err || '');
+    if (/failed to fetch|networkerror|load failed/i.test(m)) return fallback || m;
+    return m || fallback || 'network error';
+  }
+  function isWavFile(file) {
+    var n = String(file && file.name || '').toLowerCase();
+    var t = String(file && file.type || '').toLowerCase();
+    return n.endsWith('.wav') || n.endsWith('.wave') || t === 'audio/wav' || t === 'audio/x-wav' || t === 'audio/wave';
+  }
+  function paintWav() {
+    var lab = document.getElementById('wavLabel');
+    var clr = document.getElementById('wavClear');
+    var meter = document.getElementById('wavMeter');
+    if (!pendingWav || !pendingWav.blob) {
+      if (lab) { lab.style.display = 'none'; lab.textContent = ''; }
+      if (clr) clr.hidden = true;
+      if (meter) meter.textContent = 'no tape · 75 MB max';
+      return;
+    }
+    var label = (pendingWav.name || 'tape') + ' · ' + fmtBytes(pendingWav.blob.size);
+    if (lab) { lab.style.display = ''; lab.textContent = label; }
+    if (clr) clr.hidden = false;
+    if (meter) meter.textContent = fmtBytes(pendingWav.blob.size) + ' / 75 MB';
+  }
+  function attachBlob(name, blob) {
+    if (!blob || blob.size < 44) { setStatus('That file is empty'); return; }
+    if (blob.size > MAX_AUDIO_BYTES) { setStatus('WAV over 75 MB'); return; }
+    pendingWav = { name: name || 'tape', blob: blob };
+    paintWav();
+    setStatus('Attached ' + (name || 'tape') + ' · ' + fmtBytes(blob.size) + ' · stays 100 days');
+  }
+
+  function when(ts) {
+    if (!ts) return '';
+    var d = Date.now() - ts;
+    if (d < 60000) return 'just now';
+    if (d < 3600000) return Math.floor(d / 60000) + 'm';
+    if (d < 86400000) return Math.floor(d / 3600000) + 'h';
+    return Math.floor(d / 86400000) + 'd';
+  }
+  function toHex(buf) {
+    return Array.from(new Uint8Array(buf)).map(function (b) {
+      return ('0' + b.toString(16)).slice(-2);
+    }).join('');
+  }
+  async function sha256(str) {
+    try {
+      var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return toHex(buf);
+    } catch (_) {
+      return 'x' + String(str).length + '_' + String(str).slice(0, 8);
+    }
+  }
+  async function hashPassword(password, saltHex) {
+    try {
+      if (crypto.subtle && crypto.subtle.importKey) {
+        var salt = new Uint8Array((saltHex.match(/.{1,2}/g) || []).map(function (b) { return parseInt(b, 16); }));
+        var keyMaterial = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+        var bits = await crypto.subtle.deriveBits({ name:'PBKDF2', salt:salt, iterations:120000, hash:'SHA-256' }, keyMaterial, 256);
+        return toHex(bits);
+      }
+    } catch (_) {}
+    var h = saltHex + ':' + password;
+    for (var i = 0; i < 5000; i++) h = await sha256(h);
+    return h;
+  }
+  function randomSalt() {
+    try {
+      var a = new Uint8Array(16);
+      crypto.getRandomValues(a);
+      return toHex(a);
+    } catch (_) {
+      var s = '';
+      for (var i = 0; i < 16; i++) s += ('0' + Math.floor(Math.random() * 256).toString(16)).slice(-2);
+      return s;
+    }
+  }
+
+
+  // ---- Homepage DreamDAW account only ----
+  var SW_ACTIVE_USER_KEY = 'sleepwell_active_user_v1';
+  var pendingWav = null;
+  var sessionSamples = [];
+  var librarySamples = [];
+  var catalogKeys = {};
+  var sampleFilter = 'all';
+  var previewAudio = null;
+  var binChain = Promise.resolve();
+
+  function readHomepageUser() {
+    // Only the live homepage session counts. A typed name, or a leftover
+    // localStorage key, is not a login.
+    try {
+      if (window.parent && window.parent !== window && window.parent.swCurrentUser) {
+        return String(window.parent.swCurrentUser);
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  let sessionFromHome = false;
+  function applyUser(name, fromHome, extra) {
+    extra = extra || {};
+    if (name && String(name).length >= 2) {
+      var clean = String(name).replace(/[^A-Za-z0-9_]/g, '').slice(0, 20);
+      if (!clean || clean.length < 3) {
+        setStatus('Homepage name needs 3+ letters or numbers');
+        return;
+      }
+      var role = extra.role || '';
+      var token = extra.token || '';
+      if (session && session.user === clean && session.role === role && session.token === token) return;
+      session = { user: clean, role: role, token: token };
+      sessionFromHome = !!fromHome;
+      showFeed();
+      pull();
+      setStatus('Signed in as ' + session.user + (role === 'super' ? ' · admin' : '') + ' · homepage account');
+    } else {
+      if (!session) {
+        showAuth();
+        return;
+      }
+      session = null;
+      sessionFromHome = false;
+      openThreadId = null;
+      showAuth();
+      setStatus('Log in on the GOODNIGHT homepage. DreamShare has no separate login.');
+    }
+  }
+
+  function requestHomepageUser() {
+    if (!parentAlive()) {
+      applyUser(null);
+      setStatus('Open DreamShare from the GOODNIGHT homepage, then Log In there.');
+      return;
+    }
+    try { window.parent.postMessage({ type: 'SLEEPWELL_WHO' }, '*'); } catch (_) {}
+    var live = readHomepageUser();
+    if (live) applyUser(live, true);
+  }
+
+  function syncUserFromHomepage() {
+    requestHomepageUser();
+  }
+
+  function parentAlive() {
+    try { return window.parent && window.parent !== window; } catch (_) { return false; }
+  }
+  function resolveSampleUrl(url) {
+    if (!url) return '';
+    var s = String(url);
+    if (/^(blob:|data:|https?:)/i.test(s)) return s;
+    if (s.indexOf('../') !== 0 && s.indexOf('./') !== 0) s = '../' + s.replace(/^\//, '');
+    return s.split('/').map(function (part) {
+      if (part === '..' || part === '.' || part === '') return part;
+      try { return encodeURIComponent(decodeURIComponent(part)); }
+      catch (_) { return encodeURIComponent(part); }
+    }).join('/');
+  }
+  function requestSessionSamples() {
+    if (!parentAlive()) return;
+    try {
+      window.parent.postMessage({ type: 'DREAM_NEED_SAMPLES', folder: 'library', includeStock: true }, '*');
+      window.parent.postMessage({ type: 'DREAM_NEED_SAMPLES', folder: 'session', includeStock: true }, '*');
+      window.parent.postMessage({ type: 'DREAMSHARE_NEED_SAMPLES', folder: 'library', includeStock: true }, '*');
+    } catch (_) {}
+  }
+  function addCatalogItems(items) {
+    var added = 0;
+    (items || []).forEach(function (it) {
+      if (!it) return;
+      var raw = it.url || it.src || '';
+      if (!raw) return;
+      var resolved = resolveSampleUrl(raw);
+      var name = it.fileName || it.name || 'sample';
+      var folder = it.folder || (it.session ? 'Session' : 'Samples');
+      var key = folder + '|' + name + '|' + resolved;
+      if (catalogKeys[key]) return;
+      catalogKeys[key] = 1;
+      librarySamples.push({ folder: folder, name: name, url: resolved });
+      added++;
+    });
+    if (added) renderSampleTree();
+    return added;
+  }
+  function renderSampleTree() {
+    var tree = document.getElementById('sampleTree');
+    var countEl = document.getElementById('sampleCount');
+    if (countEl) countEl.textContent = librarySamples.length ? (librarySamples.length + ' samples') : 'no samples yet';
+    if (!tree) return;
+    var q = ((document.getElementById('sampleSearch') || {}).value || '').toLowerCase().trim();
+    var groups = {};
+    librarySamples.forEach(function (s, idx) {
+      var hay = (s.folder + ' ' + s.name).toLowerCase();
+      if (sampleFilter === 'dreamdrums' && hay.indexOf('drum') < 0) return;
+      if (sampleFilter === 'dreamsynth' && hay.indexOf('synth') < 0) return;
+      if (sampleFilter === 'session' && hay.indexOf('session') < 0 && hay.indexOf('tape') < 0) return;
+      if (q && hay.indexOf(q) < 0) return;
+      var f = s.folder || 'Samples';
+      if (!groups[f]) groups[f] = [];
+      groups[f].push({ s: s, idx: idx });
+    });
+    var folders = Object.keys(groups).sort();
+    if (!folders.length) {
+      tree.innerHTML = '<div class="empty" style="padding:12px">No samples match. Open from GOODNIGHT so the library can load, or drop a session tape.</div>';
+      return;
+    }
+    var openAll = !!q || folders.length === 1;
+    tree.innerHTML = folders.map(function (f) {
+      var items = groups[f];
+      return '<div class="sample-folder' + (openAll ? '' : ' collapsed') + '">' +
+        '<div class="sample-folder-label" data-folder="' + esc(f) + '"><span class="chev">▾</span> ' + esc(f) + ' <span class="sub">(' + items.length + ')</span></div>' +
+        '<div class="sample-items">' + items.map(function (row) {
+          return '<div class="sample-item" data-idx="' + row.idx + '">' +
+            '<span class="s-name">' + esc(row.s.name) + '</span>' +
+            '<button type="button" data-preview="' + row.idx + '">▶</button>' +
+            '<button type="button" data-use="' + row.idx + '">Use</button>' +
+          '</div>';
+        }).join('') + '</div></div>';
+    }).join('');
+  }
+  function stopSamplePreview() {
+    if (previewAudio) {
+      try { previewAudio.pause(); } catch (_) {}
+      previewAudio = null;
+    }
+    var stopBtn = document.getElementById('sampleStopBtn');
+    if (stopBtn) stopBtn.hidden = true;
+    var tree = document.getElementById('sampleTree');
+    if (tree) tree.querySelectorAll('.sample-item.playing').forEach(function (el) { el.classList.remove('playing'); });
+  }
+  function previewSample(idx) {
+    var s = librarySamples[idx];
+    if (!s) return;
+    stopSamplePreview();
+    previewAudio = new Audio(s.url);
+    var row = document.querySelector('.sample-item[data-idx="' + idx + '"]');
+    if (row) row.classList.add('playing');
+    var stopBtn = document.getElementById('sampleStopBtn');
+    if (stopBtn) stopBtn.hidden = false;
+    previewAudio.onended = function () { stopSamplePreview(); };
+    previewAudio.play().then(function () {
+      setStatus('Preview · ' + s.name);
+    }).catch(function (err) {
+      setStatus('Preview failed: ' + (err.message || err));
+    });
+  }
+  async function loadLibraryCatalog() {
+    var urls = ['../library.json', 'library.json'];
+    for (var i = 0; i < urls.length; i++) {
+      try {
+        var r = await fetch(urls[i] + (urls[i].indexOf('?') >= 0 ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' });
+        if (!r.ok) continue;
+        var j = await r.json();
+        if (j && Array.isArray(j.samples) && j.samples.length) {
+          addCatalogItems(j.samples.map(function (s) {
+            return { folder: s.folder || 'Samples', name: s.fileName || s.name, url: s.url, fileName: s.fileName || s.name };
+          }));
+          if (session) setStatus('Sample browser · ' + librarySamples.length + ' samples');
+          break;
+        }
+      } catch (_) {}
+    }
+    requestSessionSamples();
+    renderSampleTree();
+  }
+  function blobToDataUrl(blob) {
+    return new Promise(function (resolve, reject) {
+      var fr = new FileReader();
+      fr.onload = function () { resolve(String(fr.result || '')); };
+      fr.onerror = reject;
+      fr.readAsDataURL(blob);
+    });
+  }
+  async function attachSampleByUrl(name, url) {
+    try {
+      var r = await fetch(url);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      var blob = await r.blob();
+      if (blob.size > MAX_AUDIO_BYTES) { setStatus('WAV over 75 MB'); return; }
+      if (blob.size < 44) { setStatus('That file is empty'); return; }
+      pendingWav = { name: name || 'tape', blob: blob };
+      paintWav();
+      setStatus('Attached ' + (name || 'tape') + ' · ' + fmtBytes(blob.size) + ' · stays 100 days');
+    } catch (err) {
+      setStatus('Could not load sample: ' + (err.message || err));
+    }
+  }
+  function clearWav() {
+    pendingWav = null;
+    var sel = document.getElementById('samplePick');
+    if (sel) { sel.hidden = true; sel.innerHTML = ''; }
+    paintWav();
+  }
+  function fillSamplePick(items) {
+    addCatalogItems(items);
+    sessionSamples = items || [];
+  }
+
+  function cleanChunkIds(list) {
+    if (!Array.isArray(list)) return [];
+    return list.filter(function (id) {
+      return /^[A-Za-z0-9]+$/.test(String(id || '')) && String(id) !== FEED_BIN_ID;
+    }).slice(0, 200);
+  }
+  function postToThread(p) {
+    if (!p || p.id === META_ID || p.hidden) return null;
+    var text = String(p.text || '');
+    var title = String(p.title || text.split('\n')[0] || '').slice(0, 120) || (p.hasAudio ? 'audio' : 'untitled');
+    var chunks = cleanChunkIds(p.audioChunks);
+    return {
+      id: String(p.id || ('t' + (p.at || Date.now()))),
+      user: String(p.user || 'anon').slice(0, 24),
+      title: title,
+      text: text.slice(0, 1000),
+      at: p.at || 0,
+      hasAudio: !!(p.hasAudio || p.audioData || p.audioUrl || chunks.length || ((p.audioStore === 'kv' || p.audioStore === 'r2') && p.audioParts)),
+      audioId: p.audioId || null,
+      audioUrl: (typeof p.audioUrl === 'string' && p.audioUrl.indexOf('http') === 0) ? p.audioUrl : null,
+      audioData: (typeof p.audioData === 'string' && p.audioData.indexOf('data:') === 0) ? p.audioData : null,
+      audioChunks: chunks,
+      audioExpires: p.audioExpires || 0,
+      audioMime: p.audioMime || 'audio/wav',
+      audioStore: (p.audioStore === 'kv' || p.audioStore === 'r2') ? p.audioStore : '',
+      audioParts: Math.max(0, Math.min(20, parseInt(p.audioParts, 10) || 0)),
+      audioBytes: Math.max(0, Math.min(MAX_AUDIO_BYTES, parseInt(p.audioBytes, 10) || 0)),
+      comments: Array.isArray(p.comments) ? p.comments.filter(function (c) { return c && c.id; }) : []
+    };
+  }
+  function mergeThreads(a, b) {
+    var map = {};
+    function take(t) {
+      if (!t || !t.id || t.id === META_ID) return;
+      var prev = map[t.id];
+      if (!prev) { map[t.id] = Object.assign({ comments: [] }, t); return; }
+      var newer = (t.at || 0) >= (prev.at || 0) ? t : prev;
+      var older = newer === t ? prev : t;
+      var seen = {};
+      var comments = [];
+      (older.comments || []).concat(newer.comments || []).forEach(function (c) {
+        if (!c || !c.id || seen[c.id]) return;
+        seen[c.id] = 1;
+        comments.push(c);
+      });
+      var chunks = cleanChunkIds(newer.audioChunks).length ? cleanChunkIds(newer.audioChunks) : cleanChunkIds(older.audioChunks);
+      map[t.id] = {
+        id: t.id,
+        user: newer.user || older.user,
+        title: newer.title || older.title || '',
+        text: (newer.text != null && newer.text !== '') ? newer.text : (older.text || ''),
+        at: Math.max(newer.at || 0, older.at || 0),
+        hasAudio: !!(newer.hasAudio || older.hasAudio || newer.audioData || older.audioData || newer.audioUrl || older.audioUrl || chunks.length || newer.audioParts || older.audioParts),
+        audioId: newer.audioId || older.audioId || null,
+        audioUrl: newer.audioUrl || older.audioUrl || null,
+        audioData: newer.audioData || older.audioData || null,
+        audioChunks: chunks,
+        audioExpires: Math.max(newer.audioExpires || 0, older.audioExpires || 0),
+        audioMime: newer.audioMime || older.audioMime || 'audio/wav',
+        audioStore: (newer.audioStore === 'kv' || newer.audioStore === 'r2') ? newer.audioStore : ((older.audioStore === 'kv' || older.audioStore === 'r2') ? older.audioStore : ''),
+        audioParts: Math.max(parseInt(newer.audioParts, 10) || 0, parseInt(older.audioParts, 10) || 0),
+        audioBytes: Math.max(parseInt(newer.audioBytes, 10) || 0, parseInt(older.audioBytes, 10) || 0),
+        comments: comments
+      };
+    }
+    (a || []).forEach(take);
+    (b || []).forEach(take);
+    return Object.keys(map).map(function (k) { return map[k]; }).sort(function (x, y) { return (y.at || 0) - (x.at || 0); });
+  }
+  function feedFromRaw(raw) {
+    if (!raw || typeof raw !== 'object') return { threads: [], mods: [], updated: 0 };
+    var fromThreads = (raw.threads || []).map(postToThread).filter(Boolean);
+    var fromPosts = (raw.posts || []).map(postToThread).filter(Boolean);
+    var mods = Array.isArray(raw.mods) ? raw.mods.slice() : [];
+    (raw.posts || []).forEach(function (p) {
+      if (p && p.id === META_ID && Array.isArray(p.mods)) mods = mods.concat(p.mods);
+    });
+    return { threads: mergeThreads(fromPosts, fromThreads), mods: mods, updated: raw.updated || 0 };
+  }
+  async function fetchBinRaw() {
+    var r = await fetch(BIN_URL + '?t=' + Date.now(), { cache: 'no-store', headers: { Accept: 'application/json' } });
+    if (!r.ok) throw new Error('bin ' + r.status);
+    var j = await r.json();
+    if (typeof j === 'string') j = JSON.parse(j);
+    return j;
+  }
+  function serializeBin(feed) {
+    var threads = (feed.threads || []).filter(function (t) { return t && t.id && t.id !== META_ID; }).slice(0, 80);
+    var posts = threads.map(function (t) {
+      return {
+        id: t.id, user: t.user, title: t.title || '', text: String(t.text || '').slice(0, 1000), at: t.at || 0,
+        hasAudio: !!(t.hasAudio || t.audioUrl || (t.audioChunks && t.audioChunks.length) || t.audioParts),
+        audioId: t.audioId || null,
+        audioUrl: (t.audioUrl && String(t.audioUrl).indexOf('http') === 0) ? t.audioUrl : null,
+        audioChunks: cleanChunkIds(t.audioChunks),
+        audioExpires: t.audioExpires || 0,
+        audioMime: t.audioMime || 'audio/wav',
+        audioStore: t.audioStore || '',
+        audioParts: t.audioParts || 0,
+        audioBytes: t.audioBytes || 0,
+        comments: (t.comments || []).slice(-40)
+      };
+    });
+    posts.push({ id: META_ID, user: 'system', text: '', title: '', at: 0, hidden: true, mods: feed.mods || [] });
+    var slim = { posts: posts, threads: posts.filter(function (p) { return p.id !== META_ID; }), mods: feed.mods || [], updated: Date.now(), storage: DURABLE };
+    var body = JSON.stringify(slim);
+    while (body.length > 88000 && slim.threads.length > 1) {
+      var drop = slim.threads.pop();
+      slim.posts = slim.posts.filter(function (p) { return p.id !== drop.id; });
+      body = JSON.stringify(slim);
+    }
+    return body;
+  }
+  function withBin(mutator) {
+    var run = binChain.then(async function () {
+      var raw = await fetchBinRaw();
+      var before = feedFromRaw(raw);
+      var feed = {
+        threads: before.threads.slice(),
+        mods: before.mods.slice(),
+        updated: before.updated
+      };
+      mutator(feed);
+      if (before.threads.length > 0 && feed.threads.length === 0) throw new Error('refusing to wipe threads');
+      var r = await fetch(BIN_URL, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: serializeBin(feed),
+        cache: 'no-store'
+      });
+      if (!r.ok) throw new Error('save ' + r.status);
+      return feed;
+    });
+    binChain = run.then(function () {}, function () {});
+    return run;
+  }
+
+  async function deleteChunk(id) {
+    if (!id || !/^[A-Za-z0-9]+$/.test(String(id)) || String(id) === FEED_BIN_ID) return;
+    try { await fetch(BIN_API + '/' + id, { method: 'DELETE' }); } catch (_) {}
+  }
+  async function storeAudioChunks(dataUrl) {
+    var comma = String(dataUrl || '').indexOf(',');
+    if (comma < 0) throw new Error('bad wav');
+    var b64 = dataUrl.slice(comma + 1).replace(/\s/g, '');
+    if (!b64 || b64.length > Math.ceil(BIN_AUDIO_MAX * 4 / 3) + 16) throw new Error('This tape is over 6 MB. Redeploy WORKER_DREAMSHARE.js and bind DREAMSHARE_R2 or DREAMSHARE_KV — the post limit is 75 MB once that vault is on.');
+    var n = Math.ceil(b64.length / CHUNK_B64);
+    if (n > 200) throw new Error('wav too big for the public bin');
+    var ids = [];
+    try {
+      for (var i = 0; i < n; i++) {
+        var r;
+        try {
+          r = await fetch(BIN_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain', Accept: 'application/json' },
+            body: JSON.stringify({ i: i, n: n, b: b64.slice(i * CHUNK_B64, (i + 1) * CHUNK_B64) })
+          });
+        } catch (net) {
+          throw new Error(explainNet(net, 'Upload blocked (failed to fetch). The tape host rejected the browser preflight. This build sends plain text instead — if you still see this, the host is down.'));
+        }
+        if (!r.ok) throw new Error('audio store ' + r.status);
+        var j = await r.json();
+        if (!j || !j.id) throw new Error('audio store missing id');
+        ids.push(j.id);
+      }
+    } catch (err) {
+      for (var k = 0; k < ids.length; k++) await deleteChunk(ids[k]);
+      throw err;
+    }
+    return { chunks: ids, mime: 'audio/wav', expires: Date.now() + AUDIO_KEEP_MS };
+  }
+  async function chunksToDataUrl(ids, mime) {
+    var parts = [];
+    for (var i = 0; i < ids.length; i++) {
+      var r = await fetch(BIN_API + '/' + ids[i] + '?t=' + Date.now(), { cache: 'no-store', headers: { Accept: 'application/json' } });
+      if (!r.ok) throw new Error('wav piece ' + r.status);
+      var j = await r.json();
+      if (typeof j === 'string') j = JSON.parse(j);
+      parts.push((j && j.b) || '');
+    }
+    return 'data:' + (mime || 'audio/wav') + ';base64,' + parts.join('');
+  }
+  async function hydrateAudio(t) {
+    if (!t || t.id !== openThreadId) return;
+    var box = document.getElementById('threadAudio');
+    if (!box) return;
+    if (t.audioExpires && Date.now() > t.audioExpires) {
+      box.textContent = 'WAV removed — shared files stay 100 days.';
+      return;
+    }
+    try {
+      var src = '';
+      if ((t.audioStore === 'kv' || t.audioStore === 'r2') && t.audioParts) {
+        var blobs = [];
+        var base = workerBase();
+        for (var i = 0; i < t.audioParts; i++) {
+          var pr = await fetch(base + '/?wav=' + encodeURIComponent(t.id) + '&part=' + i);
+          if (!pr.ok) throw new Error('wav piece ' + pr.status);
+          blobs.push(await pr.blob());
+        }
+        if (t.id !== openThreadId) return;
+        var obj = URL.createObjectURL(new Blob(blobs, { type: t.audioMime || 'audio/wav' }));
+        box.innerHTML = '<div class="player"><audio controls src="' + obj + '"></audio></div>';
+        return;
+      }
+      if (t.audioChunks && t.audioChunks.length) src = await chunksToDataUrl(t.audioChunks, t.audioMime);
+      else src = t.audioUrl || t.audioData || '';
+      if (!src || t.id !== openThreadId) return;
+      box.innerHTML = '<div class="player"><audio controls src="' + esc(src) + '"></audio></div>';
+    } catch (err) {
+      box.textContent = 'Could not load WAV: ' + (err.message || err);
+    }
+  }
+
+  function actorIsSuper() {
+    return !!(session && session.role === 'super');
+  }
+  function isSuperUser(name) {
+    var u = String(name || '');
+    return supers.some(function (a) { return a.toLowerCase() === u.toLowerCase(); });
+  }
+  function isModUser(name) {
+    if (isSuperUser(name)) return true;
+    var u = String(name || '').toLowerCase();
+    return mods.some(function (m) { return String(m).toLowerCase() === u; });
+  }
+  function hasKyoto(name) {
+    var key = Object.keys(roles).find(function (k) { return k.toLowerCase() === String(name || '').toLowerCase(); });
+    return !!(key && roles[key] && roles[key].indexOf('kyoto') >= 0);
+  }
+  function roleBadge(name) {
+    var h = '';
+    if (isSuperUser(name)) h += '<span class="badge super">SUPER</span>';
+    else if (isModUser(name)) h += '<span class="badge mod">MOD</span>';
+    if (hasKyoto(name)) h += '<span class="badge kyoto">KYOTO</span>';
+    return h;
+  }
+
+  function workerBase() {
+    return (WORKER_URL || '').replace(/\/$/, '');
+  }
+
+  async function apiGet() {
+    var url = workerBase() + '?t=' + Date.now();
+    var r = await fetch(url, { cache: 'no-store', method: 'GET' });
+    var text = await r.text();
+    var j = null;
+    try { j = JSON.parse(text); } catch (_) {}
+    if (!j || !j.ok) throw new Error((j && j.error) || ('GET ' + r.status));
+    return j;
+  }
+
+  async function apiPost(payload) {
+    var body = Object.assign({}, payload || {});
+    if (session && session.token) body.token = session.token;
+    if (session && session.user) body.user = session.user;
+    var url = workerBase();
+    var r = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    var text = await r.text();
+    var j = null;
+    try { j = JSON.parse(text); } catch (_) {}
+    if (!j || !j.ok) throw new Error((j && j.error) || ('POST ' + r.status));
+    return j;
+  }
+
+  async function pull() {
+    var remote = [];
+    var gotWorker = false;
+    var workerErr = null;
+    try {
+      var j = await apiGet();
+      gotWorker = true;
+      workerDurable = typeof j.storage === 'string' && j.storage.indexOf('durable') === 0;
+      audioSink = (j.audioSink === 'r2' || j.audioSink === 'kv' || j.audioSink === 'bin') ? j.audioSink : 'bin';
+      audioVault = !!j.audioVault || audioSink === 'r2' || audioSink === 'kv';
+      if (Array.isArray(j.supers) && j.supers.length) supers = j.supers;
+      mods = Array.isArray(j.mods) ? j.mods : [];
+      if (j.roles && typeof j.roles === 'object') roles = Object.assign({}, roles, j.roles);
+      try { var lr = localStorage.getItem('dreamshare_roles'); if (lr) roles = Object.assign(JSON.parse(lr), roles); } catch (_) {}
+      dsChat = Array.isArray(j.chat) ? j.chat.slice(-100) : dsChat;
+      try { if (typeof window.dsRenderChat === 'function') window.dsRenderChat(); } catch(_){}
+      remote = Array.isArray(j.threads) ? j.threads.map(postToThread).filter(Boolean) : [];
+      if (!remote.length && Array.isArray(j.posts)) remote = j.posts.map(postToThread).filter(Boolean);
+    } catch (err) {
+      workerDurable = false;
+      workerErr = err;
+    }
+    if (!workerDurable) {
+      try {
+        var bin = feedFromRaw(await fetchBinRaw());
+        remote = mergeThreads(bin.threads, remote);
+        if (bin.mods && bin.mods.length) {
+          var seen = {};
+          mods = (mods || []).concat(bin.mods).filter(function (m) {
+            var k = String(m || '').toLowerCase();
+            if (!k || seen[k]) return false;
+            seen[k] = 1;
+            return true;
+          });
+        }
+      } catch (err) {
+        if (!gotWorker) {
+          setStatus('Offline / feed error: ' + ((workerErr && workerErr.message) || err.message || err));
+          return;
+        }
+      }
+    }
+    threads = remote.sort(function (a, b) { return (b.at || 0) - (a.at || 0); });
+    if (!workerDurable) {
+      var now = Date.now();
+      var stale = threads.filter(function (t) {
+        return t.audioExpires && now > t.audioExpires && t.audioChunks && t.audioChunks.length;
+      });
+      if (stale.length) {
+        stale.forEach(function (t) { (t.audioChunks || []).forEach(deleteChunk); });
+        try {
+          await withBin(function (feed) {
+            feed.threads.forEach(function (t) {
+              if (t.audioExpires && now > t.audioExpires) {
+                t.audioChunks = [];
+                t.hasAudio = false;
+                t.audioUrl = null;
+              }
+            });
+          });
+        } catch (_) {}
+        threads.forEach(function (t) {
+          if (t.audioExpires && now > t.audioExpires) {
+            t.audioChunks = [];
+            t.hasAudio = false;
+            t.audioUrl = null;
+            t.audioData = null;
+          }
+        });
+      }
+    }
+    var where = workerDurable ? 'saved on the bridge' : 'saved (archive restored)';
+    setStatus('Live · ' + threads.length + ' threads · ' + mods.length + ' mods · WAVs kept 100 days · ' + where);
+    render();
+  }
+
+  function showAuth() {
+    $('authView').classList.remove('hidden');
+    $('feedView').classList.add('hidden');
+    $('threadView').classList.add('hidden');
+    $('whoChip').textContent = 'not logged in';
+    $('whoChip').classList.add('guest');
+  }
+  function showFeed() {
+    openThreadId = null;
+    $('authView').classList.add('hidden');
+    $('feedView').classList.remove('hidden');
+    $('threadView').classList.add('hidden');
+    updateWho();
+    renderFeed();
+  }
+  function showThread(id) {
+    openThreadId = id;
+    $('authView').classList.add('hidden');
+    $('feedView').classList.add('hidden');
+    $('threadView').classList.remove('hidden');
+    updateWho();
+    renderThread();
+  }
+  function updateWho() {
+    if (!session) return;
+    var chip = $('whoChip');
+    chip.classList.remove('guest');
+    chip.innerHTML = esc(session.user) + roleBadge(session.user);
+  }
+
+  function render() {
+    if (!session) { showAuth(); return; }
+    if (openThreadId) showThread(openThreadId);
+    else showFeed();
+  }
+
+  function renderFeed() {
+    var list = $('feedList');
+    var empty = $('feedEmpty');
+    var shown = threads.filter(function (t) {
+      var wav = !!(t.hasAudio || t.audioData || t.audioUrl || (t.audioChunks && t.audioChunks.length) || t.audioParts);
+      if (room === 'tapes') return wav;
+      if (room === 'mine') return !!(session && String(t.user || '').toLowerCase() === session.user.toLowerCase());
+      return true;
+    });
+    if (!shown.length) {
+      empty.classList.remove('hidden');
+      empty.textContent = room === 'tapes' ? 'No tapes on the floor yet.' : (room === 'mine' ? 'You have not posted yet.' : 'The floor is empty. Name a reel and drop a tape.');
+      list.innerHTML = '';
+      return;
+    }
+    empty.classList.add('hidden');
+    list.innerHTML = shown.map(function (t, i) {
+      var n = (t.comments || []).length;
+      var wav = !!(t.hasAudio || t.audioData || t.audioUrl || (t.audioChunks && t.audioChunks.length) || t.audioParts);
+      return '<article class="thread-card" data-id="' + esc(t.id) + '">' +
+        '<div class="card-index">' + String(i + 1).padStart(2, '0') + '</div>' +
+        '<div>' +
+          '<h3 class="title">' + esc(t.title || t.text || 'untitled') + '</h3>' +
+          '<p class="snippet">' + esc(t.text || '') + '</p>' +
+          '<div class="meta">' +
+            '<span class="uname" data-user="' + esc(t.user) + '">u/' + esc(t.user) + '</span>' +
+            roleBadge(t.user) +
+            '<span>' + when(t.at) + '</span>' +
+            '<span>' + n + ' comment' + (n === 1 ? '' : 's') + '</span>' +
+          '</div>' +
+        '</div>' +
+        (wav ? '<div class="tape-flag">TAPE</div>' : '<div></div>') +
+      '</article>';
+    }).join('');
+  }
+
+  
+  var REACTS = [['up','\u{1F44D}'],['heart','\u2764\uFE0F'],['fire','\u{1F525}'],['laugh','\u{1F602}'],['skull','\u{1F480}'],['moon','\u{1F319}'],['eyes','\u{1F440}'],['100','\u{1F4AF}']];
+  function reactBar(kind, id, reactions){
+    reactions = reactions || {};
+    var me = session && session.user ? String(session.user).toLowerCase() : '';
+    return '<div class="reacts">' + REACTS.map(function(pair){
+      var key = pair[0], glyph = pair[1];
+      var users = reactions[key] || [];
+      var on = me && users.map(function(u){return String(u).toLowerCase();}).indexOf(me) >= 0;
+      return '<button type="button" class="react'+(on?' on':'')+'" data-react="'+key+'" data-kind="'+kind+'" data-id="'+esc(id)+'">'+glyph+' '+(users.length||'')+'</button>';
+    }).join('') + '</div>';
+  }
+  async function sendReact(kind, id, emoji){
+    if (!session) { setStatus('Log in to react'); return; }
+    try {
+      var j = await apiPost({ action: 'react', kind: kind, id: id, emoji: emoji, threadId: openThreadId });
+      if (!j.ok) { setStatus(j.error || 'react failed'); return; }
+      if (kind === 'chat' && j.chat) { dsChat = j.chat; renderChat(); }
+      else { await pull(); if (openThreadId) renderThread(); else renderFeed(); }
+    } catch (err) { setStatus('react failed'); }
+  }
+  document.addEventListener('click', function(ev){
+    var b = ev.target && ev.target.closest ? ev.target.closest('[data-react]') : null;
+    if (!b) return;
+    sendReact(b.getAttribute('data-kind'), b.getAttribute('data-id'), b.getAttribute('data-react'));
+  });
+
+function renderThread() {
+    var t = threads.find(function (x) { return x.id === openThreadId; });
+    if (!t) {
+      setStatus('Thread gone');
+      showFeed();
+      return;
+    }
+    var canDel = session && (isModUser(session.user) || String(t.user).toLowerCase() === session.user.toLowerCase());
+    var expired = t.audioExpires && Date.now() > t.audioExpires;
+    var hasWav = !!(t.hasAudio || t.audioData || t.audioUrl || (t.audioChunks && t.audioChunks.length) || t.audioParts);
+    var audioHtml = '';
+    if (expired && hasWav) {
+      audioHtml = '<div class="sub">This tape was removed. Shared files stay 100 days, then they are deleted. The words stay.</div>';
+    } else if (hasWav) {
+      audioHtml = '<div id="threadAudio" class="player">Loading tape…</div>';
+    }
+    $('threadHead').innerHTML =
+      '<div class="title">' + esc(t.title || 'untitled') + '</div>' +
+      '<div class="body">' + esc(t.text || '') + '</div>' +
+      audioHtml +
+      '<div class="post-meta">' +
+        '<span class="uname" data-user="' + esc(t.user) + '">u/' + esc(t.user) + '</span>' +
+        roleBadge(t.user) +
+        '<span>' + when(t.at) + '</span>' +
+        (canDel ? '<button type="button" class="btn-danger" data-del-thread="' + esc(t.id) + '">Delete thread</button>' : '') +
+      '</div>' + reactBar('thread', t.id, t.reactions);
+
+    var comments = t.comments || [];
+    var cl = $('commentList');
+    if (!comments.length) {
+      cl.innerHTML = '<div class="empty">No comments yet. Be the first spore.</div>';
+    } else {
+      cl.innerHTML = comments.map(function (c) {
+        var can = session && (isModUser(session.user) || String(c.user).toLowerCase() === session.user.toLowerCase());
+        return '<div class="comment" data-cid="' + esc(c.id) + '">' +
+          '<div class="post-meta">' +
+            '<span class="uname" data-user="' + esc(c.user) + '">u/' + esc(c.user) + '</span>' +
+            roleBadge(c.user) +
+            '<span>' + when(c.at) + '</span>' +
+            (can ? '<button type="button" class="btn-danger" data-del-comment="' + esc(c.id) + '" data-thread="' + esc(t.id) + '">Delete</button>' : '') +
+          '</div>' +
+          '<div class="ctext">' + esc(c.text) + '</div>' + reactBar('comment', c.id, c.reactions) + '</div>';
+      }).join('');
+    }
+    if (hasWav && !expired) hydrateAudio(t);
+  }
+
+  // ---- User menu (click name) ----
+  function closeMenu() {
+    $('uMenu').classList.remove('open');
+    menuTarget = null;
+  }
+  function openUserMenu(username, x, y) {
+    if (!session) return;
+    menuTarget = username;
+    var me = session.user;
+    var html = '<div class="label">u/' + esc(username) + '</div>';
+    // delete options only when on a post context handled separately
+    if (actorIsSuper() && !isSuperUser(username)) {
+      html += '<div class="sep"></div>';
+      if (isModUser(username) && !isSuperUser(username)) {
+        html += '<button type="button" data-act="unmod">Remove mod</button>';
+      } else if (!isModUser(username)) {
+        html += '<button type="button" data-act="mod">Promote to Mod</button>';
+      }
+    }
+    if (actorIsSuper() || (session && isModUser(me) && !isSuperUser(username))) {
+      html += hasKyoto(username)
+        ? '<button type="button" data-act="unkyoto">Remove Kyoto role</button>'
+        : '<button type="button" data-act="kyoto">Add Kyoto role</button>';
+    }
+    if (actorIsSuper() || (session && isModUser(me) && String(me).toLowerCase() === String(username).toLowerCase()) || (session && isModUser(me) && !isSuperUser(username))) {
+      html += '<div class="sep"></div>';
+      html += '<button type="button" data-act="deluserthreads">Delete their threads</button>';
+    }
+    if (html.indexOf('data-act') < 0) {
+      html += '<div class="label" style="padding:8px 12px">No actions</div>';
+    }
+    var menu = $('uMenu');
+    menu.innerHTML = html;
+    menu.classList.add('open');
+    var pad = 8;
+    var w = menu.offsetWidth || 180, h = menu.offsetHeight || 80;
+    var left = Math.min(x, window.innerWidth - w - pad);
+    var top = Math.min(y, window.innerHeight - h - pad);
+    menu.style.left = Math.max(pad, left) + 'px';
+    menu.style.top = Math.max(pad, top) + 'px';
+  }
+
+  document.addEventListener('click', function (ev) {
+    var un = ev.target.closest && ev.target.closest('.uname');
+    if (un) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      var name = un.getAttribute('data-user');
+      openUserMenu(name, ev.clientX, ev.clientY + 4);
+      return;
+    }
+    if (ev.target.closest && ev.target.closest('#uMenu')) {
+      var btn = ev.target.closest('button[data-act]');
+      if (btn && menuTarget && session) {
+        var act = btn.getAttribute('data-act');
+        handleUserAction(act, menuTarget);
+      }
+      return;
+    }
+    closeMenu();
+
+    var card = ev.target.closest && ev.target.closest('.thread-card');
+    if (card && !ev.target.closest('.uname')) {
+      showThread(card.getAttribute('data-id'));
+      return;
+    }
+    var dt = ev.target.closest && ev.target.closest('[data-del-thread]');
+    if (dt) {
+      deleteThread(dt.getAttribute('data-del-thread'));
+      return;
+    }
+    var dc = ev.target.closest && ev.target.closest('[data-del-comment]');
+    if (dc) {
+      deleteComment(dc.getAttribute('data-thread'), dc.getAttribute('data-del-comment'));
+    }
+  });
+
+  async function handleUserAction(act, target) {
+    closeMenu();
+    if (!session) return;
+    try {
+      if (act === 'kyoto' || act === 'unkyoto') {
+        var key = Object.keys(roles).find(function (k) { return k.toLowerCase() === String(target).toLowerCase(); }) || target;
+        var list = Array.isArray(roles[key]) ? roles[key].slice() : [];
+        if (act === 'kyoto' && list.indexOf('kyoto') < 0) list.push('kyoto');
+        roles[target] = act === 'kyoto' ? list : list.filter(function (r) { return r !== 'kyoto'; });
+        try { localStorage.setItem('dreamshare_roles', JSON.stringify(roles)); } catch (_) {}
+        try { await apiPost({ action: act === 'kyoto' ? 'set_role' : 'clear_role', user: session.user, target: target, role: 'kyoto', token: session.token }); } catch (_) {}
+        setStatus(act === 'kyoto' ? ('Kyoto role added to ' + target) : ('Kyoto role removed from ' + target));
+      } else if (act === 'mod' || act === 'unmod') {
+        if (!actorIsSuper()) { setStatus('Only the real Trippah / Goonr login can do that'); return; }
+        if (!session.token) { setStatus('Log in again on the homepage so this account is verified'); return; }
+        await apiPost({ action: act === 'mod' ? 'promote_mod' : 'demote_mod', user: session.user, target: target, token: session.token });
+        setStatus(act === 'mod' ? ('Promoted ' + target + ' to mod') : ('Removed mod from ' + target));
+      } else if (act === 'deluserthreads') {
+        if (!confirm('Delete ALL threads by u/' + target + '?')) return;
+        var theirs = threads.filter(function (t) {
+          return String(t.user || '').toLowerCase() === String(target).toLowerCase();
+        });
+        if (workerDurable) {
+          for (var i = 0; i < theirs.length; i++) {
+            await apiPost({ action: 'delete_thread', user: session.user, threadId: theirs[i].id });
+          }
+        } else {
+          var ids = {};
+          theirs.forEach(function (t) {
+            ids[t.id] = 1;
+            (t.audioChunks || []).forEach(deleteChunk);
+          });
+          await withBin(function (feed) {
+            feed.threads = feed.threads.filter(function (t) { return !ids[t.id]; });
+          });
+        }
+        setStatus('Deleted ' + theirs.length + ' thread(s) by ' + target);
+        openThreadId = null;
+      }
+      await pull();
+      showFeed();
+    } catch (err) {
+      setStatus('Mod action failed: ' + (err.message || err));
+    }
+  }
+
+  async function deleteThread(id) {
+    if (!session || !confirm('Delete this thread?')) return;
+    try {
+      if (workerDurable) await apiPost({ action: 'delete_thread', user: session.user, threadId: id });
+      else {
+        var doomed = threads.find(function (t) { return t.id === id; });
+        if (doomed && doomed.audioChunks) doomed.audioChunks.forEach(deleteChunk);
+        await withBin(function (feed) { feed.threads = feed.threads.filter(function (t) { return t.id !== id; }); });
+      }
+      setStatus('Thread deleted');
+      openThreadId = null;
+      await pull();
+      showFeed();
+    } catch (err) {
+      setStatus('Delete failed: ' + (err.message || err));
+    }
+  }
+  async function deleteComment(threadId, commentId) {
+    if (!session || !confirm('Delete this comment?')) return;
+    try {
+      if (workerDurable) await apiPost({ action: 'delete_comment', user: session.user, threadId: threadId, commentId: commentId });
+      else await withBin(function (feed) {
+        var t = feed.threads.find(function (x) { return x.id === threadId; });
+        if (t) t.comments = (t.comments || []).filter(function (c) { return c.id !== commentId; });
+      });
+      setStatus('Comment deleted');
+      await pull();
+    } catch (err) {
+      setStatus('Delete failed: ' + (err.message || err));
+    }
+  }
+
+  async function stageWav(blob) {
+    if (!blob) return null;
+    if (blob.size > MAX_AUDIO_BYTES) throw new Error('WAV over 75 MB');
+    if (blob.size < 44) throw new Error('That file is empty');
+    if (audioVault && (audioSink === 'r2' || audioSink === 'kv')) {
+      if (!session || !session.token) throw new Error('Log in again on the homepage so this tape can be verified.');
+      var upload = 'u' + Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36);
+      var parts = Math.max(1, Math.ceil(blob.size / PART_BYTES));
+      if (parts > 20) throw new Error('WAV over 75 MB');
+      for (var i = 0; i < parts; i++) {
+        setStatus('Uploading tape ' + (i + 1) + ' / ' + parts + '…');
+        var slice = blob.slice(i * PART_BYTES, Math.min(blob.size, (i + 1) * PART_BYTES));
+        var r;
+        try {
+          r = await fetch(workerBase() + '/?op=audio_part', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/octet-stream',
+              'Accept': 'application/json',
+              'X-SW-Token': session.token,
+              'X-SW-Upload': upload,
+              'X-SW-Index': String(i),
+              'X-SW-Parts': String(parts)
+            },
+            body: slice
+          });
+        } catch (net) {
+          throw new Error(explainNet(net, 'Upload blocked (failed to fetch). Paste the new WORKER_DREAMSHARE.js and bind DREAMSHARE_R2 or DREAMSHARE_KV.'));
+        }
+        var j = null;
+        try { j = await r.json(); } catch (_) {}
+        if (!r.ok || !j || !j.ok) throw new Error((j && j.error) || ('upload ' + r.status));
+      }
+      return {
+        hasAudio: true, audioMime: 'audio/wav', audioStore: audioSink, audioUpload: upload,
+        audioParts: parts, audioBytes: blob.size, audioExpires: Date.now() + AUDIO_KEEP_MS, audioChunks: []
+      };
+    }
+    if (blob.size > BIN_AUDIO_MAX) {
+      throw new Error('This tape is ' + fmtBytes(blob.size) + '. Paste WORKER_DREAMSHARE.js into the Cloudflare worker and bind DREAMSHARE_R2 (or DREAMSHARE_KV). The post limit is 75 MB after that. Right now the public bin only holds about 6 MB.');
+    }
+    setStatus('Saving tape… it stays 100 days');
+    var stored = await storeAudioChunks(await blobToDataUrl(blob));
+    return {
+      hasAudio: true, audioMime: stored.mime, audioChunks: stored.chunks,
+      audioExpires: stored.expires, audioStore: '', audioParts: 0, audioBytes: blob.size
+    };
+  }
+
+  async function postThread() {
+    if (!session) return;
+    if (Date.now() - lastSend < COOLDOWN_MS) {
+      setStatus('Slow down…');
+      return;
+    }
+    var title = censorText($('threadTitle').value.trim());
+    var text = censorText($('threadBody').value.trim());
+    if (title === null || text === null) { setStatus('Message blocked'); return; }
+    var wavBlob = pendingWav && pendingWav.blob;
+    if (!title && !text && !wavBlob) { setStatus('Write something'); return; }
+    if (BLOCK.test((title || '') + ' ' + (text || ''))) { setStatus('Links / scripts blocked'); return; }
+    try {
+      $('postThreadBtn').disabled = true;
+      var id = 't' + Date.now() + Math.floor(Math.random() * 999);
+      var parkedChunks = null;
+      var staged = wavBlob ? await stageWav(wavBlob) : null;
+      if (staged && staged.audioChunks) parkedChunks = staged.audioChunks;
+      var payload = {
+        action: 'create_thread',
+        id: id,
+        user: session.user,
+        title: title || (text || 'audio').slice(0, 80),
+        text: text || title || '',
+        at: Date.now(),
+        hasAudio: !!(staged && staged.hasAudio),
+        audioId: staged ? ('a' + id) : null,
+        audioMime: staged ? staged.audioMime : 'audio/wav',
+        audioChunks: staged ? (staged.audioChunks || []) : [],
+        audioExpires: staged ? (staged.audioExpires || 0) : 0,
+        audioStore: staged ? (staged.audioStore || '') : '',
+        audioUpload: staged ? (staged.audioUpload || '') : '',
+        audioParts: staged ? (staged.audioParts || 0) : 0,
+        audioBytes: staged ? (staged.audioBytes || 0) : 0
+      };
+      if (workerDurable) {
+        await apiPost(payload);
+      } else {
+        await withBin(function (feed) {
+          feed.threads = mergeThreads(feed.threads, [postToThread(Object.assign({ comments: [] }, payload, { user: session.user }))]);
+        });
+        try { await apiPost(payload); } catch (_) {}
+      }
+      lastSend = Date.now();
+      $('threadTitle').value = '';
+      $('threadBody').value = '';
+      clearWav();
+      parkedChunks = null;
+      setStatus('Posted' + (payload.hasAudio ? ' · tape kept 100 days' : '') + ' · saved');
+      await pull();
+      $('feedScroll').scrollTop = 0;
+    } catch (err) {
+      if (parkedChunks) parkedChunks.forEach(deleteChunk);
+      setStatus('Post failed: ' + explainNet(err, 'failed to fetch'));
+    } finally {
+      $('postThreadBtn').disabled = false;
+    }
+  }
+
+  async function postComment() {
+    if (!session || !openThreadId) return;
+    if (Date.now() - lastSend < COOLDOWN_MS) {
+      setStatus('Slow down…');
+      return;
+    }
+    var text = censorText($('commentBody').value.trim());
+    if (text === null) { setStatus('Message blocked'); return; }
+    if (!text) { setStatus('Write a comment'); return; }
+    if (BLOCK.test(text)) { setStatus('Links / scripts blocked'); return; }
+    try {
+      $('postCommentBtn').disabled = true;
+      var cid = 'c' + Date.now() + Math.floor(Math.random() * 999);
+      var threadId = openThreadId;
+      if (workerDurable) {
+        await apiPost({ action: 'comment', user: session.user, threadId: threadId, commentId: cid, text: text, at: Date.now() });
+      } else {
+        await withBin(function (feed) {
+          var t = feed.threads.find(function (x) { return x.id === threadId; });
+          if (!t) throw new Error('thread not found');
+          t.comments = (t.comments || []).concat([{ id: cid, user: session.user, text: text, at: Date.now() }]);
+        });
+        try { await apiPost({ action: 'comment', user: session.user, threadId: threadId, commentId: cid, text: text, at: Date.now() }); } catch (_) {}
+      }
+      lastSend = Date.now();
+      $('commentBody').value = '';
+      setStatus('Comment posted · saved');
+      await pull();
+    } catch (err) {
+      setStatus('Comment failed: ' + (err.message || err));
+    } finally {
+      $('postCommentBtn').disabled = false;
+    }
+  }
+
+  // Auth
+
+
+  $('refreshBtn').addEventListener('click', function () { pull(); });
+  $('postThreadBtn').addEventListener('click', postThread);
+  $('postCommentBtn').addEventListener('click', postComment);
+  $('backFeedBtn').addEventListener('click', function () { openThreadId = null; showFeed(); });
+  $('threadTitle').addEventListener('input', function () {
+    $('titleCount').textContent = $('threadTitle').value.length + '/' + MAX_TITLE;
+  });
+
+  var retryBtn = document.getElementById('retryUserBtn');
+  if (retryBtn) retryBtn.addEventListener('click', syncUserFromHomepage);
+  var openLoginBtn = document.getElementById('openHomeLoginBtn');
+  if (openLoginBtn) openLoginBtn.addEventListener('click', function () {
+    if (!parentAlive()) {
+      setStatus('Open this from the GOODNIGHT homepage, then use Log In there.');
+      return;
+    }
+    try { window.parent.postMessage({ type: 'SLEEPWELL_OPEN_LOGIN' }, '*'); } catch (_) {}
+    setStatus('Homepage Log In is open. If you cannot see it, close DreamShare and click Log In.');
+  });
+  var browseBtn = document.getElementById('browseSamplesBtn');
+  if (browseBtn) browseBtn.addEventListener('click', function () {
+    var box = document.getElementById('sampleBrowser');
+    if (!box) return;
+    box.classList.toggle('collapsed');
+    if (!box.classList.contains('collapsed') && !librarySamples.length) loadLibraryCatalog();
+  });
+  var sampleSearch = document.getElementById('sampleSearch');
+  if (sampleSearch) sampleSearch.addEventListener('input', renderSampleTree);
+  var sampleChips = document.getElementById('sampleChips');
+  if (sampleChips) sampleChips.addEventListener('click', function (ev) {
+    var b = ev.target.closest && ev.target.closest('button[data-sb]');
+    if (!b) return;
+    sampleFilter = b.getAttribute('data-sb') || 'all';
+    sampleChips.querySelectorAll('button').forEach(function (btn) { btn.classList.toggle('on', btn === b); });
+    renderSampleTree();
+  });
+  var sampleStop = document.getElementById('sampleStopBtn');
+  if (sampleStop) sampleStop.addEventListener('click', stopSamplePreview);
+  var sampleTree = document.getElementById('sampleTree');
+  if (sampleTree) sampleTree.addEventListener('click', function (ev) {
+    var folderLabel = ev.target.closest && ev.target.closest('.sample-folder-label');
+    if (folderLabel && !(ev.target.closest && ev.target.closest('button'))) {
+      var folder = folderLabel.parentNode;
+      if (folder) folder.classList.toggle('collapsed');
+      return;
+    }
+    var prev = ev.target.closest && ev.target.closest('[data-preview]');
+    if (prev) { previewSample(parseInt(prev.getAttribute('data-preview'), 10)); return; }
+    var use = ev.target.closest && ev.target.closest('[data-use]');
+    if (use) {
+      var s = librarySamples[parseInt(use.getAttribute('data-use'), 10)];
+      if (s) attachSampleByUrl(s.name, s.url);
+      return;
+    }
+    var row = ev.target.closest && ev.target.closest('.sample-item');
+    if (row && row.getAttribute('data-idx') != null) previewSample(parseInt(row.getAttribute('data-idx'), 10));
+  });
+  var pickBtn = document.getElementById('pickSampleBtn');
+  if (pickBtn) pickBtn.addEventListener('click', function () {
+    var box = document.getElementById('sampleBrowser');
+    if (box) box.classList.remove('collapsed');
+    sampleFilter = 'session';
+    if (sampleChips) sampleChips.querySelectorAll('button').forEach(function (btn) {
+      btn.classList.toggle('on', btn.getAttribute('data-sb') === 'session');
+    });
+    requestSessionSamples();
+    renderSampleTree();
+    setStatus('Looking for session tapes…');
+  });
+  var wavFileBtn = document.getElementById('wavFileBtn');
+  var wavFile = document.getElementById('wavFile');
+  if (wavFileBtn && wavFile) wavFileBtn.addEventListener('click', function () { wavFile.click(); });
+  if (wavFile) wavFile.addEventListener('change', function () {
+    var f = wavFile.files && wavFile.files[0];
+    wavFile.value = '';
+    if (!f) return;
+    if (!isWavFile(f)) { setStatus('Upload a .wav file'); return; }
+    attachBlob(f.name, f);
+  });
+  var booth = document.getElementById('feedComposer');
+  if (booth) {
+    booth.addEventListener('dragover', function (ev) { ev.preventDefault(); booth.classList.add('hot'); });
+    booth.addEventListener('dragleave', function () { booth.classList.remove('hot'); });
+    booth.addEventListener('drop', function (ev) {
+      ev.preventDefault();
+      booth.classList.remove('hot');
+      var f = ev.dataTransfer && ev.dataTransfer.files && ev.dataTransfer.files[0];
+      if (!f) return;
+      if (!isWavFile(f)) { setStatus('Drop a .wav file'); return; }
+      attachBlob(f.name, f);
+    });
+  }
+  var roomChips = document.getElementById('roomChips');
+  if (roomChips) roomChips.addEventListener('click', function (ev) {
+    var b = ev.target.closest && ev.target.closest('button[data-room]');
+    if (!b) return;
+    room = b.getAttribute('data-room') || 'all';
+    roomChips.querySelectorAll('button').forEach(function (btn) { btn.classList.toggle('on', btn === b); });
+    renderFeed();
+  });
+  var wavClr = document.getElementById('wavClear');
+  if (wavClr) wavClr.addEventListener('click', clearWav);
+  var samplePick = document.getElementById('samplePick');
+  if (samplePick) samplePick.addEventListener('change', function () {
+    var i = parseInt(samplePick.value, 10);
+    if (isNaN(i) || !sessionSamples[i]) return;
+    var it = sessionSamples[i];
+    attachSampleByUrl(it.name || it.fileName, it.url);
+  });
+
+  function applyLiveTheme(pack) {
+    try {
+      if (window.SleepwellTheme && typeof SleepwellTheme.apply === 'function' && pack) {
+        SleepwellTheme.apply(pack);
+      } else if (pack && pack.vars) {
+        var root = document.documentElement;
+        Object.keys(pack.vars).forEach(function (k) {
+          try { root.style.setProperty(k, pack.vars[k]); } catch (_) {}
+        });
+      }
+    } catch (_) {}
+    // alias --dim to --text-dim if theme only sets text-dim
+    try {
+      var cs = getComputedStyle(document.documentElement);
+      var dim = cs.getPropertyValue('--text-dim').trim();
+      if (dim) document.documentElement.style.setProperty('--dim', dim);
+    } catch (_) {}
+  }
+
+  window.addEventListener('message', function (ev) {
+    var d = ev.data;
+    if (!d || typeof d !== 'object') return;
+    if (d.type === 'DREAM_THEME' && d.theme) {
+      applyLiveTheme(d.theme);
+    }
+    if (d.type === 'SLEEPWELL_USER') {
+      var fromParent = false;
+      try { fromParent = ev.source === window.parent && window.parent !== window; } catch (_) {}
+      if (!fromParent) return;
+      if (d.user) applyUser(d.user, true, { role: d.role || '', token: d.token || '' });
+      else if (!readHomepageUser()) applyUser(null);
+    }
+    if (d.type === 'DREAM_SAMPLES' || d.type === 'DREAMSHARE_SAMPLES' || d.type === 'DREAM_ABC_SAMPLES') {
+      var items = d.items || d.samples || [];
+      addCatalogItems(items);
+      if (items.length) setStatus('Sample browser · ' + librarySamples.length + ' samples');
+    }
+  });
+
+
+  syncUserFromHomepage();
+  try {
+    if (window.SleepwellTheme && typeof SleepwellTheme.current === 'function') {
+      applyLiveTheme(SleepwellTheme.current());
+    }
+  } catch (_) {}
+
+  // Stay signed in. A missed parent read is not a logout.
+  // Logout only happens when the homepage sends SLEEPWELL_USER with no user.
+  syncUserFromHomepage();
+  setInterval(function () {
+    var u = readHomepageUser();
+    if (u && (!session || session.user !== u)) applyUser(u, true);
+  }, 4000);
+  setInterval(function () { if (session) pull(); }, 20000);
+
+  // ---- Live chat drawer (last 100 via worker) ----
+  (function wireDreamShareChat() {
+    var toggle = document.getElementById('dsChatToggle');
+    var drawer = document.getElementById('dsChatDrawer');
+    var list = document.getElementById('dsChatList');
+    var count = document.getElementById('dsChatCount');
+    var input = document.getElementById('dsChatInput');
+    var send = document.getElementById('dsChatSend');
+    var closeBtn = document.getElementById('dsChatClose');
+    if (!toggle || !drawer) return;
+    function isModUser(u) {
+      u = String(u || '').toLowerCase();
+      if ((supers || []).some(function (s) { return String(s).toLowerCase() === u; })) return true;
+      return (mods || []).some(function (m) { return String(m).toLowerCase() === u; });
+    }
+    function openChat(on) {
+      drawer.style.transform = on ? 'translateX(0)' : 'translateX(100%)';
+      drawer.setAttribute('aria-hidden', on ? 'false' : 'true');
+      if (on) renderChat();
+    }
+    function renderChat() {
+      if (count) count.textContent = (dsChat.length || 0) + '/100';
+      if (!list) return;
+      list.innerHTML = '';
+      if (!dsChat.length) {
+        list.innerHTML = '<div style="color:#9a8e8e;font-size:0.8rem;padding:16px;text-align:center">No messages yet.</div>';
+        return;
+      }
+      dsChat.forEach(function (m) {
+        var d = document.createElement('div');
+        d.style.cssText = 'margin-bottom:8px;padding:8px;background:#1a1216;border-radius:6px';
+        var canDel = session && (m.user === session.user || isModUser(session.user) || session.role === 'super');
+        d.innerHTML = (canDel ? '<button type="button" data-del="' + m.id + '" style="float:right;background:transparent;border:0;color:#9a8e8e;cursor:pointer;font-size:0.65rem">✕</button>' : '') +
+          '<div style="font-size:0.65rem;color:#ffb0b0;font-weight:700"></div>' +
+          '<div style="font-size:0.78rem;line-height:1.35;margin-top:2px;word-break:break-word"></div>' +
+          '<div style="font-size:0.6rem;color:#9a8e8e;margin-top:4px"></div>';
+        d.children[canDel ? 1 : 0].innerHTML = '<span class="uname" data-user="' + esc(m.user || '?') + '">' + esc(m.user || '?') + '</span>' + roleBadge(m.user);
+        d.children[canDel ? 2 : 1].textContent = m.text || '';
+        d.children[canDel ? 3 : 2].textContent = new Date(m.at || 0).toLocaleTimeString();
+        d.insertAdjacentHTML('beforeend', reactBar('chat', m.id, m.reactions));
+        var del = d.querySelector('[data-del]');
+        if (del) del.addEventListener('click', async function () {
+          try {
+            var j = await apiPost({ action: 'chat_delete', messageId: m.id, user: session.user, token: session.token });
+            dsChat = (j && j.chat) || dsChat.filter(function (x) { return x.id !== m.id; });
+            renderChat();
+            setStatus('Chat message removed');
+          } catch (err) { setStatus((err && err.message) || 'delete failed'); }
+        });
+        list.appendChild(d);
+      });
+      list.scrollTop = list.scrollHeight;
+    }
+    window.dsRenderChat = renderChat;
+    toggle.addEventListener('click', function () {
+      openChat(drawer.getAttribute('aria-hidden') !== 'false');
+    });
+    if (closeBtn) closeBtn.addEventListener('click', function () { openChat(false); });
+    async function sendChat() {
+      if (!session) { setStatus('Log in on the homepage to chat'); return; }
+      var text = (input && input.value || '').trim();
+      if (!text) return;
+      try {
+        var j = await apiPost({ action: 'chat_send', text: text, user: session.user, token: session.token });
+        dsChat = (j && j.chat) || dsChat;
+        if (input) input.value = '';
+        renderChat();
+        setStatus('Chat sent');
+      } catch (err) { setStatus((err && err.message) || 'chat failed'); }
+    }
+    if (send) send.addEventListener('click', sendChat);
+    if (input) {
+      input.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' || ev.keyCode === 13) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          sendChat();
+        }
+      });
+      input.addEventListener('keypress', function (ev) {
+        if (ev.key === 'Enter' || ev.keyCode === 13) {
+          ev.preventDefault();
+          sendChat();
+        }
+      });
+    }
+  })();
+
+  try { loadLibraryCatalog(); } catch (_) {}
+})();
+</script>
+</body>
+</html>
