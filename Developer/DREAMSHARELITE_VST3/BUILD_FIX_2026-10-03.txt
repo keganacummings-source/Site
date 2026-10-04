@@ -1,7 +1,0 @@
-DREAMSHARELITE installer 2.2 / viewer source 2.1 — 2026-10-03
-Standard NSIS Windows installer replaces the custom SFX/PowerShell launcher.
-A visible build_windows.cmd runs Git, curl, tar and CMake. No execution-policy
-changes are made. JUCE 8.0.8 and WebView2 SDK 1.0.2903.40 remain pinned.
-C++ HTML viewer and portrait Chat/Thread toggle are retained from version 2.1.
-Windows build and FL Studio tests remain outstanding; no replacement prebuilt
-DreamShareLite VST3 or antivirus-clear certification is supplied.
