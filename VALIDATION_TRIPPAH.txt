@@ -1,0 +1,70 @@
+HISTORICAL TRIPPAH NSIS-installer validation — 2026-10-03
+==========================================================
+
+This report records the prior NSIS installer package. Those EXEs and installer
+archives are no longer included in DownloadVSTFile; the current homepage uses
+the Master / Share switch and the Share ZIP described in README_TRIPPAH.txt.
+
+CURRENT WEBSITE / DOWNLOAD CHECKS
+- All 91 HTML files are retained; script/style tag counts are balanced.
+- Inline classic JavaScript in all 91 pages compiles in the browser. The check
+  found and fixed a missing layers.forEach closing delimiter in
+  Pluggins Folder\DREAMSSYYNNTTHH.html.
+- The homepage switch has exactly two choices; both download buttons map to
+  their staged plugin ZIP paths.
+- Master.zip and DreamShareVst.zip each contain the corresponding supplied
+  VST3 folder bundle. Both plugin archives contain exactly two files (the
+  bundle binary and moduleinfo.json) and do not include samples.
+- All 618 supplied sample files match their source SHA-256 hashes. The 617
+  remaining library sample URLs resolve beneath lowercase samples/.
+- The Balance Master chain is shared by playback and export. Live and exported
+  master/track inserts route through the same chain with gentle FET-style
+  compression before peak control.
+- The local preview served a sample WAV but returned HTTP 404 for the existing
+  ZIP path. Public-host ZIP delivery and audio auditioning remain unverified.
+
+FULL UPLOAD ARCHIVE
+- TRIPPAH-Website-Upload.zip is created beside the TRIPPAH website folder.
+- It contains every site file, including all 91 HTML pages, 617 WAV samples,
+  DreamDrums\SAMPLES_LICENSE.txt, and both per-plugin download ZIPs.
+- All 756 files inside the upload archive were compared to their source files
+  by SHA-256. No missing entries or content mismatches were found.
+
+PASSED FOR THAT HISTORICAL REVISION
+- Eleven individual Install <NAME>.exe files and the two collection EXEs
+  compile with NSIS 3.09 Unicode without compiler warnings.
+- 7-Zip recognizes and extracts each EXE as a standard NSIS installer.
+- Extracted native payloads match the supplied plugin binaries byte-for-byte.
+  Extracted DreamShareLite C++, HTML and build-script source matches the project.
+- Collection EXEs contain byte-identical copies of the current individual EXEs.
+- The old custom .sfx section and DREAMSFX1 launcher marker are absent from
+  every rebuilt EXE, including nested copies in the refreshed archives.
+- All individual and aggregate ZIP CRCs pass. Embedded installers and package
+  bytes agree with the current project files.
+- Active .nsi/.bat/.cmd paths contain no hidden PowerShell, encoded PowerShell
+  commands or execution-policy-bypass flags. The old runner scripts are removed.
+- Three copies of the previously verified Chat/Thread HTML remain identical.
+
+RETAINED CHECKS FROM THE PRIOR VIEWER REVISION
+- Chromium mock-server tests: login/logout, Chat/Thread switching, keyboard
+  tabs, persistent viewer choice, posting messages/threads/replies, escaped
+  text, scroll preservation and connection error display.
+- Layout checks at 360x480, 520x780 and 900x620; screenshots inspected.
+- HTML JavaScript syntax check; shared C++ API syntax checked against JUCE 8.0.8.
+- The live API's public GET response returned JSON with expected arrays and CORS.
+  No live accounts or posts were used.
+
+NOT VERIFIED
+- No Windows Defender scan/clearance, signing or SmartScreen result is supplied.
+- ClamAV signature databases were unavailable (HTTP 403); no ClamAV malware
+  scan was performed. Structural and payload checks are not antivirus scans.
+- The exact threat name and flagged file were not supplied, so the cause of
+  the user's alert is not established and no false-positive claim is made.
+- Windows installer/UAC/rollback execution; native DreamShareLite C++ build
+  and linking; WebView2 startup; FL Studio 26 scan, UI and playback remain untested.
+- The replacement DreamShareLite binary is still built on the Windows PC;
+  no precompiled replacement VST3 is included.
+
+The EXEs are unsigned. All original plugin binary files remain unchanged.
+If an antivirus flags a DLL/VST3 rather than the installer, that exact binary
+requires separate investigation. See README_TRIPPAH.txt for setup details.

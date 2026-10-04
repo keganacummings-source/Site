@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DREAMSINE · BETA</title>
+  <script src="../Themes/sleepwell-theme.js"></script>
+  <script src="../Themes/sleepwell-suite.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; background: transparent; color: var(--text); font-family: var(--font, ui-monospace, monospace); }
+    .app { width: 100%; min-height: 100%; display: flex; flex-direction: column; min-height: 0; background: var(--panel); color: var(--text); }
+    .top { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 8px; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1rem; letter-spacing: 0.08em; margin: 0; color: var(--accent); overflow-wrap: break-word; }
+    .sub { color: var(--text-dim); font-size: 0.68rem; margin: 0; overflow-wrap: break-word; flex: 1 1 140px; }
+    .work { flex: 1; min-height: 0; overflow: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+    label { font-size: 0.66rem; color: var(--text-dim); display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1 1 100px; }
+    input[type=range] { width: 100%; }
+    select, button { min-height: 34px; background: var(--panel-2); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius, 4px); font-family: inherit; padding: 6px 8px; cursor: pointer; }
+    button.on { background: var(--accent); color: var(--bg, #111); }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; }
+    .keys { display: flex; gap: 3px; min-height: 120px; }
+    .key { flex: 1; min-width: 0; border: 1px solid var(--border); background: var(--panel-2); color: var(--text-dim); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-size: 0.62rem; cursor: pointer; user-select: none; overflow-wrap: break-word; }
+    .key.on { background: var(--accent); color: var(--bg, #111); }
+    .status { font-size: 0.64rem; color: var(--text-dim); }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="top">
+      <h1>DREAMSINE</h1>
+      <p class="sub">Pure sine · vibrato + soft delay</p>
+      <button type="button" id="randBtn" title="Randomize parameters">RANDOM</button>
+    </div>
+    <div class="work">
+      <div class="row">
+        <label>CUTOFF<input id="cut" type="range" min="200" max="12000" value="3200"></label>
+        <label>ATTACK<input id="atk" type="range" min="5" max="800" value="12"></label>
+        <label>DECAY<input id="dec" type="range" min="40" max="2000" value="280"></label>
+        <label>RELEASE<input id="rel" type="range" min="40" max="1500" value="180"></label>
+        <label>LEVEL<input id="vol" type="range" min="4" max="80" value="28"></label>
+        
+        <label>VIB RATE<input id="vibRate" type="range" min="0" max="12" value="4.5" step="0.1"></label>
+        <label>VIB DEPTH<input id="vibDep" type="range" min="0" max="40" value="8"></label>
+        <label>DELAY<input id="delay" type="range" min="0" max="80" value="22"></label>
+        <label>FEEDBACK<input id="fb" type="range" min="0" max="70" value="28"></label>
+      </div>
+      <div class="keys" id="keys"></div>
+      <div class="status" id="status">Keys A S D F row · Space = middle C · RANDOM reshapes the sound</div>
+    </div>
+  </div>
+<script>
+(function () {
+  const NOTES = [60,62,64,65,67,69,71,72,74,76,77,79];
+  const KEYS = 'awsedftgyhuj';
+  let ctx, master, dest, voices = new Map(), held = new Set();
+  function ac() {
+    if (!ctx) {
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      master = ctx.createGain(); master.gain.value = 0.28;
+      const filt = ctx.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 8000;
+      master.connect(filt); filt.connect(ctx.destination);
+      dest = master;
+      window.__swFilt = filt;
+    }
+    if (ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function val(id, d) { const el = document.getElementById(id); return el ? parseFloat(el.value) : d; }
+  function set(id, v) { const el = document.getElementById(id); if (el) el.value = v; }
+  function freq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+  function envGain(c, a, d, s, peak) {
+    const g = c.createGain();
+    const t = c.currentTime;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(Math.max(0.001, peak), t + Math.max(0.005, a));
+    g.gain.exponentialRampToValueAtTime(Math.max(0.001, peak * s), t + a + d);
+    return g;
+  }
+  function osc(c, type, f, det) {
+    const o = c.createOscillator(); o.type = type; o.frequency.value = f; o.detune.value = det || 0; return o;
+  }
+  function stopVoice(m) {
+    const v = voices.get(m);
+    if (!v) return;
+    try {
+      const t = ac().currentTime;
+      v.g.gain.cancelScheduledValues(t);
+      v.g.gain.setTargetAtTime(0.0001, t, 0.03);
+      const rel = v.rel || 0.2;
+      v.nodes.forEach(n => { try { n.stop(t + rel + 0.05); } catch(_){} });
+    } catch(_){}
+    voices.delete(m);
+  }
+  function startVoice(m) {
+    const c = ac();
+    stopVoice(m);
+    const cut = val('cut', 3200);
+    if (window.__swFilt) window.__swFilt.frequency.setTargetAtTime(cut, c.currentTime, 0.03);
+    master.gain.setTargetAtTime(val('vol', 28) / 100, c.currentTime, 0.02);
+    const nodes = [];
+    const f = freq(m);
+    const atk = val('atk', 12) / 1000;
+    const dec = val('dec', 280) / 1000;
+    const rel = val('rel', 180) / 1000;
+    const peak = 0.45;
+    const sus = 0.35;
+    
+    const o = osc(c, 'sine', f, 0);
+    const g = envGain(c, atk, dec, sus, peak);
+    o.connect(g);
+    // vibrato
+    const lfo = c.createOscillator(); lfo.frequency.value = val('vibRate', 4.5);
+    const lfoG = c.createGain(); lfoG.gain.value = val('vibDep', 8);
+    lfo.connect(lfoG); lfoG.connect(o.frequency); lfo.start();
+    nodes.push(o, lfo);
+    g.connect(dest);
+    // delay send
+    try {
+      const d = c.createDelay(1.0); d.delayTime.value = 0.18;
+      const dg = c.createGain(); dg.gain.value = val('delay', 22) / 100;
+      const fb = c.createGain(); fb.gain.value = val('fb', 28) / 100;
+      g.connect(dg); dg.connect(d); d.connect(fb); fb.connect(d); d.connect(dest);
+    } catch(_){}
+    voices.set(m, { nodes, g, rel });
+
+  }
+  let lastNote = 60;
+  function noteOn(m) {
+    lastNote = m;
+    if (held.has(m)) return;
+    held.add(m);
+    startVoice(m);
+    const i = NOTES.indexOf(m);
+    if (i >= 0) {
+      const k = document.querySelectorAll('.key')[i];
+      if (k) k.classList.add('on');
+    }
+  }
+  function noteOff(m) {
+    held.delete(m);
+    stopVoice(m);
+    const i = NOTES.indexOf(m);
+    if (i >= 0) {
+      const k = document.querySelectorAll('.key')[i];
+      if (k) k.classList.remove('on');
+    }
+  }
+  const keysEl = document.getElementById('keys');
+  NOTES.forEach((n, i) => {
+    const b = document.createElement('div');
+    b.className = 'key';
+    b.textContent = KEYS[i] || '';
+    b.addEventListener('pointerdown', e => { e.preventDefault(); noteOn(n); });
+    b.addEventListener('pointerup', () => noteOff(n));
+    b.addEventListener('pointerleave', () => noteOff(n));
+    keysEl.appendChild(b);
+  });
+  window.addEventListener('keydown', e => {
+    if (e.repeat) return;
+    const i = KEYS.indexOf(e.key.toLowerCase());
+    if (i >= 0) noteOn(NOTES[i]);
+    if (e.key === ' ') { e.preventDefault(); noteOn(60); }
+  });
+  window.addEventListener('keyup', e => {
+    const i = KEYS.indexOf(e.key.toLowerCase());
+    if (i >= 0) noteOff(NOTES[i]);
+    if (e.key === ' ') noteOff(60);
+  });
+  document.getElementById('randBtn').addEventListener('click', () => {
+    set('cut', 300 + Math.random() * 9000);
+    set('atk', 5 + Math.random() * 200);
+    set('dec', 60 + Math.random() * 900);
+    set('rel', 40 + Math.random() * 800);
+    set('vol', 12 + Math.random() * 50);
+    set('vibRate',2+Math.random()*8); set('vibDep',Math.random()*30); set('delay',Math.random()*50); set('fb',Math.random()*50);
+    document.getElementById('status').textContent = 'Randomized · play a key';
+  });
+
+  async function renderNoteSample(midi, durSec) {
+    const c = new OfflineAudioContext(2, Math.ceil(48000 * (durSec || 1.5)), 48000);
+    // Rebuild a simplified version of current voice into offline context
+    // We approximate by capturing current param state and using a clean osc path
+    const peak = 0.4;
+    const atk = val('atk', 12) / 1000;
+    const dec = val('dec', 280) / 1000;
+    const rel = val('rel', 180) / 1000;
+    const f = 440 * Math.pow(2, (midi - 69) / 12);
+    const cut = val('cut', 3200);
+    const g = c.createGain();
+    g.gain.setValueAtTime(0.0001, 0);
+    g.gain.exponentialRampToValueAtTime(peak, Math.max(0.005, atk));
+    g.gain.exponentialRampToValueAtTime(Math.max(0.001, peak * 0.35), atk + dec);
+    g.gain.exponentialRampToValueAtTime(0.0001, atk + dec + rel + 0.3);
+    g.connect(c.destination);
+    const filt = c.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = cut;
+    // Prefer connecting osc -> filt -> g for offline
+    const o = c.createOscillator();
+    o.type = 'triangle';
+    o.frequency.value = f;
+    o.connect(filt); filt.connect(g);
+    o.start(0); o.stop(atk + dec + rel + 0.4);
+    const buf = await c.startRendering();
+    return buf;
+  }
+
+  async function renderLoop(bars) {
+    const bpm = 120;
+    const stepDur = (60 / bpm) / 4;
+    const totalSteps = 16 * Math.max(1, bars || 4);
+    const seconds = totalSteps * stepDur + 0.3;
+    const c = new OfflineAudioContext(2, Math.ceil(48000 * seconds), 48000);
+    const g = c.createGain(); g.gain.value = 0.35; g.connect(c.destination);
+    const scale = [0, 2, 3, 5, 7, 8, 10, 12];
+    for (let s = 0; s < totalSteps; s++) {
+      if (s % 2 !== 0) continue; // 8ths
+      const when = s * stepDur;
+      const deg = scale[s % scale.length];
+      const midi = 60 + deg;
+      const f = 440 * Math.pow(2, (midi - 69) / 12);
+      const o = c.createOscillator(); o.type = 'triangle'; o.frequency.value = f;
+      const eg = c.createGain();
+      eg.gain.setValueAtTime(0.0001, when);
+      eg.gain.exponentialRampToValueAtTime(0.35, when + 0.02);
+      eg.gain.exponentialRampToValueAtTime(0.001, when + 0.25);
+      const filt = c.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = val('cut', 3200);
+      o.connect(filt); filt.connect(eg); eg.connect(g);
+      o.start(when); o.stop(when + 0.3);
+    }
+    return await c.startRendering();
+  }
+
+  function bufToWav(buf) {
+    const n = buf.length, chs = buf.numberOfChannels;
+    const ab = new ArrayBuffer(44 + n * chs * 2);
+    const v = new DataView(ab);
+    function s(o, str) { for (let i = 0; i < str.length; i++) v.setUint8(o + i, str.charCodeAt(i)); }
+    s(0, 'RIFF'); v.setUint32(4, 36 + n * chs * 2, true); s(8, 'WAVE'); s(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, chs, true);
+    v.setUint32(24, 48000, true); v.setUint32(28, 48000 * chs * 2, true); v.setUint16(32, chs * 2, true); v.setUint16(34, 16, true);
+    s(36, 'data'); v.setUint32(40, n * chs * 2, true);
+    let off = 44;
+    for (let i = 0; i < n; i++) for (let ch = 0; ch < chs; ch++) {
+      const x = Math.max(-1, Math.min(1, buf.getChannelData(ch)[i]));
+      v.setInt16(off, x < 0 ? x * 0x8000 : x * 0x7fff, true); off += 2;
+    }
+    return new Blob([ab], { type: 'audio/wav' });
+  }
+
+  window.exportWAV = async function (mode) {
+    // mode: 'note' | 'loop4' | 'loop8' | undefined (default note if recent key, else loop4)
+    let buf;
+    if (mode === 'loop4') buf = await renderLoop(4);
+    else if (mode === 'loop8') buf = await renderLoop(8);
+    else {
+      // default: last played note as sample (with current cutoff/ADSR approx)
+      buf = await renderNoteSample(lastNote || 60, 1.6);
+    }
+    const blob = bufToWav(buf);
+    if (!window.__SW_SKIP_DOWNLOAD && !window._DREAM_SAVE_ONLY) {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      const tag = mode === 'loop4' ? '_loop4' : mode === 'loop8' ? '_loop8' : '_note';
+      a.download = (document.title || 'beta').replace(/\s+/g, '') + tag + '.wav';
+      a.click();
+    }
+    return blob;
+  };
+
+  // Extra export buttons if status row exists
+  try {
+    const st = document.getElementById('status');
+    if (st && st.parentNode) {
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.style.marginTop = '4px';
+      row.innerHTML = '<button type="button" id="expNote">EXPORT NOTE</button>' +
+        '<button type="button" id="exp4">EXPORT 4 BAR</button>' +
+        '<button type="button" id="exp8">EXPORT 8 BAR</button>';
+      st.parentNode.insertBefore(row, st);
+      document.getElementById('expNote').onclick = () => window.exportWAV('note');
+      document.getElementById('exp4').onclick = () => window.exportWAV('loop4');
+      document.getElementById('exp8').onclick = () => window.exportWAV('loop8');
+    }
+  } catch(_){}
+
+})();
+</script>
+</body>
+</html>

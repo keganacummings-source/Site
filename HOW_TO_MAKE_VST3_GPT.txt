@@ -1,0 +1,63 @@
+SLEEPWELL — HOW TO MAKE A VST3 AND ADD IT
+For a GPT that is adding a machine to the DAW bundle. Follow this exactly.
+
+WHAT YOU ARE MAKING
+A Windows x64 VST3 that matches an existing HTML machine, plus a VST2 dll
+with the same DSP so FL Studio can scan it. Theme is VSTTRIPPAH. No new palette.
+
+THEME — VSTTRIPPAH
+  bg     #0e0608
+  panel  #1a0c12
+  accent #c04068
+  bright #e07090
+  text   #f4e4ea
+  dim    #9a7884
+  border #341820
+Editor title ends with VSTTRIPPAH. Sliders are the machine's real knobs.
+Do not add crush, bit reduction, hard clip, or extra dirt. Soft-limit with tanh.
+Instruments stay clean. FX only distort if that HTML machine already does,
+and even then keep the output under a soft limit.
+
+WHERE THE PLUGIN GOES
+  DownloadVSTFile/One/Master.zip        (DreamMasterLite VST3 bundle)
+  DownloadVSTFile/Two/DreamShareVst.zip (DreamShare Lite VST3 bundle)
+
+Keep the homepage package choices limited to Master and Share. Do not add
+sample content to either VST download folder; the site's lowercase samples/
+folder is deployed beside index.html for the instruments to load directly.
+The full website upload ZIP includes samples/ and both sample-free plugin ZIPs.
+
+ZIP SHAPE
+  DreamShare Lite.vst3/Contents/x86_64-win/DreamShare Lite.vst3
+  DreamShare Lite.vst3/Contents/Resources/moduleinfo.json
+
+The .vst3 file and the .dll are the same binary.
+Exports required: GetPluginFactory, InitDll, ExitDll, VSTPluginMain.
+Factory must answer IPluginFactory, IPluginFactory2, IPluginFactory3.
+Two classes: Audio Module Class, Component Controller Class.
+Sub category Instrument|Synth or Fx. Vendor dreamdaw. URL https://dreamdaw.com.
+
+PARAMETERS
+One normalized 0..1 parameter per HTML knob, same name, same default.
+Instrument: MIDI note-on starts a voice. FX: stereo in, stereo out, live.
+Do not change speed unless the HTML machine changes speed.
+
+DOWNLOAD PACKAGE
+The Share download is a ZIP, not an EXE installer. Users unzip the archive and
+copy the DreamShare Lite.vst3 bundle to the system VST3 folder. Do not add
+installers or other plugin choices to the homepage download switch.
+
+WEBSITE
+index.html uses a Master / Share switch. Master downloads
+DownloadVSTFile/One/Master.zip; Share downloads
+DownloadVSTFile/Two/DreamShareVst.zip. Keep the UI limited to these two
+choices; do not restore the old manifest, installer dropdown, or extra plugin
+choices.
+
+CHECK
+1. DownloadVSTFile/Two/DreamShareVst.zip opens to the VST3 bundle paths above.
+2. The homepage has only Master and Share, and each choice downloads its
+   corresponding per-plugin ZIP.
+3. Keep the website's samples/ folder outside both VST download folders.
+4. Editor colors are VSTTRIPPAH.
+5. A sine or the dry input is not clipping at 0 dB.

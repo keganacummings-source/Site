@@ -1,0 +1,78 @@
+DREAMSHARE — HOW TO UPDATE SO PHONE / PC SHARE WORKS
+=====================================================
+
+Why it was broken
+-----------------
+1. Chat text could reach the Cloudflare Worker, but WAV tapes stayed in
+   THAT DEVICE'S IndexedDB. Other phones/PCs never received the audio.
+2. Old Worker builds answered HEAD with 405, so health checks looked dead.
+3. If the Worker call failed, DREAMSHARE silently fell back to
+   "this browser room (not shared)" — local only.
+
+This package
+------------
+• DREAMSHARE.html now ALWAYS tries the Worker (not only when it already
+  thinks the room is live).
+• Session WAVs under ~1.2 MB ride with the post as audioData so other
+  devices can listen.
+• WORKER_DREAMSHARE.js stores the feed + audio in the Worker Cache API
+  (no dead third-party JSON bin).
+• GET, POST, PUT, HEAD, OPTIONS all return 200/204. POST {action:"list"}
+  also returns the feed (old 405 workers).
+
+
+UPDATE STEPS (do both — HTML zip AND Worker)
+--------------------------------------------
+
+A. Replace the Worker code (required)
+   1. Open https://dash.cloudflare.com
+   2. Workers & Pages → your dreamshare Worker
+      (current project URL is still
+       https://dreamshare-api.keganacummings.workers.dev
+       unless you made a new one)
+   3. Edit code → Select All → Delete
+   4. Paste ALL of WORKER_DREAMSHARE.js from this ZIP
+   5. Deploy → wait for Success
+   6. In a browser tab open the Worker URL
+      You MUST see:  {"ok":true,"posts":...
+      If you see "Hello World" or 405 HTML → Step A was not saved.
+
+B. Point the plugin at that URL
+   In Pluggins Folder/DREAMSHARE.html keep:
+
+     const WORKER_URL = 'https://dreamshare-api.keganacummings.workers.dev';
+
+   Or change it to YOUR new workers.dev URL (no trailing slash).
+
+C. Upload the new site
+   Replace the whole SLEEPWELL folder on your host / Pages project
+   with this ZIP contents, then hard-refresh (Ctrl+Shift+R) on every device.
+
+D. Test across two devices
+   1. Open the LIVE https:// site (not file:// and not a second unzip
+      sitting only on one phone).
+   2. DREAMSHARE status should read: Wifi Bridge · live
+   3. Log in (handle 3+ letters, password 6+)
+   4. Send a text. Second device, same site → message appears.
+   5. Attach a SESSION tape under ~1.2 MB and send. Second device can
+      press play. Bigger tapes stay local (Worker payload cap).
+
+
+If it still says "this browser room"
+------------------------------------
+• You opened the HTML as a file, or two different copies of the site.
+  Both devices must use the SAME https URL.
+• Worker URL is wrong / old code. Repeat A.
+• Mixed content: site must be https if the Worker is https.
+
+
+PHP host option
+---------------
+dreamshare.php in the site root still works as a second backend
+(list + wav upload). Pages static hosting cannot run PHP.
+
+
+COMMON 405
+----------
+Old worker rejected HEAD/GET. Paste the new WORKER_DREAMSHARE.js.
+WORKER_URL must be the root workers.dev URL, no /api/share path.
