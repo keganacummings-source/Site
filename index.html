@@ -1,519 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-fx="fireflies">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-  <title>DREAMDAW — Plugin Selector</title>
-  <script src="Themes/sleepwell-theme.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0e0608;
-      --panel: #1a0c12;
-      --accent: #c04068;
-      --accent-dim: #7a2844;
-      --accent-bright: #e07090;
-      --text: #f4e4ea;
-      --text-dim: #9a7884;
-      --border: #341820;
-      --radius: 8px;
-      --font: 'Share Tech Mono', ui-monospace, monospace;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { min-height: 100%; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 14px 40px;
-      background-image:
-        radial-gradient(ellipse 48% 28% at 6% -6%, rgba(192,64,104,0.28), transparent 62%),
-        radial-gradient(ellipse 36% 24% at 100% 0%, rgba(90,20,48,0.4), transparent 58%),
-        linear-gradient(180deg, #1a0a10, #0e0608 42%, #070305);
-    }
-    header {
-      width: 100%;
-      max-width: 1100px;
-      text-align: center;
-      margin-bottom: 18px;
-    }
-    h1 {
-      font-family: 'VT323', var(--font);
-      font-size: 2.4rem;
-      letter-spacing: 0.2em;
-      font-weight: 400;
-      text-shadow: 0 0 24px rgba(192,64,104,0.45);
-    }
-    .subtitle {
-      color: var(--text-dim);
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      margin-top: 4px;
-      line-height: 1.45;
-    }
-    .top-bar {
-      width: 100%;
-      max-width: 1100px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-    .login-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-    .login-row input {
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-family: inherit;
-      font-size: 0.78rem;
-      min-width: 110px;
-    }
-    button, .btn {
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.15s, box-shadow 0.15s;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-    .btn-primary:hover { background: var(--accent-bright); }
-    .btn-secondary {
-      background: #1a1014;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover { background: #241820; }
-    #who {
-      color: var(--text-dim);
-      font-size: 0.72rem;
-    }
-    #err {
-      color: var(--accent-bright);
-      font-size: 0.72rem;
-      width: 100%;
-    }
-    .vst-box {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      max-width: 320px;
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      line-height: 1.4;
-    }
-    .vst-box strong { color: var(--text); display: block; margin-bottom: 6px; letter-spacing: 0.06em; }
-    .vst-toggle {
-      display: flex;
-      gap: 0;
-      margin: 8px 0;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .vst-toggle button {
-      flex: 1;
-      border-radius: 0;
-      background: #12080c;
-      color: var(--text-dim);
-      border: none;
-      padding: 7px 10px;
-    }
-    .vst-toggle button.on {
-      background: var(--accent);
-      color: #fff;
-    }
-    .shell {
-      width: 100%;
-      max-width: 1100px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 0 0 1px #000, 0 16px 48px rgba(0,0,0,0.55), 0 0 28px rgba(192,64,104,0.12);
-      overflow: hidden;
-    }
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 12px 14px;
-      background: #12080c;
-      border-bottom: 1px solid var(--border);
-      align-items: center;
-    }
-    #find {
-      flex: 1;
-      min-width: 140px;
-      background: #1a0c12;
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-family: inherit;
-      font-size: 0.78rem;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .filters button {
-      background: #1a1014;
-      color: var(--text-dim);
-      border: 1px solid var(--border);
-      padding: 6px 10px;
-      font-size: 0.7rem;
-    }
-    .filters button.on {
-      background: var(--accent-dim);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .body { padding: 14px; }
-    .section-title {
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 10px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-      min-height: 120px;
-    }
-    .card {
-      background: #12080c;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      text-align: left;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    .card:hover {
-      border-color: var(--accent-dim);
-      box-shadow: 0 0 16px rgba(192,64,104,0.18);
-    }
-    .card.beta {
-      border-color: #3a2a10;
-      background: linear-gradient(160deg, #12100a 0%, #12080c 100%);
-    }
-    .card .name {
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-    .card .tag {
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-bright);
-      opacity: 0.85;
-    }
-    .card .file {
-      font-size: 0.62rem;
-      color: var(--text-dim);
-      word-break: break-all;
-    }
-    .card .blurb {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      line-height: 1.35;
-      flex: 1;
-    }
-    .card .launch {
-      margin-top: 6px;
-      width: 100%;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 9px 12px;
-      font-family: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .card .launch:hover { background: var(--accent-bright); }
-    .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 32px 16px;
-      color: var(--text-dim);
-      font-size: 0.85rem;
-    }
-    .status {
-      padding: 10px 14px;
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      border-top: 1px solid var(--border);
-      background: #0a0608;
-    }
-    @media (max-width: 640px) {
-      h1 { font-size: 1.8rem; }
-      .vst-box { max-width: 100%; width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DREAMDAW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0608;--panel:#1a0c12;--panel-2:#12080c;--accent:#c04068;--accent-dim:#7a2844;--accent-bright:#e07090;--accent2:#a02848;--text:#f4e4ea;--text-dim:#9a7884;--border:#341820;--glow:rgba(192,64,104,.26);--radius:6px;--font:'Fredoka','Share Tech Mono',ui-sans-serif,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
+#scene,#veil,#fx{position:fixed;pointer-events:none}
+#scene{inset:-12%;animation:drift 38s ease-in-out infinite alternate;z-index:0}
+#veil{inset:0;z-index:1}
+#fx{inset:0;z-index:2}
+@keyframes drift{from{transform:translate(-2%,-1%) scale(1)}to{transform:translate(2%,1.5%) scale(1.08)}}
+#app{position:relative;z-index:3;height:100%;display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:14px;padding:12px 22px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--panel-2) 82%,transparent);backdrop-filter:blur(8px)}
+.brand{font-size:18px;font-weight:600;letter-spacing:.42em;background:linear-gradient(90deg,var(--text),var(--accent-bright),var(--text));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+.sp{flex:1}
+.pill{font-size:13px;color:var(--text-dim);display:flex;align-items:center;gap:8px}
+.pill b{color:var(--text);font-weight:600}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+button,input{font:inherit;color:inherit}
+.btn{background:transparent;border:1px solid var(--border);border-radius:var(--radius);padding:7px 14px;cursor:pointer;color:var(--text);transition:.2s}
+.btn:hover{border-color:var(--accent);box-shadow:0 0 14px var(--glow);color:var(--accent-bright)}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.main:hover{background:var(--accent-bright);color:#000}
+#tw{position:relative}
+#themes{display:none;position:absolute;right:0;top:calc(100% + 8px);width:340px;max-height:60vh;overflow-y:auto;padding:10px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 18px 50px rgba(0,0,0,.6);grid-template-columns:repeat(2,1fr);gap:8px;z-index:20}
+#themes.open{display:grid}
+.chip{display:flex;flex-direction:column;gap:2px;text-align:left;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--panel-2);cursor:pointer;position:relative;overflow:hidden}
+.chip i{position:absolute;left:0;top:0;bottom:0;width:5px}
+.chip span{font-size:12px;letter-spacing:.1em;padding-left:6px}
+.chip small{font-size:10px;color:var(--text-dim);padding-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip.on,.chip:hover{border-color:var(--accent)}
+main{flex:1;overflow-y:auto;padding:22px 26px 60px}
+.bar{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.bar h2{margin:0;font-size:12px;letter-spacing:.35em;color:var(--text-dim);font-weight:400}
+#q{flex:1;max-width:320px;background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);padding:8px 12px;outline:none}
+#q:focus,.f input:focus{border-color:var(--accent);box-shadow:0 0 12px var(--glow)}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.card{text-align:left;padding:14px 15px;background:color-mix(in srgb,var(--panel) 88%,transparent);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;opacity:0;animation:rise .5s ease forwards;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card strong{font-weight:600;letter-spacing:.06em}
+.card small{color:var(--text-dim);font-size:11px}
+.card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 26px var(--glow)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1}}
+#status{color:var(--text-dim);font-size:13px;padding:10px 0}
+/* each theme family gets its own motion language */
+[data-fx=embers] .card:hover{transform:translateY(-5px) rotate(-.4deg)}
+[data-fx=snow] .card{border-bottom:2px solid var(--accent-dim)}
+[data-fx=snow] .card:hover{transform:translateY(-2px)}
+[data-fx=stars] .card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,var(--glow),transparent 60%);background-size:250% 100%;animation:sweep 5s linear infinite}
+@keyframes sweep{from{background-position:150% 0}to{background-position:-100% 0}}
+[data-fx=rain] .card::before{content:"";position:absolute;left:0;right:0;height:2px;background:var(--accent);opacity:.5;box-shadow:0 0 10px var(--accent);animation:scan 3.4s linear infinite}
+@keyframes scan{from{top:-4px}to{top:100%}}
+[data-fx=rain] header{border-bottom-color:var(--accent-dim)}
+[data-fx=fireflies] .card:hover{transform:scale(1.03)}
+[data-fx=fireflies] .card{animation:rise .5s ease forwards,breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 0 18px var(--glow)}}
+/* scrollbar */
+*{scrollbar-width:thin;scrollbar-color:var(--accent-dim) transparent}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--accent-dim);border-radius:10px;border:2px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+/* login gate */
+#gate{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(10px)}
+#gate.on{display:flex}
+.box{width:min(380px,90vw);padding:30px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 0 60px var(--glow);animation:rise .6s ease forwards}
+.box h1{margin:0 0 4px;font-size:20px;letter-spacing:.4em;text-align:center}
+.box p{margin:0 0 20px;text-align:center;font-size:12px;color:var(--text-dim)}
+.f{display:flex;flex-direction:column;gap:12px}
+.f input{background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);padding:11px 12px;outline:none}
+#err{min-height:16px;color:var(--accent-bright);font-size:12px;text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.card{opacity:1}}
+</style>
 </head>
 <body>
+<div id="scene"></div><div id="veil"></div><canvas id="fx"></canvas>
+
+<div id="app">
   <header>
-    <h1>DREAMDAW</h1>
-    <p class="subtitle">Plugin selector · log in · launch a machine · Homescreen returns here</p>
+    <div class="brand">DREAMDAW</div>
+    <div class="sp"></div>
+    <div class="pill" id="info" style="display:none"><span class="dot"></span><span><span id="online">0</span> online</span><span>·</span><b id="who"></b></div>
+    <div id="tw">
+      <button class="btn" id="tbtn" type="button">THEME ▾</button>
+      <div id="themes"></div>
+    </div>
+    <button class="btn" id="out" type="button" style="display:none">Log out</button>
   </header>
+  <main>
+    <div class="bar"><h2>PLUGIN SELECTOR</h2><input id="q" placeholder="search machines…" autocomplete="off"></div>
+    <div id="grid"><div id="status">loading machines…</div></div>
+  </main>
+</div>
 
-  <div class="top-bar">
-    <form class="login-row" id="loginForm">
-      <input id="user" placeholder="user" autocomplete="username">
-      <input id="pass" placeholder="pass" type="password" autocomplete="current-password">
-      <button type="submit" class="btn-primary">Log in</button>
-      <span id="who">signed out</span>
-      <span id="err"></span>
-    </form>
-    <div class="vst-box">
-      <strong>VST3 DOWNLOADS</strong>
-      Unzip and place the plugin folder in your DAW’s VST3 folder.
-      <div class="vst-toggle" role="group" aria-label="Choose VST package">
-        <button type="button" id="vstMasterBtn">Master</button>
-        <button type="button" id="vstShareBtn" class="on">Share</button>
-      </div>
-      <button type="button" class="btn-primary" id="vstDownloadGo" style="width:100%">Download Share VST</button>
-      <div id="vstDownloadStatus" style="margin-top:6px">DreamShare VST3 package.</div>
-    </div>
-  </div>
+<div id="gate">
+  <form class="box f" id="login">
+    <h1>DREAMDAW</h1>
+    <p>Log in to continue</p>
+    <input id="user" placeholder="username" autocomplete="username">
+    <input id="pass" type="password" placeholder="password" autocomplete="current-password">
+    <div id="err"></div>
+    <button class="btn main" type="submit">Log in</button>
+  </form>
+</div>
 
-  <div class="shell">
-    <div class="toolbar">
-      <input id="find" type="search" placeholder="Search machines…" aria-label="Search machines">
-      <div class="filters" id="filters">
-        <button type="button" data-filter="all" class="on">All</button>
-        <button type="button" data-filter="keys">Keys</button>
-        <button type="button" data-filter="drums">Drums</button>
-        <button type="button" data-filter="strings">Strings</button>
-        <button type="button" data-filter="fx">FX</button>
-        <button type="button" data-filter="voice">Voice</button>
-        <button type="button" data-filter="tools">Tools</button>
-        <button type="button" data-filter="beta">Beta</button>
-      </div>
-    </div>
-    <div class="body">
-      <p class="section-title">Machines · <span id="count">0</span> showing</p>
-      <div class="grid" id="grid"><div class="empty">Loading library…</div></div>
-    </div>
-    <div class="status" id="status">Ready · no DreamBuilder · plugin selector only</div>
-  </div>
+<script>
+const API="https://dreamshare-api.keganacummings.workers.dev/";
+const BASE=new URL(".",location.href).href;
+const $=id=>document.getElementById(id), LS=localStorage;
+let token=LS.getItem("dreamdaw.token")||"", me=LS.getItem("dreamdaw.user")||"", beat=null, packs=[], lib=[];
 
-  <script>
-(function () {
-  const API = "https://dreamshare-api.keganacummings.workers.dev/";
-  const BLURBS = {
-    DREAMFOG: { tag: "FOG", fam: "fx", blurb: "Drift, hiss, and distance on a tape." },
-    DREAMABC: { tag: "PIANO ROLL", fam: "tools", blurb: "Pocket roll, chords, and MIDI you can drop on a lane." },
-    DREAMAXE: { tag: "GUITAR", fam: "strings", blurb: "Crying electric. Every machine frame follows this border." },
-    DREAMBASS: { tag: "BASS", fam: "keys", blurb: "Low end — sub, growl, and pocket." },
-    DREAMCHPPA: { tag: "CHOPS", fam: "drums", blurb: "Chop a tape into a rhythm you can replay." },
-    DREAMDRDRUM: { tag: "DRUMS", fam: "drums", blurb: "Kit machine wired to the package drum library." },
-    DREAMGLITCR: { tag: "GLITCH", fam: "fx", blurb: "Stutter a loop until it breaks." },
-    DREAMMIRROR: { tag: "MIRROR", fam: "fx", blurb: "Reflect a sound against itself." },
-    DREAMORACLE: { tag: "ORACLE", fam: "fx", blurb: "Air, grit, and the tower tone." },
-    DREAMPARASITE: { tag: "PARASITE", fam: "fx", blurb: "Infection echoes and crawling tails." },
-    DREAMRECORDER: { tag: "RECORDER", fam: "tools", blurb: "Mic in, print a take into the session." },
-    DREAMSHARE: { tag: "SHARE", fam: "tools", blurb: "Hand a tape to another room on the same network." },
-    DREAMSHARELITE: { tag: "SHARE LITE", fam: "tools", blurb: "Threads, comments, and live chat — same login as GOODNIGHT." },
-    DREAMSSYYNNTTHH: { tag: "SYNTH", fam: "keys", blurb: "The big synth. Stack tones and print a stem." },
-    DREAMSTRYNG: { tag: "STRINGS", fam: "strings", blurb: "Bowed and plucked string tones." },
-    DREAMFI: { tag: "LO-FI", fam: "fx", blurb: "Crush and late-night radio color." },
-    DREAMDRAW: { tag: "DRAW", fam: "tools", blurb: "Draw shapes into tone." },
-    DREAMLEAD: { tag: "LEAD", fam: "keys", blurb: "Cutting lead voice." },
-    DREAMPAD: { tag: "PAD", fam: "keys", blurb: "Wide held pads." },
-    DREAMARP: { tag: "ARP", fam: "keys", blurb: "Arpeggiated patterns." },
-    DREAM3XOSC: { tag: "3X OSC", fam: "keys", blurb: "Three oscillators, one voice." },
-    DREAMSINE: { tag: "SINE", fam: "keys", blurb: "Clean sine instrument." },
-    DREAMSAW: { tag: "SAW", fam: "keys", blurb: "Sawtooth lead / bass." },
-    DREAMPULSE: { tag: "PULSE", fam: "keys", blurb: "Pulse width tones." },
-    DREAMSUB: { tag: "SUB", fam: "keys", blurb: "Sub-bass body." },
-    DREAMANALOG: { tag: "ANALOG", fam: "keys", blurb: "Analog-style stack." },
-    DREAMKEYS: { tag: "KEYS", fam: "keys", blurb: "Keyboard voice." },
-    DREAMORGAN: { tag: "ORGAN", fam: "keys", blurb: "Drawbar-style organ." },
-    DREAMPLUCK: { tag: "PLUCK", fam: "strings", blurb: "Plucked attacks." },
-    DREAMBELL: { tag: "BELL", fam: "keys", blurb: "Metallic bells." },
-    DREAMBRASS: { tag: "BRASS", fam: "keys", blurb: "Brass section color." },
-    DREAMFLUTE: { tag: "FLUTE", fam: "voice", blurb: "Airy flute tone." },
-    DREAMCHOIR: { tag: "CHOIR", fam: "voice", blurb: "Choral stack." },
-    DREAMMARIMBA: { tag: "MARIMBA", fam: "keys", blurb: "Wooden bar hits." },
-    DREAMCLAV: { tag: "CLAV", fam: "keys", blurb: "Clavinet bite." },
-    DREAMHORN: { tag: "HORN", fam: "keys", blurb: "Horn stabs." },
-    DREAMCHORD: { tag: "CHORD", fam: "keys", blurb: "Held chord machine." },
-    DREAMMONO: { tag: "MONO", fam: "keys", blurb: "Monophonic lead." },
-    DREAMARPBOX: { tag: "ARP BOX", fam: "keys", blurb: "Boxed arpeggiator." },
-    DREAMDRONE: { tag: "DRONE", fam: "fx", blurb: "Long drones." },
-    DREAMNOISE: { tag: "NOISE", fam: "fx", blurb: "Noise textures." },
-    DREAMTOY: { tag: "TOY", fam: "keys", blurb: "Toy keyboard character." },
-    DREAMRACK: { tag: "RACK", fam: "fx", blurb: "Effect rack utilities." }
-  };
+async function api(body){
+  const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json","X-SW-Token":token},body:JSON.stringify(Object.assign({token},body))});
+  return r.json();
+}
+function native(name,payload){try{window.__JUCE__.backend.emitEvent(name,payload||{})}catch(e){}}
 
-  let allPlugins = [];
-  let filter = "all";
-  let query = "";
+/* ---------- auth ---------- */
+function gate(on,msg){$("gate").classList.toggle("on",on);$("err").textContent=msg||"";$("info").style.display=$("out").style.display=on?"none":"";}
+function enter(){
+  gate(false);$("who").textContent=me;
+  clearInterval(beat);ping();beat=setInterval(ping,25000);
+}
+async function ping(){
+  try{const d=await api({action:"presence"});if(d&&d.online)$("online").textContent=d.online.length;
+      if(d&&d.code==="auth")leave("Session expired — log in again");}catch(e){}
+}
+function leave(msg){
+  clearInterval(beat);token=me="";LS.removeItem("dreamdaw.token");LS.removeItem("dreamdaw.user");
+  native("setSession",{user:"",token:"",role:""});gate(true,msg);
+}
+async function boot(){
+  if(!token){gate(true);return}
+  try{const d=await api({action:"session"});
+    if(d&&d.ok!==false&&d.user){me=d.user;LS.setItem("dreamdaw.user",me);enter();}
+    else leave();
+  }catch(e){gate(true,"Can't reach DreamShare — check your connection")}
+}
+$("login").onsubmit=async ev=>{
+  ev.preventDefault();$("err").textContent="";
+  try{
+    const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({action:"login",user:$("user").value.trim(),pass:$("pass").value})});
+    const d=await r.json();
+    if(!d.ok){$("err").textContent=d.error||"Login failed";return}
+    token=d.token;me=d.user;LS.setItem("dreamdaw.token",token);LS.setItem("dreamdaw.user",me);
+    $("pass").value="";native("setSession",{user:d.user,token:d.token,role:d.role||"user"});enter();
+  }catch(e){$("err").textContent="Can't reach DreamShare"}
+};
+$("out").onclick=()=>leave();
 
-  function isBeta(p) {
-    const f = (p.fileName || p.file || "").toLowerCase();
-    return f.indexOf("beta") === 0 || !!p.beta;
-  }
-
-  function famOf(p) {
-    const meta = BLURBS[p.name] || {};
-    return meta.fam || "tools";
-  }
-
-  function render() {
-    const grid = document.getElementById("grid");
-    const q = query.trim().toLowerCase();
-    const list = allPlugins.filter(function (p) {
-      const name = (p.name || "").toLowerCase();
-      const file = (p.fileName || p.file || "").toLowerCase();
-      if (q && name.indexOf(q) < 0 && file.indexOf(q) < 0) return false;
-      if (filter === "all") return true;
-      if (filter === "beta") return isBeta(p);
-      return famOf(p) === filter;
-    });
-    document.getElementById("count").textContent = String(list.length);
-    if (!list.length) {
-      grid.innerHTML = '<div class="empty">No machines match.</div>';
-      return;
-    }
-    grid.innerHTML = "";
-    list.forEach(function (p) {
-      const name = p.name || "unnamed";
-      const file = p.fileName || p.file || "";
-      const rel = p.url || ("Pluggins Folder/" + file);
-      const meta = BLURBS[name] || {};
-      const card = document.createElement("div");
-      card.className = "card" + (isBeta(p) ? " beta" : "");
-      card.innerHTML =
-        '<div class="tag">' + (meta.tag || (isBeta(p) ? "BETA" : "MACHINE")) + "</div>" +
-        '<div class="name">' + name + "</div>" +
-        '<div class="file">' + file + "</div>" +
-        '<div class="blurb">' + (meta.blurb || "Open this machine.") + "</div>" +
-        '<button type="button" class="launch">Launch</button>';
-      card.querySelector(".launch").onclick = function () {
-        const url = String(rel).replace(/ /g, "%20");
-        // Browser: navigate into the machine. VST shell uses openMachine via embedded kShell.
-        window.location.href = url;
-      };
-      grid.appendChild(card);
-    });
-  }
-
-  document.getElementById("find").addEventListener("input", function (e) {
-    query = e.target.value || "";
-    render();
+/* ---------- machines ---------- */
+function openMachine(url,name){
+  native("openMachine",{url,name});
+  setTimeout(()=>{location.href=url},300);
+}
+function render(){
+  const f=$("q").value.trim().toLowerCase(),g=$("grid");g.innerHTML="";
+  const list=lib.filter(p=>!f||(p.name||p.title||"").toLowerCase().includes(f));
+  if(!list.length){g.innerHTML='<div id="status">no machines found</div>';return}
+  list.forEach((p,i)=>{
+    const name=p.name||p.title||"unnamed",file=p.fileName||p.file||"";
+    const url=BASE+String(p.url||"Pluggins Folder/"+file).replace(/ /g,"%20");
+    const b=document.createElement("button");b.className="card";b.type="button";
+    b.style.animationDelay=Math.min(i*30,600)+"ms";
+    b.innerHTML="<strong></strong><small></small>";
+    b.firstChild.textContent=name;b.lastChild.textContent=file+(p.beta?" · beta":"");
+    b.onclick=()=>openMachine(url,name);g.appendChild(b);
   });
-  document.getElementById("filters").addEventListener("click", function (e) {
-    const btn = e.target.closest("button[data-filter]");
-    if (!btn) return;
-    filter = btn.getAttribute("data-filter") || "all";
-    Array.prototype.forEach.call(document.querySelectorAll("#filters button"), function (b) {
-      b.classList.toggle("on", b === btn);
-    });
-    render();
+}
+$("q").oninput=render;
+fetch(BASE+"library.json").then(r=>r.json()).then(j=>{lib=j.plugins||j.machines||[];render()})
+  .catch(e=>{$("grid").innerHTML='<div id="status">'+String(e)+'</div>'});
+
+/* ---------- themes + motion ---------- */
+const FX={embers:"bloodmoon ember amber rust copper sulfur cinder honey sand dawn",
+ snow:"ice fog ash bone paper light steel graphite static pine",
+ stars:"void dusk ink abyss cobalt violet lilac plum aurora",
+ rain:"neon mint lagoon default olive",
+ fireflies:"moss wine velvet marrow cherry trippah goonr vsttrippah"};
+function fxFor(id){for(const k in FX)if(FX[k].split(" ").includes(id))return k;return"fireflies"}
+const cv=$("fx"),cx=cv.getContext("2d");let P=[],mode="fireflies",col="#fff",W=0,H=0,run=false;
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+addEventListener("resize",size);size();
+function mk(init){const r=Math.random;return{x:r()*W,y:init||mode==="stars"||mode==="fireflies"?r()*H:mode==="embers"?H+10:-10,s:r()*2+1,v:r()*.8+.4,p:r()*6.28}}
+function tick(t){
+  cx.clearRect(0,0,W,H);cx.fillStyle=cx.strokeStyle=col;
+  for(const p of P){
+    if(mode==="embers"){p.y-=p.v*1.3;p.x+=Math.sin(t/800+p.p)*.6;cx.globalAlpha=Math.max(0,Math.min(.8,p.y/H*1.6));cx.beginPath();cx.arc(p.x,p.y,p.s,0,6.3);cx.fill();if(p.y<-10)Object.assign(p,mk())}
+    else if(mode==="snow"){p.y+=p.v*.7;p.x+=Math.sin(t/1500+p.p)*.4;cx.globalAlpha=.5;cx.beginPath();cx.arc(p.x,p.y,p.s*1.2,0,6.3);cx.fill();if(p.y>H+10)Object.assign(p,mk())}
+    else if(mode==="stars"){cx.globalAlpha=.25+.65*Math.abs(Math.sin(t/900+p.p));cx.fillRect(p.x,p.y,p.s,p.s)}
+    else if(mode==="rain"){p.y+=p.v*9;cx.globalAlpha=.35;cx.lineWidth=1;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(p.x,p.y-16);cx.stroke();if(p.y>H+20)Object.assign(p,mk())}
+    else{p.x+=Math.cos(t/2200+p.p)*.35;p.y+=Math.sin(t/1900+p.p)*.35;cx.globalAlpha=.2+.6*Math.abs(Math.sin(t/1300+p.p));cx.shadowBlur=14;cx.shadowColor=col;cx.beginPath();cx.arc(p.x,p.y,p.s*1.6,0,6.3);cx.fill();cx.shadowBlur=0}
+  }
+  requestAnimationFrame(tick);
+}
+function setFx(id,accent){
+  mode=fxFor(id);col=accent||"#fff";document.documentElement.dataset.fx=mode;
+  P=Array.from({length:mode==="rain"?60:mode==="stars"?90:55},()=>mk(true));
+  if(!run&&!matchMedia("(prefers-reduced-motion:reduce)").matches){run=true;requestAnimationFrame(tick)}
+}
+function apply(pk){
+  const v=pk.vars||{},s=document.documentElement.style;
+  for(const k in v)s.setProperty(k,v[k]);
+  $("scene").style.background=pk.scene||"var(--bg)";$("veil").style.background=pk.veil||"none";
+  setFx(pk.id,v["--accent-bright"]||v["--accent"]);
+  LS.setItem("SLEEPWELL_THEME",pk.id);
+  document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c.dataset.id===pk.id));
+}
+async function themes(){
+  let files=[];
+  try{files=(await (await fetch(BASE+"Themes/themes.json")).json()).themes.map(t=>t.file)}catch(e){}
+  const all=await Promise.all(files.map(f=>fetch(BASE+"Themes/"+f).then(r=>r.text()).then(h=>{
+    const m=h.match(/<script type="application\/sleepwell-theme">([\s\S]*?)<\/script>/);return m?JSON.parse(m[1]):null}).catch(()=>null)));
+  packs=all.filter(Boolean);
+  const box=$("themes");
+  packs.forEach(pk=>{
+    const c=document.createElement("button");c.type="button";c.className="chip";c.dataset.id=pk.id;
+    c.innerHTML='<i></i><span></span><small></small>';
+    c.firstChild.style.background="linear-gradient(180deg,"+(pk.vars["--accent"]||"#888")+","+(pk.vars["--bg"]||"#000")+")";
+    c.children[1].textContent=pk.name||pk.id;c.children[2].textContent=pk.tag||"";
+    c.onclick=()=>{apply(pk);if(token)api({action:"set_theme",theme:pk.id}).catch(()=>{})};
+    box.appendChild(c);
   });
+  const want=LS.getItem("SLEEPWELL_THEME")||"trippah";
+  const pk=packs.find(p=>p.id===want)||packs[0];if(pk)apply(pk);else setFx("trippah");
+}
+$("tbtn").onclick=e=>{e.stopPropagation();$("themes").classList.toggle("open")};
+document.addEventListener("click",e=>{if(!$("tw").contains(e.target))$("themes").classList.remove("open")});
 
-  // Login against the same worker the VST uses
-  document.getElementById("loginForm").onsubmit = async function (e) {
-    e.preventDefault();
-    const err = document.getElementById("err");
-    err.textContent = "";
-    const user = document.getElementById("user").value.trim();
-    const pass = document.getElementById("pass").value;
-    if (!user || !pass) { err.textContent = "user + pass required"; return; }
-    try {
-      const res = await fetch(API, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "login", user: user, pass: pass })
-      });
-      const data = await res.json();
-      if (!data.ok) { err.textContent = data.error || "login failed"; return; }
-      localStorage.setItem("dreamdaw.token", data.token);
-      localStorage.setItem("dreamdaw.user", data.user || user);
-      document.getElementById("who").textContent = (data.user || user) + " · " + (data.role || "user");
-      document.getElementById("status").textContent = "Signed in · session ready for Share / Lite / DREAMDAW";
-    } catch (ex) {
-      err.textContent = String(ex);
-    }
-  };
-  const saved = localStorage.getItem("dreamdaw.user");
-  if (saved) document.getElementById("who").textContent = saved;
-
-  // VST downloads (Master / Share only — no Insomnia)
-  (function () {
-    var master = document.getElementById("vstMasterBtn");
-    var share = document.getElementById("vstShareBtn");
-    var go = document.getElementById("vstDownloadGo");
-    var status = document.getElementById("vstDownloadStatus");
-    var selected = "Share";
-    var masterUrl = "DownloadVSTFile/One/Master.zip";
-    var shareUrl = "DownloadVSTFile/Two/DreamShareVst.zip";
-    function update(name) {
-      selected = name;
-      master.classList.toggle("on", name === "Master");
-      share.classList.toggle("on", name === "Share");
-      go.textContent = name === "Master" ? "Download Master VST" : "Download Share VST";
-      status.textContent = name === "Master" ? "Master VST package." : "DreamShare VST3 package.";
-    }
-    master.addEventListener("click", function () { update("Master"); });
-    share.addEventListener("click", function () { update("Share"); });
-    go.addEventListener("click", function () {
-      var a = document.createElement("a");
-      a.href = selected === "Master" ? masterUrl : shareUrl;
-      a.download = "";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    });
-  })();
-
-  fetch("library.json")
-    .then(function (r) { return r.json(); })
-    .then(function (lib) {
-      allPlugins = lib.plugins || lib.machines || [];
-      // Safety: never list Insomnia
-      allPlugins = allPlugins.filter(function (p) {
-        return String(p.name || "").toUpperCase().indexOf("INSOM") < 0;
-      });
-      document.getElementById("status").textContent =
-        allPlugins.length + " machines · TRIPPAH base · plugin selector only";
-      render();
-    })
-    .catch(function (e) {
-      document.getElementById("grid").innerHTML =
-        '<div class="empty">Could not load library.json<br>' + String(e) + "</div>";
-    });
-})();
-  </script>
+setFx("trippah");themes();boot();
+</script>
 </body>
 </html>
