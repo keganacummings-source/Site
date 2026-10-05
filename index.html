@@ -193,29 +193,50 @@ let PLUG="Pluggins Folder/";
 const BUILTIN_PLUGINS=[];
 const REPO_HINT={owner:"keganacummings-source",repo:"Site",branch:"main"};
 const HIDDEN_MACHINES=new Set(["DREAMCHPPA","DREAMDRDRUM"]);
-function machineName(file){return String(file||"").replace(/\.html$/i,"").trim().toUpperCase()}
-function machineUrl(file){return BASE+"Pluggins Folder/"+String(file).replace(/ /g,"%20")}
+
+function machineName(file){
+  return String(file||"").replace(/\\.html$/i,"").trim().toUpperCase();
+}
+function machineUrl(file){
+  const clean=String(file||"").trim().replace(/^\/+/, "");
+  return new URL(clean.split("/").map(encodeURIComponent).join("/"),BASE).href;
+}
+function normalizePlugins(a){
+  return (Array.isArray(a)?a:[])
+    .filter(x=>x && (x.name||x.title||x.fileName||x.file))
+    .map(x=>{
+      const fileName=String(x.fileName||x.file||((x.name||x.title||"")+".html")).trim();
+      return {...x,name:machineName(x.name||x.title||fileName),fileName,url:machineUrl(fileName)};
+    })
+    .filter(x=>x.name && !HIDDEN_MACHINES.has(x.name));
+}
 async function discoverPlugins(){
-  // GitHub Pages cannot enumerate a directory itself. Read the repository directory
-  // at runtime so adding an HTML file is enough to make a new machine appear.
-  const repo=location.hostname.endsWith("github.io") ? REPO_HINT : REPO_HINT;
+  // GitHub Pages cannot enumerate directories. Prefer the checked-in manifest
+  // so the selector remains functional even if GitHub's API is unavailable.
   try{
-    const u=`https://api.github.com/repos/${repo.owner}/${repo.repo}/contents/Pluggins%20Folder?ref=${encodeURIComponent(repo.branch)}`;
+    const j=await (await fetch(BASE+"library.json?t="+Date.now(),{cache:"no-store"})).json();
+    const a=Array.isArray(j)?j:(j.plugins||j.machines||j.data||[]);
+    const local=normalizePlugins(a);
+    if(local.length)return local;
+  }catch(_){}
+  // Optional live discovery allows newly-added HTML files to appear without
+  // editing the manifest. Failure here must never blank the selector.
+  try{
+    const u=`https://api.github.com/repos/${REPO_HINT.owner}/${REPO_HINT.repo}/contents/Pluggins%20Folder?ref=${encodeURIComponent(REPO_HINT.branch)}`;
     const r=await fetch(u,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
     if(!r.ok)throw new Error("github directory "+r.status);
     const a=await r.json();
-    return a.filter(x=>x&&x.type==="file"&&/\.html$/i.test(x.name))
-      .map(x=>({name:machineName(x.name),fileName:x.name,url:machineUrl(x.name)}))
-      .filter(x=>!HIDDEN_MACHINES.has(x.name));
-  }catch(e){
-    try{
-      const j=await (await fetch(BASE+"library.json?t="+Date.now(),{cache:"no-store"})).json();
-      const a=Array.isArray(j)?j:(j.plugins||j.machines||j.data||[]);
-      return a.filter(x=>x&&x.name&&!HIDDEN_MACHINES.has(String(x.name).toUpperCase()));
-    }catch(_){return BUILTIN_PLUGINS;}
+    return normalizePlugins(a.filter(x=>x&&x.type==="file"&&/\.html$/i.test(x.name))
+      .map(x=>({name:x.name,fileName:x.name})));
+  }catch(_){
+    return BUILTIN_PLUGINS;
   }
 }
-function openMachine(url,name){native("openMachine",{url,name});setTimeout(()=>{location.href=url},300)}
+function openMachine(url,name){
+  native("openMachine",{url,name});
+  setTimeout(()=>{location.href=url},300);
+}
+
 function render(){
   const f=$("q").value.trim().toLowerCase(),g=$("grid");g.innerHTML="";
   document.querySelectorAll("[data-f]").forEach(b=>b.classList.toggle("on",b.dataset.f===filt));
@@ -229,7 +250,7 @@ function render(){
   if(!list.length){g.innerHTML='<div id="status">no machines found</div>';return}
   list.forEach((p,i)=>{
     const name=p.name||p.title||"unnamed",file=p.fileName||p.file||"";
-    const url=BASE+String(p.url||PLUG+file).replace(/ /g,"%20");
+    const url=p.url ? new URL(String(p.url),BASE).href : machineUrl(file);
     const b=document.createElement("div");b.className="card";b.tabIndex=0;b.style.animationDelay=Math.min(i*25,500)+"ms";
     b.innerHTML='<div class="ct"><strong></strong><span class="fav"></span></div><small></small><div class="trk"><i></i></div>';
     b.querySelector("strong").textContent=name;b.querySelector("small").textContent=file;

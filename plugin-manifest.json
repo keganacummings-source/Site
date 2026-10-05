@@ -1,0 +1,154 @@
+{
+  "plugins": [
+    {
+      "name": "DREAM3XOSC",
+      "fileName": "DREAM3XOSC.html",
+      "url": "Pluggins Folder/DREAM3XOSC.html"
+    },
+    {
+      "name": "DREAMANALOG",
+      "fileName": "DREAMANALOG.html",
+      "url": "Pluggins Folder/DREAMANALOG.html"
+    },
+    {
+      "name": "DREAMARP",
+      "fileName": "DREAMARP.html",
+      "url": "Pluggins Folder/DREAMARP.html"
+    },
+    {
+      "name": "DREAMARPBOX",
+      "fileName": "DREAMARPBOX.html",
+      "url": "Pluggins Folder/DREAMARPBOX.html"
+    },
+    {
+      "name": "DREAMAXE",
+      "fileName": "DREAMAXE.html",
+      "url": "Pluggins Folder/DREAMAXE.html"
+    },
+    {
+      "name": "DREAMBASS",
+      "fileName": "DREAMBASS.html",
+      "url": "Pluggins Folder/DREAMBASS.html"
+    },
+    {
+      "name": "DREAMBELL",
+      "fileName": "DREAMBELL.html",
+      "url": "Pluggins Folder/DREAMBELL.html"
+    },
+    {
+      "name": "DREAMBRASS",
+      "fileName": "DREAMBRASS.html",
+      "url": "Pluggins Folder/DREAMBRASS.html"
+    },
+    {
+      "name": "DREAMCHOIR",
+      "fileName": "DREAMCHOIR.html",
+      "url": "Pluggins Folder/DREAMCHOIR.html"
+    },
+    {
+      "name": "DREAMCHORD",
+      "fileName": "DREAMCHORD.html",
+      "url": "Pluggins Folder/DREAMCHORD.html"
+    },
+    {
+      "name": "DREAMCLAV",
+      "fileName": "DREAMCLAV.html",
+      "url": "Pluggins Folder/DREAMCLAV.html"
+    },
+    {
+      "name": "DREAMDRONE",
+      "fileName": "DREAMDRONE.html",
+      "url": "Pluggins Folder/DREAMDRONE.html"
+    },
+    {
+      "name": "DREAMFLUTE",
+      "fileName": "DREAMFLUTE.html",
+      "url": "Pluggins Folder/DREAMFLUTE.html"
+    },
+    {
+      "name": "DREAMHORN",
+      "fileName": "DREAMHORN.html",
+      "url": "Pluggins Folder/DREAMHORN.html"
+    },
+    {
+      "name": "DREAMKEYS",
+      "fileName": "DREAMKEYS.html",
+      "url": "Pluggins Folder/DREAMKEYS.html"
+    },
+    {
+      "name": "DREAMLEAD",
+      "fileName": "DREAMLEAD.html",
+      "url": "Pluggins Folder/DREAMLEAD.html"
+    },
+    {
+      "name": "DREAMMARIMBA",
+      "fileName": "DREAMMARIMBA.html",
+      "url": "Pluggins Folder/DREAMMARIMBA.html"
+    },
+    {
+      "name": "DREAMMONO",
+      "fileName": "DREAMMONO.html",
+      "url": "Pluggins Folder/DREAMMONO.html"
+    },
+    {
+      "name": "DREAMNOISE",
+      "fileName": "DREAMNOISE.html",
+      "url": "Pluggins Folder/DREAMNOISE.html"
+    },
+    {
+      "name": "DREAMORGAN",
+      "fileName": "DREAMORGAN.html",
+      "url": "Pluggins Folder/DREAMORGAN.html"
+    },
+    {
+      "name": "DREAMPAD",
+      "fileName": "DREAMPAD.html",
+      "url": "Pluggins Folder/DREAMPAD.html"
+    },
+    {
+      "name": "DREAMPLUCK",
+      "fileName": "DREAMPLUCK.html",
+      "url": "Pluggins Folder/DREAMPLUCK.html"
+    },
+    {
+      "name": "DREAMPULSE",
+      "fileName": "DREAMPULSE.html",
+      "url": "Pluggins Folder/DREAMPULSE.html"
+    },
+    {
+      "name": "DREAMRACK",
+      "fileName": "DREAMRACK.html",
+      "url": "Pluggins Folder/DREAMRACK.html"
+    },
+    {
+      "name": "DREAMSAW",
+      "fileName": "DREAMSAW.html",
+      "url": "Pluggins Folder/DREAMSAW.html"
+    },
+    {
+      "name": "DREAMSINE",
+      "fileName": "DREAMSINE.html",
+      "url": "Pluggins Folder/DREAMSINE.html"
+    },
+    {
+      "name": "DREAMSSYYNNTTHH",
+      "fileName": "DREAMSSYYNNTTHH.html",
+      "url": "Pluggins Folder/DREAMSSYYNNTTHH.html"
+    },
+    {
+      "name": "DREAMSTRYNG",
+      "fileName": "DREAMSTRYNG.html",
+      "url": "Pluggins Folder/DREAMSTRYNG.html"
+    },
+    {
+      "name": "DREAMSUB",
+      "fileName": "DREAMSUB.html",
+      "url": "Pluggins Folder/DREAMSUB.html"
+    },
+    {
+      "name": "DREAMTOY",
+      "fileName": "DREAMTOY.html",
+      "url": "Pluggins Folder/DREAMTOY.html"
+    }
+  ]
+}
