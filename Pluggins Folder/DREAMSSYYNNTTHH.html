@@ -926,7 +926,7 @@ input[type=range]::-moz-range-track{background:transparent!important;border:0!im
 <body class="vhs-dream">
   <div class="synth-grade" aria-hidden="true"></div>
   <h1>DREAMSSYYNNTTHH</h1>
-  <p class="subtitle">DEVIL · default tones only · hold a key, release to let go</p>
+  <p class="subtitle">DEVIL · compact blend workstation · hold a key, release to let go</p>
 
   <div class="app-frame" id="appFrame">
   <div class="app">
@@ -951,8 +951,8 @@ input[type=range]::-moz-range-track{background:transparent!important;border:0!im
         Default tones are stacked. Double-click a tone to add it to the blend (up to 10).
       </div>
       <div class="lib-box">
-        <div class="lib-title">DEFAULT TONES · click hear · double-click blend</div>
-        <div class="lib-tip">Built-in tones only. Click to preview. Double-click to add that tone to the blend.</div>
+        <div class="lib-title">SOUND BANK · PREVIEW / ADD</div>
+        <div class="lib-tip">▶ previews · ＋ adds a new layer · double-click the row also adds</div>
         <div class="lib-tree" id="stockGrid"></div>
       </div>
 
@@ -1471,7 +1471,15 @@ function dreamLearnShow(title, body){
       { id: 'Noise', file: '07_noise.wav', wave: 'noise', freq: 0 },
       { id: 'Dust', file: '08_dust.wav', wave: 'dust', freq: 0 },
       { id: 'Fifth', file: '09_fifth.wav', wave: 'fifth', freq: 261.63 },
-      { id: 'Pluck', file: '10_pluck.wav', wave: 'pluck', freq: 261.63 }
+      { id: 'Pluck', file: '10_pluck.wav', wave: 'pluck', freq: 261.63 },
+      { id: 'Neon Bell', file: '11_neon_bell.wav' },
+      { id: 'Glass Pad', file: '12_glass_pad.wav' },
+      { id: 'Dark Pluck', file: '13_dark_pluck.wav' },
+      { id: 'Soft Pulse', file: '14_soft_pulse.wav' },
+      { id: 'FM Bloom', file: '15_fm_bloom.wav' },
+      { id: 'Hollow Square', file: '16_hollow_square.wav' },
+      { id: 'Tape Choir', file: '17_tape_choir.wav' },
+      { id: 'Sub Glow', file: '18_sub_glow.wav' }
     ];
     let MASTER_SAMPLE_URLS = [];
     const stockBufferCache = Object.create(null);
@@ -1656,11 +1664,11 @@ function dreamLearnShow(title, body){
         det.open = true;
         det.innerHTML = '<summary>' + folder + ' · ' + groups[folder].length + '</summary>';
         groups[folder].forEach(row => {
-          const b = document.createElement('button');
-          b.type = 'button';
+          const b = document.createElement('div');
           b.className = 'lib-item';
-          b.innerHTML = '<span class="s-play">▶</span><span class="s-name">' + row.name + '</span><span class="s-add" title="Add as new track">＋</span>';
-          b.title = 'Click to hear · double-click or ＋ to put on a track';
+          b.setAttribute('role','group');
+          b.innerHTML = '<button type="button" class="s-preview" title="Preview">▶</button><span class="s-name">' + row.name + '</span><button type="button" class="s-add-btn" title="Add as new track">＋</button>';
+          b.title = 'Click ▶ to hear · ＋ adds a new layer';
           const doPreview = () => {
             g.querySelectorAll('.lib-item.playing').forEach(el => el.classList.remove('playing'));
             b.classList.add('playing');
@@ -1668,23 +1676,14 @@ function dreamLearnShow(title, body){
             else previewUrl(row.item.url, row.name, row.fileName ? stockUrls(row.fileName) : []);
           };
           const doAdd = (e) => {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
+            e.preventDefault(); e.stopPropagation();
             setStatus('Adding “' + row.name + '”…');
-            if (row.kind === 'stock') loadStockTone(row.item, false);
-            else loadLibItem(row.item, false);
+            if (row.kind === 'stock') loadStockTone(row.item, true);
+            else loadLibItem(row.item, true);
           };
-          b.addEventListener('click', (e) => {
-            if (e.target && e.target.closest && e.target.closest('.s-add')) {
-              doAdd(e);
-              return;
-            }
-            doPreview();
-          });
-          b.addEventListener('dblclick', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            doAdd(e);
-          });
+          b.querySelector('.s-preview').addEventListener('click', doPreview);
+          b.querySelector('.s-add-btn').addEventListener('click', doAdd);
+          b.addEventListener('dblclick', (e) => { if (!e.target.closest('button')) { e.preventDefault(); doAdd(e); } });
           det.appendChild(b);
         });
         g.appendChild(det);
@@ -1909,7 +1908,7 @@ function dreamLearnShow(title, body){
       const sustainMode = !!options.sustain;
 
       const master = ctx.createGain();
-      master.gain.value = 0.22 * velocity;
+      master.gain.value = 0.62 * velocity;
       let busOut = master;
       if (!fxState.glue || fxState.glue.on !== false) {
         const g = fxState.glue || {};
