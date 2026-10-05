@@ -115,7 +115,7 @@ main{flex:1;overflow-y:auto;padding:10px 8px 14px 0;margin-top:8px}
     <button class="btn a" id="site" type="button">DREAMDAW.COM</button>
     <div id="tw"><button class="btn a" id="tbtn" type="button">THEME: -</button><div id="themes"></div></div>
   </div>
-  <input id="q" placeholder="Search machines..." autocomplete="off"><div id="discoverNote" class="mini" style="margin-top:4px">AUTO-DISCOVERY · plugins and themes load from the site repository</div>
+  <input id="q" placeholder="Search machines..." autocomplete="off"><div id="discoverNote" class="mini" style="margin-top:4px">MACHINE CATALOG · instruments load from the checked-in site library</div>
   <main><div id="grid"><div id="status">loading machines…</div></div></main>
 </div></div></div>
 
@@ -189,52 +189,57 @@ $("login").onsubmit=async ev=>{
 $("out").onclick=()=>leave();
 
 /* ---------- machines ---------- */
-let PLUG="Pluggins Folder/";
-const BUILTIN_PLUGINS=[];
+const PLUG="Pluggins Folder/";
 const REPO_HINT={owner:"keganacummings-source",repo:"Site",branch:"main"};
 const HIDDEN_MACHINES=new Set(["DREAMCHPPA","DREAMDRDRUM"]);
 
 function machineName(file){
-  return String(file||"").replace(/\\.html$/i,"").trim().toUpperCase();
+  return String(file||"").replace(/\.html$/i,"").trim().toUpperCase();
 }
 function machineUrl(file){
-  const clean=String(file||"").trim().replace(/^\/+/, "");
+  const raw=String(file||"").trim();
+  if(!raw)return "";
+  // library.json stores the real Pages-relative path (for example
+  // "Pluggins Folder/DREAMBASS.html"). Resolve it naturally from the
+  // currently loaded Pages document; no GitHub API is involved.
+  const clean=raw.replace(/^\.\//,"").replace(/^\/+/,"");
   return new URL(clean.split("/").map(encodeURIComponent).join("/"),BASE).href;
+}
+function loadLocalPlugins(){
+  try{
+    const raw=window.__DREAMDAW_LIBRARY__;
+    const a=Array.isArray(raw)?raw:(raw&&Array.isArray(raw.plugins)?raw.plugins:[]);
+    return normalizePlugins(a);
+  }catch(_){return []}
 }
 function normalizePlugins(a){
   return (Array.isArray(a)?a:[])
     .filter(x=>x && (x.name||x.title||x.fileName||x.file))
     .map(x=>{
       const fileName=String(x.fileName||x.file||((x.name||x.title||"")+".html")).trim();
-      return {...x,name:machineName(x.name||x.title||fileName),fileName,url:machineUrl(fileName)};
+      const path=/\.html$/i.test(fileName) && fileName.indexOf("/")<0 ? PLUG+fileName : fileName;
+      return {...x,name:machineName(x.name||x.title||fileName),fileName:path,url:machineUrl(path)};
     })
     .filter(x=>x.name && !HIDDEN_MACHINES.has(x.name));
 }
 async function discoverPlugins(){
-  // GitHub Pages cannot enumerate directories. Prefer the checked-in manifest
-  // so the selector remains functional even if GitHub's API is unavailable.
+  // Keep the original, deterministic catalog behavior: read the checked-in
+  // library.json only. GitHub directory discovery is intentionally removed.
   try{
-    const j=await (await fetch(BASE+"library.json?t="+Date.now(),{cache:"no-store"})).json();
+    const r=await fetch(BASE+"library.json?t="+Date.now(),{cache:"no-store"});
+    if(!r.ok)throw new Error("library "+r.status);
+    const j=await r.json();
     const a=Array.isArray(j)?j:(j.plugins||j.machines||j.data||[]);
     const local=normalizePlugins(a);
     if(local.length)return local;
-  }catch(_){}
-  // Optional live discovery allows newly-added HTML files to appear without
-  // editing the manifest. Failure here must never blank the selector.
-  try{
-    const u=`https://api.github.com/repos/${REPO_HINT.owner}/${REPO_HINT.repo}/contents/Pluggins%20Folder?ref=${encodeURIComponent(REPO_HINT.branch)}`;
-    const r=await fetch(u,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
-    if(!r.ok)throw new Error("github directory "+r.status);
-    const a=await r.json();
-    return normalizePlugins(a.filter(x=>x&&x.type==="file"&&/\.html$/i.test(x.name))
-      .map(x=>({name:x.name,fileName:x.name})));
-  }catch(_){
-    return BUILTIN_PLUGINS;
-  }
+  }catch(_){ }
+  return [];
 }
 function openMachine(url,name){
-  native("openMachine",{url,name});
-  setTimeout(()=>{location.href=url},300);
+  // Natural navigation inside the existing VST webview. Do not ask the JUCE
+  // host to open another machine window; that was causing the nested/blank
+  // "Error code: 0" view shown by FL Studio.
+  if(url) location.href=url;
 }
 
 function render(){
@@ -253,7 +258,7 @@ function render(){
     const url=p.url ? new URL(String(p.url),BASE).href : machineUrl(file);
     const b=document.createElement("div");b.className="card";b.tabIndex=0;b.style.animationDelay=Math.min(i*25,500)+"ms";
     b.innerHTML='<div class="ct"><strong></strong><span class="fav"></span></div><small></small><div class="trk"><i></i></div>';
-    b.querySelector("strong").textContent=name;b.querySelector("small").textContent=file;
+    b.querySelector("strong").textContent=name;b.querySelector("small").textContent=file.replace(/^Pluggins Folder\//i,"");
     const fv=b.querySelector(".fav"),on=favs.includes(name);fv.textContent=on?"FAV ★":"FAV +";fv.classList.toggle("on",on);
     fv.onclick=e=>{e.stopPropagation();favs=favs.includes(name)?favs.filter(x=>x!==name):favs.concat(name);LS.setItem("dreamdaw.favs",JSON.stringify(favs));render()};
     b.onclick=()=>openMachine(url,name);b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openMachine(url,name)}};g.appendChild(b);

@@ -1,0 +1,12 @@
+DREAMDAW SELECTOR ROLLBACK
+
+This build rolls back the GitHub API auto-discovery experiment.
+
+Selector behavior:
+- Reads the checked-in library.json catalog.
+- Uses the catalog's Pages-relative Pluggins Folder/*.html paths.
+- Does not enumerate GitHub directories.
+- Does not call the JUCE native openMachine bridge when selecting an instrument.
+- Selecting an instrument navigates naturally inside the existing webview.
+
+This is intended to avoid the nested/blank FL Studio "Error code: 0" view and return to the simpler deterministic selector behavior.
