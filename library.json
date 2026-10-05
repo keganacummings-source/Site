@@ -1,16 +1,6 @@
 {
   "plugins": [
     {
-      "name": "DREAMFOG",
-      "fileName": "DREAMFOG.html",
-      "url": "Pluggins Folder/DREAMFOG.html"
-    },
-    {
-      "name": "DREAMABC",
-      "fileName": "DREAMABC.html",
-      "url": "Pluggins Folder/DREAMABC.html"
-    },
-    {
       "name": "DREAMAXE",
       "fileName": "DREAMAXE.html",
       "url": "Pluggins Folder/DREAMAXE.html"
@@ -26,41 +16,6 @@
       "url": "Pluggins Folder/DREAMCHPPA.html"
     },
     {
-      "name": "DREAMDRDRUM",
-      "fileName": "DREAMDRDRUM.html",
-      "url": "Pluggins Folder/DREAMDRDRUM.html"
-    },
-    {
-      "name": "DREAMGLITCR",
-      "fileName": "DREAMGLITCR.html",
-      "url": "Pluggins Folder/DREAMGLITCR.html"
-    },
-    {
-      "name": "DREAMMIRROR",
-      "fileName": "DREAMMIRROR.html",
-      "url": "Pluggins Folder/DREAMMIRROR.html"
-    },
-    {
-      "name": "DREAMORACLE",
-      "fileName": "DREAMORACLE.html",
-      "url": "Pluggins Folder/DREAMORACLE.html"
-    },
-    {
-      "name": "DREAMPARASITE",
-      "fileName": "DREAMPARASITE.html",
-      "url": "Pluggins Folder/DREAMPARASITE.html"
-    },
-    {
-      "name": "DREAMRECORDER",
-      "fileName": "DREAMRECORDER.html",
-      "url": "Pluggins Folder/DREAMRECORDER.html"
-    },
-    {
-      "name": "DREAMSHARE",
-      "fileName": "DREAMSHARE.html",
-      "url": "Pluggins Folder/DREAMSHARE.html"
-    },
-    {
       "name": "DREAMSSYYNNTTHH",
       "fileName": "DREAMSSYYNNTTHH.html",
       "url": "Pluggins Folder/DREAMSSYYNNTTHH.html"
@@ -69,16 +24,6 @@
       "name": "DREAMSTRYNG",
       "fileName": "DREAMSTRYNG.html",
       "url": "Pluggins Folder/DREAMSTRYNG.html"
-    },
-    {
-      "name": "DREAMFI",
-      "fileName": "DREAMFI.html",
-      "url": "Pluggins Folder/DREAMFI.html"
-    },
-    {
-      "name": "DREAMDRAW",
-      "fileName": "BetaDREAMDRAW.html",
-      "url": "Pluggins Folder/BetaDREAMDRAW.html"
     },
     {
       "name": "DREAMLEAD",
