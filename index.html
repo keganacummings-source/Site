@@ -191,7 +191,7 @@ $("out").onclick=()=>leave();
 /* ---------- machines ---------- */
 let PLUG="Pluggins Folder/";
 const BUILTIN_PLUGINS=[];
-const REPO_HINT={owner:"keganacummings-source",repo:"Daw",branch:"main"};
+const REPO_HINT={owner:"keganacummings-source",repo:"Site",branch:"main"};
 const HIDDEN_MACHINES=new Set(["DREAMCHPPA","DREAMDRDRUM"]);
 function machineName(file){return String(file||"").replace(/\.html$/i,"").trim().toUpperCase()}
 function machineUrl(file){return BASE+"Pluggins Folder/"+String(file).replace(/ /g,"%20")}
@@ -303,7 +303,17 @@ async function themes(){
 $("tbtn").onclick=e=>{e.stopPropagation();$("themes").classList.toggle("open")};
 document.addEventListener("click",e=>{if(!$("tw").contains(e.target))$("themes").classList.remove("open")});
 
-setFx("trippah");themes();boot();document.querySelector("[data-f=all]").classList.add("on");
+setFx("trippah");
+discoverPlugins().then(function(found){
+  lib=Array.isArray(found)?found:[];
+  render();
+}).catch(function(){
+  lib=[];
+  render();
+});
+themes();
+boot();
+document.querySelector("[data-f=all]").classList.add("on");
 </script>
 </body>
 </html>

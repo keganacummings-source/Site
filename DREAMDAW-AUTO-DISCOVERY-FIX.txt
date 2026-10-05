@@ -1,0 +1,16 @@
+DREAMDAW AUTO-DISCOVERY FIX
+============================
+
+Fixed the deployed machine selector showing "0 DISTINCT NAMED MODULES".
+
+Root causes:
+1. index.html defined discoverPlugins() but never called it, so lib stayed empty.
+2. GitHub runtime discovery was pointed at the Daw repository instead of the Site
+   repository that actually contains Pluggins Folder/.
+
+Fix:
+- REPO_HINT now targets keganacummings-source/Site, main.
+- Startup calls discoverPlugins(), assigns the result to lib, and renders the cards.
+- library.json remains the fallback when GitHub API discovery is unavailable.
+
+No instrument HTML files were removed or rewritten by this fix.
