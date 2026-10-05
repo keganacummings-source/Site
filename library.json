@@ -27,95 +27,84 @@
     },
     {
       "name": "DREAMLEAD",
-      "fileName": "BetaDREAMLEAD.html",
-      "url": "Pluggins Folder/BetaDREAMLEAD.html"
+      "fileName": "DREAMLEAD.html",
+      "url": "Pluggins Folder/DREAMLEAD.html"
     },
     {
       "name": "DREAMPAD",
-      "fileName": "BetaDREAMPAD.html",
-      "url": "Pluggins Folder/BetaDREAMPAD.html"
+      "fileName": "DREAMPAD.html",
+      "url": "Pluggins Folder/DREAMPAD.html"
     },
     {
       "name": "DREAMARP",
-      "fileName": "BetaDREAMARP.html",
-      "url": "Pluggins Folder/BetaDREAMARP.html"
+      "fileName": "DREAMARP.html",
+      "url": "Pluggins Folder/DREAMARP.html"
     },
     {
       "name": "DREAM3XOSC",
-      "fileName": "BetaDREAM3XOSC.html",
-      "url": "Pluggins Folder/BetaDREAM3XOSC.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAM3XOSC.html",
+      "url": "Pluggins Folder/DREAM3XOSC.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMSINE",
-      "fileName": "BetaDREAMSINE.html",
-      "url": "Pluggins Folder/BetaDREAMSINE.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMSINE.html",
+      "url": "Pluggins Folder/DREAMSINE.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMSAW",
-      "fileName": "BetaDREAMSAW.html",
-      "url": "Pluggins Folder/BetaDREAMSAW.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMSAW.html",
+      "url": "Pluggins Folder/DREAMSAW.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMPULSE",
-      "fileName": "BetaDREAMPULSE.html",
-      "url": "Pluggins Folder/BetaDREAMPULSE.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMPULSE.html",
+      "url": "Pluggins Folder/DREAMPULSE.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMSUB",
-      "fileName": "BetaDREAMSUB.html",
-      "url": "Pluggins Folder/BetaDREAMSUB.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMSUB.html",
+      "url": "Pluggins Folder/DREAMSUB.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMANALOG",
-      "fileName": "BetaDREAMANALOG.html",
-      "url": "Pluggins Folder/BetaDREAMANALOG.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMANALOG.html",
+      "url": "Pluggins Folder/DREAMANALOG.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMKEYS",
-      "fileName": "BetaDREAMKEYS.html",
-      "url": "Pluggins Folder/BetaDREAMKEYS.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMKEYS.html",
+      "url": "Pluggins Folder/DREAMKEYS.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMORGAN",
-      "fileName": "BetaDREAMORGAN.html",
-      "url": "Pluggins Folder/BetaDREAMORGAN.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMORGAN.html",
+      "url": "Pluggins Folder/DREAMORGAN.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMPLUCK",
-      "fileName": "BetaDREAMPLUCK.html",
-      "url": "Pluggins Folder/BetaDREAMPLUCK.html",
-      "family": "Strings",
-      "beta": true
+      "fileName": "DREAMPLUCK.html",
+      "url": "Pluggins Folder/DREAMPLUCK.html",
+      "family": "Strings"
     },
     {
       "name": "DREAMBELL",
-      "fileName": "BetaDREAMBELL.html",
-      "url": "Pluggins Folder/BetaDREAMBELL.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMBELL.html",
+      "url": "Pluggins Folder/DREAMBELL.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMBRASS",
-      "fileName": "BetaDREAMBRASS.html",
-      "url": "Pluggins Folder/BetaDREAMBRASS.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMBRASS.html",
+      "url": "Pluggins Folder/DREAMBRASS.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMFLUTE",
@@ -125,73 +114,63 @@
     },
     {
       "name": "DREAMCHOIR",
-      "fileName": "BetaDREAMCHOIR.html",
-      "url": "Pluggins Folder/BetaDREAMCHOIR.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMCHOIR.html",
+      "url": "Pluggins Folder/DREAMCHOIR.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMMARIMBA",
-      "fileName": "BetaDREAMMARIMBA.html",
-      "url": "Pluggins Folder/BetaDREAMMARIMBA.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMMARIMBA.html",
+      "url": "Pluggins Folder/DREAMMARIMBA.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMCLAV",
-      "fileName": "BetaDREAMCLAV.html",
-      "url": "Pluggins Folder/BetaDREAMCLAV.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMCLAV.html",
+      "url": "Pluggins Folder/DREAMCLAV.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMHORN",
-      "fileName": "BetaDREAMHORN.html",
-      "url": "Pluggins Folder/BetaDREAMHORN.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMHORN.html",
+      "url": "Pluggins Folder/DREAMHORN.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMCHORD",
-      "fileName": "BetaDREAMCHORD.html",
-      "url": "Pluggins Folder/BetaDREAMCHORD.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMCHORD.html",
+      "url": "Pluggins Folder/DREAMCHORD.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMMONO",
-      "fileName": "BetaDREAMMONO.html",
-      "url": "Pluggins Folder/BetaDREAMMONO.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMMONO.html",
+      "url": "Pluggins Folder/DREAMMONO.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMARPBOX",
-      "fileName": "BetaDREAMARPBOX.html",
-      "url": "Pluggins Folder/BetaDREAMARPBOX.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMARPBOX.html",
+      "url": "Pluggins Folder/DREAMARPBOX.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMDRONE",
-      "fileName": "BetaDREAMDRONE.html",
-      "url": "Pluggins Folder/BetaDREAMDRONE.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMDRONE.html",
+      "url": "Pluggins Folder/DREAMDRONE.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMNOISE",
-      "fileName": "BetaDREAMNOISE.html",
-      "url": "Pluggins Folder/BetaDREAMNOISE.html",
-      "family": "FX",
-      "beta": true
+      "fileName": "DREAMNOISE.html",
+      "url": "Pluggins Folder/DREAMNOISE.html",
+      "family": "FX"
     },
     {
       "name": "DREAMTOY",
-      "fileName": "BetaDREAMTOY.html",
-      "url": "Pluggins Folder/BetaDREAMTOY.html",
-      "family": "Keys",
-      "beta": true
+      "fileName": "DREAMTOY.html",
+      "url": "Pluggins Folder/DREAMTOY.html",
+      "family": "Keys"
     },
     {
       "name": "DREAMRACK",
