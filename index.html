@@ -85,6 +85,10 @@ main{flex:1;overflow-y:auto;padding:10px 8px 14px 0;margin-top:8px}
 .f input{background:var(--panel-2);border:1px solid var(--accent-dim);border-radius:4px;padding:10px 12px;outline:none}
 #err{min-height:15px;color:var(--accent-bright);font-size:12px;text-align:center}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.card{opacity:1}}
+
+.dd-live{display:inline-flex!important;align-items:center;gap:10px;border:1px solid var(--border);padding:5px 9px;border-radius:3px;background:color-mix(in srgb,var(--panel-2) 88%,transparent);letter-spacing:.05em}
+.dd-live b{font-size:.62rem}.dd-online{font-size:.62rem;opacity:.9}.dd-live.is-live b{color:var(--accent-bright)}.dd-live.is-off b{color:#ff8b8b}
+.dd-live strong{font-size:.72rem}.dd-communicate{margin:12px 0 8px;padding:8px 10px;border:1px solid var(--border);background:color-mix(in srgb,var(--panel-2) 82%,transparent);font-size:.62rem;letter-spacing:.06em;display:flex;justify-content:space-between;gap:12px}
 </style>
 </head>
 <body>
@@ -97,7 +101,10 @@ main{flex:1;overflow-y:auto;padding:10px 8px 14px 0;margin-top:8px}
   <div class="row">
     <span class="mini auth" style="display:none">SIGNED IN | <b id="who"></b></span>
     <div class="sp"></div>
-    <span class="mini auth" style="display:none"><b>ONLINE: <span id="online">0</span></b></span>
+    <span class="mini auth dd-live" style="display:none">
+  <b>● DREAMAPI <span id="apiState">CONNECTING</span></b>
+  <span class="dd-online">ONLINE: <strong id="online">0</strong></span>
+</span>
     <button class="btn auth" id="out" type="button" style="display:none">LOG OUT</button>
   </div>
   <div class="row z">
@@ -142,8 +149,21 @@ function enter(){
   clearInterval(beat);ping();beat=setInterval(ping,25000);
 }
 async function ping(){
-  try{const d=await api({action:"presence"});if(d&&d.online)$("online").textContent=d.online.length;
-      if(d&&d.code==="auth")leave("Session expired — log in again");}catch(e){}
+  try{
+    const d=await api({action:"presence"});
+    const live=$(".dd-live");
+    if(d&&Array.isArray(d.online)){
+      $("online").textContent=d.online.length;
+      $("apiState").textContent="CONNECTED";
+      live&&live.classList.add("is-live");
+      live&&live.classList.remove("is-off");
+    }
+    if(d&&d.code==="auth")leave("Session expired — log in again");
+  }catch(e){
+    const live=$(".dd-live");
+    if(live){live.classList.remove("is-live");live.classList.add("is-off")}
+    $("apiState").textContent="OFFLINE";
+  }
 }
 function leave(msg){
   clearInterval(beat);token=me="";LS.removeItem("dreamdaw.token");LS.removeItem("dreamdaw.user");
@@ -203,7 +223,7 @@ function render(){
 document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{filt=b.dataset.f;render()});
 $("site").onclick=()=>openMachine("https://www.dreamdaw.com/","DREAMDAW.COM");
 $("q").oninput=render;
-const BUILTIN_PLUGINS=[{"name":"DREAMAXE","fileName":"DREAMAXE.html"},{"name":"DREAMBASS","fileName":"DREAMBASS.html"},{"name":"DREAMCHPPA","fileName":"DREAMCHPPA.html"},{"name":"DREAMFLUTE","fileName":"DREAMFLUTE.html"},{"name":"DREAMRACK","fileName":"DREAMRACK.html"},{"name":"DREAMSSYYNNTTHH","fileName":"DREAMSSYYNNTTHH.html"},{"name":"DREAMSTRYNG","fileName":"DREAMSTRYNG.html"},{"name":"DREAM3XOSC","fileName":"DREAM3XOSC.html"},{"name":"DREAMANALOG","fileName":"DREAMANALOG.html"},{"name":"DREAMARP","fileName":"DREAMARP.html"},{"name":"DREAMARPBOX","fileName":"DREAMARPBOX.html"},{"name":"DREAMBELL","fileName":"DREAMBELL.html"},{"name":"DREAMBRASS","fileName":"DREAMBRASS.html"},{"name":"DREAMCHOIR","fileName":"DREAMCHOIR.html"},{"name":"DREAMCHORD","fileName":"DREAMCHORD.html"},{"name":"DREAMCLAV","fileName":"DREAMCLAV.html"},{"name":"DREAMDRONE","fileName":"DREAMDRONE.html"},{"name":"DREAMHORN","fileName":"DREAMHORN.html"},{"name":"DREAMKEYS","fileName":"DREAMKEYS.html"},{"name":"DREAMLEAD","fileName":"DREAMLEAD.html"},{"name":"DREAMMARIMBA","fileName":"DREAMMARIMBA.html"},{"name":"DREAMMONO","fileName":"DREAMMONO.html"},{"name":"DREAMNOISE","fileName":"DREAMNOISE.html"},{"name":"DREAMORGAN","fileName":"DREAMORGAN.html"},{"name":"DREAMPAD","fileName":"DREAMPAD.html"},{"name":"DREAMPLUCK","fileName":"DREAMPLUCK.html"},{"name":"DREAMPULSE","fileName":"DREAMPULSE.html"},{"name":"DREAMSAW","fileName":"DREAMSAW.html"},{"name":"DREAMSINE","fileName":"DREAMSINE.html"},{"name":"DREAMSUB","fileName":"DREAMSUB.html"},{"name":"DREAMTOY","fileName":"DREAMTOY.html"}];
+const BUILTIN_PLUGINS=[{"name":"DREAMAXE","fileName":"DREAMAXE.html"},{"name":"DREAMBASS","fileName":"DREAMBASS.html"},{"name":"DREAMFLUTE","fileName":"DREAMFLUTE.html"},{"name":"DREAMRACK","fileName":"DREAMRACK.html"},{"name":"DREAMSSYYNNTTHH","fileName":"DREAMSSYYNNTTHH.html"},{"name":"DREAMSTRYNG","fileName":"DREAMSTRYNG.html"},{"name":"DREAM3XOSC","fileName":"DREAM3XOSC.html"},{"name":"DREAMANALOG","fileName":"DREAMANALOG.html"},{"name":"DREAMARP","fileName":"DREAMARP.html"},{"name":"DREAMARPBOX","fileName":"DREAMARPBOX.html"},{"name":"DREAMBELL","fileName":"DREAMBELL.html"},{"name":"DREAMBRASS","fileName":"DREAMBRASS.html"},{"name":"DREAMCHOIR","fileName":"DREAMCHOIR.html"},{"name":"DREAMCHORD","fileName":"DREAMCHORD.html"},{"name":"DREAMCLAV","fileName":"DREAMCLAV.html"},{"name":"DREAMDRONE","fileName":"DREAMDRONE.html"},{"name":"DREAMHORN","fileName":"DREAMHORN.html"},{"name":"DREAMKEYS","fileName":"DREAMKEYS.html"},{"name":"DREAMLEAD","fileName":"DREAMLEAD.html"},{"name":"DREAMMARIMBA","fileName":"DREAMMARIMBA.html"},{"name":"DREAMMONO","fileName":"DREAMMONO.html"},{"name":"DREAMNOISE","fileName":"DREAMNOISE.html"},{"name":"DREAMORGAN","fileName":"DREAMORGAN.html"},{"name":"DREAMPAD","fileName":"DREAMPAD.html"},{"name":"DREAMPLUCK","fileName":"DREAMPLUCK.html"},{"name":"DREAMPULSE","fileName":"DREAMPULSE.html"},{"name":"DREAMSAW","fileName":"DREAMSAW.html"},{"name":"DREAMSINE","fileName":"DREAMSINE.html"},{"name":"DREAMSUB","fileName":"DREAMSUB.html"},{"name":"DREAMTOY","fileName":"DREAMTOY.html"}];
 fetch(BASE+"library.json?t="+Date.now()).then(r=>r.ok?r.json():null).then(j=>{const a=j&&(Array.isArray(j)?j:(j.plugins||j.machines||j.data));lib=(a&&a.length)?a:BUILTIN_PLUGINS;render()}).catch(()=>{lib=BUILTIN_PLUGINS;render()});
 
 /* ---------- themes + motion ---------- */

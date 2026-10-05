@@ -851,5 +851,102 @@ window.DreamHost.noteOff=window.noteOff;
   });
 })();
 </script>
+
+<style id="dreamdaw-preset-style">
+#ddPresetDock{position:fixed;right:14px;top:14px;z-index:99999;width:min(330px,calc(100vw - 28px));padding:10px;border:1px solid var(--border,#444);background:color-mix(in srgb,var(--panel,#111) 96%,transparent);box-shadow:0 12px 36px rgba(0,0,0,.35);font:12px var(--font,monospace);backdrop-filter:blur(10px)}
+#ddPresetDock .ddp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;letter-spacing:.08em}
+#ddPresetDock .ddp-dot{width:7px;height:7px;border-radius:50%;background:var(--accent,#fff);box-shadow:0 0 8px var(--accent,#fff)}
+#ddPresetDock .ddp-row{display:flex;gap:6px;margin-top:6px}
+#ddPresetDock input,#ddPresetDock select,#ddPresetDock button{min-width:0;box-sizing:border-box;border:1px solid var(--border,#444);background:var(--panel-2,#181818);color:var(--text,#fff);padding:7px 8px;font:inherit}
+#ddPresetDock input,#ddPresetDock select{flex:1}
+#ddPresetDock button{cursor:pointer}.ddp-msg{min-height:14px;margin-top:6px;opacity:.75;font-size:10px}
+@media(max-width:650px){#ddPresetDock{position:fixed;right:8px;left:8px;top:8px;width:auto}}
+</style>
+
+<script id="dreamdaw-presets">
+(function(){
+'use strict';
+if(window.__DREAMDAW_PRESETS__)return; window.__DREAMDAW_PRESETS__=true;
+var API='https://dreamshare-api.keganacummings.workers.dev/';
+var machine=(location.pathname.split('/').pop()||'instrument').replace(/\.html$/i,'').replace(/[^A-Za-z0-9_-]/g,'').slice(0,64)||'instrument';
+var LS=window.localStorage;
+function token(){return LS.getItem('dreamdaw.token')||''}
+function api(body){
+  body=Object.assign({token:token()},body);
+  return fetch(API,{method:'POST',headers:{'content-type':'application/json','X-SW-Token':token()},body:JSON.stringify(body)}).then(function(r){return r.json()});
+}
+function state(){
+  var out={};
+  document.querySelectorAll('input,select,textarea,[contenteditable="true"]').forEach(function(el){
+    if(el.closest('#ddPresetDock'))return;
+    var key=el.id||el.name||el.getAttribute('data-param');
+    if(!key)return;
+    if(el.type==='checkbox'||el.type==='radio')out[key]={kind:el.type,value:!!el.checked};
+    else out[key]={kind:el.tagName.toLowerCase(),value:el.value};
+  });
+  return out;
+}
+function apply(s){
+  if(!s)return;
+  Object.keys(s).forEach(function(key){
+    var el=document.getElementById(key)||document.querySelector('[name="'+CSS.escape(key)+'"]');
+    if(!el)return;
+    var x=s[key];
+    if(x.kind==='checkbox'||x.kind==='radio')el.checked=!!x.value;
+    else el.value=x.value;
+    el.dispatchEvent(new Event('input',{bubbles:true}));
+    el.dispatchEvent(new Event('change',{bubbles:true}));
+  });
+}
+function dock(){
+  if(document.getElementById('ddPresetDock'))return;
+  var d=document.createElement('div');d.id='ddPresetDock';
+  d.innerHTML='<div class="ddp-head"><span>INSTRUMENT PRESETS</span><span class="ddp-dot"></span></div>'+
+    '<div class="ddp-row"><select id="ddPresetList"><option>Loading…</option></select></div>'+
+    '<div class="ddp-row"><input id="ddPresetName" maxlength="48" placeholder="Preset name"><button id="ddPresetSave">SAVE</button></div>'+
+    '<div class="ddp-row"><button id="ddPresetLoad">LOAD</button><button id="ddPresetDelete">DELETE</button></div>'+
+    '<div class="ddp-msg" id="ddPresetMsg">DreamAPI presets follow your account.</div>';
+  document.body.appendChild(d);
+  document.getElementById('ddPresetSave').onclick=save;
+  document.getElementById('ddPresetLoad').onclick=load;
+  document.getElementById('ddPresetDelete').onclick=del;
+  list();
+}
+function msg(x){var e=document.getElementById('ddPresetMsg');if(e)e.textContent=x}
+function list(){
+  if(!token()){msg('Log in on DREAMDAW first to use shared presets.');return}
+  api({action:'preset_list',machine:machine}).then(function(d){
+    var s=document.getElementById('ddPresetList');if(!s)return;
+    s.innerHTML='';
+    (d.presets||[]).forEach(function(p){var o=document.createElement('option');o.value=p.name;o.textContent=p.name;s.appendChild(o)});
+    if(!s.options.length){var o=document.createElement('option');o.textContent='No saved presets';s.appendChild(o)}
+    msg((d.presets||[]).length+' saved preset'+((d.presets||[]).length===1?'':'s')+' for '+machine);
+  }).catch(function(){msg('DreamAPI unavailable')});
+}
+function save(){
+  var n=(document.getElementById('ddPresetName').value||'').trim();
+  if(!n){msg('Enter a preset name.');return}
+  msg('Saving…');
+  api({action:'preset_save',machine:machine,name:n,state:state()}).then(function(d){
+    if(d.ok){msg('Saved '+n);document.getElementById('ddPresetName').value='';list()}else msg(d.error||'Save failed');
+  }).catch(function(){msg('DreamAPI unavailable')});
+}
+function selected(){var s=document.getElementById('ddPresetList');return s&&s.value}
+function load(){
+  var n=selected();if(!n||n==='No saved presets'){msg('Select a preset first.');return}
+  msg('Loading '+n+'…');
+  api({action:'preset_load',machine:machine,name:n}).then(function(d){
+    if(d.ok){apply(d.preset&&d.preset.state);msg('Loaded '+n)}else msg(d.error||'Load failed');
+  }).catch(function(){msg('DreamAPI unavailable')});
+}
+function del(){
+  var n=selected();if(!n||n==='No saved presets')return;
+  if(!confirm('Delete preset "'+n+'"?'))return;
+  api({action:'preset_delete',machine:machine,name:n}).then(function(d){msg(d.ok?'Deleted '+n:(d.error||'Delete failed'));list()}).catch(function(){msg('DreamAPI unavailable')});
+}
+function ready(){dock();setTimeout(list,600)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready);else ready();
+})();
+</script>
 </body>
 </html>

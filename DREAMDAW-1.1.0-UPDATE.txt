@@ -1,0 +1,7 @@
+DREAMDAW 1.1.0
+- Refreshed API/online status presentation.
+- Online count comes directly from DreamAPI presence response.
+- Added account-backed instrument presets to all instrument pages.
+- Presets are keyed by instrument and survive new VST/WebView instances.
+- Updated Worker supports preset_list, preset_save, preset_load, preset_delete.
+- Existing balanced audio build retained.
