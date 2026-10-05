@@ -323,6 +323,40 @@ input[type=range]::-moz-range-track{background:transparent!important;border:0!im
   window.addEventListener('resize',requestFit,{passive:true});
 })();
 </script>
+
+<style id="dreamdaw-modern-ui">
+/* DREAMDAW modern UI pass — functionality remains in the original page scripts. */
+:root{--dd-gap:10px}
+body{scroll-behavior:smooth}
+button,input,select{font-family:inherit}
+.app{border-radius:10px!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--border,#333) 75%,transparent),0 18px 60px rgba(0,0,0,.55),0 0 28px color-mix(in srgb,var(--accent,#fff) 10%,transparent)!important}
+.controls,.top{gap:7px!important;padding:10px 12px!important;border-bottom:1px solid color-mix(in srgb,var(--border,#333) 90%,transparent)!important;background:color-mix(in srgb,var(--panel-2,#111) 94%,transparent)!important;position:relative}
+.controls button,.top button,.controls input,.top input,.controls select,.top select{min-height:34px}
+.section{margin:10px 0!important;border:1px solid color-mix(in srgb,var(--border,#333) 95%,transparent)!important;border-radius:8px!important;background:color-mix(in srgb,var(--panel,#111) 92%,transparent)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 8px 24px rgba(0,0,0,.16)!important;overflow:hidden}
+.section-title{padding:9px 11px!important;border-bottom:1px solid var(--border,#333)!important;letter-spacing:.09em!important;font-weight:700!important}
+.params,.env-grid,.slot-params{gap:9px!important;padding:10px!important}
+.param{border:1px solid color-mix(in srgb,var(--border,#333) 90%,transparent);border-radius:7px;padding:8px!important;background:color-mix(in srgb,var(--panel-2,#111) 72%,transparent)}
+.param input[type=range]{width:100%}
+.status{border-top:1px solid var(--border,#333)!important;padding:8px 10px!important}
+@media(max-width:720px){body{padding:8px!important}.app{width:100%!important;max-width:none!important}.controls,.top{position:relative!important}.params,.env-grid{grid-template-columns:1fr!important}}
+/* Axe: preserve the crying-guitar identity while making the control deck readable. */
+body:has(.tear-field){background:radial-gradient(circle at 50% 0%,color-mix(in srgb,var(--accent,#fff) 10%,transparent),transparent 45%),var(--bg)!important}
+body:has(.tear-field) .app{width:min(980px,100%)!important;margin:0 auto!important}
+body:has(.tear-field) .top{display:flex!important;flex-wrap:wrap!important;align-items:center!important}
+body:has(.tear-field) #neck{border:1px solid var(--border,#333);border-radius:9px;overflow:hidden;box-shadow:inset 0 0 30px rgba(0,0,0,.35)}
+body:has(.tear-field) .sels,body:has(.tear-field) .grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px!important}
+body:has(.tear-field) .sels>*,body:has(.tear-field) .grid>*{border:1px solid var(--border,#333)!important;border-radius:7px!important;padding:8px!important;background:color-mix(in srgb,var(--panel-2,#111) 82%,transparent)!important}
+/* Bass / strings / synth: compact, defined modules with consistent spacing. */
+body:has(#layers) .body,body:has(#sampleGrid) .body,body:has(#stockGrid) .body-scroll{padding:10px 12px!important}
+body:has(#layers) .layer,body:has(#sampleGrid) .section,body:has(#stockGrid) .section{border:1px solid var(--border,#333)!important;border-radius:8px!important}
+body:has(#layers) .params,body:has(#sampleGrid) .params{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important}
+body:has(#stockGrid) .lib-box{border:1px solid var(--border,#333)!important;border-radius:8px!important;box-shadow:inset 0 0 22px rgba(0,0,0,.18)}
+body:has(#stockGrid) .slots{gap:9px!important}
+body:has(#stockGrid) .slot{border:1px solid var(--border,#333)!important;border-radius:8px!important;box-shadow:0 8px 24px rgba(0,0,0,.16)}
+body:has(#sampleGrid) .sample-grid{gap:8px!important}
+body:has(#sampleGrid) .sample-grid>*{border:1px solid var(--border,#333)!important;border-radius:7px!important}
+</style>
+
 </head>
 <body>
   <h1>DREAMBASS</h1>
@@ -1256,14 +1290,22 @@ function __swBindDropTarget(el, onFile, onLib) {
 </script>
 
 <style id="dreamdaw-preset-style">
-#ddPresetDock{position:fixed;right:14px;top:14px;z-index:99999;width:min(330px,calc(100vw - 28px));padding:10px;border:1px solid var(--border,#444);background:color-mix(in srgb,var(--panel,#111) 96%,transparent);box-shadow:0 12px 36px rgba(0,0,0,.35);font:12px var(--font,monospace);backdrop-filter:blur(10px)}
-#ddPresetDock .ddp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;letter-spacing:.08em}
-#ddPresetDock .ddp-dot{width:7px;height:7px;border-radius:50%;background:var(--accent,#fff);box-shadow:0 0 8px var(--accent,#fff)}
-#ddPresetDock .ddp-row{display:flex;gap:6px;margin-top:6px}
-#ddPresetDock input,#ddPresetDock select,#ddPresetDock button{min-width:0;box-sizing:border-box;border:1px solid var(--border,#444);background:var(--panel-2,#181818);color:var(--text,#fff);padding:7px 8px;font:inherit}
-#ddPresetDock input,#ddPresetDock select{flex:1}
-#ddPresetDock button{cursor:pointer}.ddp-msg{min-height:14px;margin-top:6px;opacity:.75;font-size:10px}
-@media(max-width:650px){#ddPresetDock{position:fixed;right:8px;left:8px;top:8px;width:auto}}
+#ddPresetDock{position:fixed;right:14px;top:14px;z-index:99999;width:min(360px,calc(100vw - 28px));border:1px solid var(--accent-dim,var(--border,#444));background:color-mix(in srgb,var(--panel,#111) 97%,transparent);box-shadow:0 14px 42px rgba(0,0,0,.5),0 0 20px color-mix(in srgb,var(--accent,#fff) 16%,transparent);font:12px var(--font,monospace);backdrop-filter:blur(12px);border-radius:7px;overflow:hidden}
+#ddPresetDock .ddp-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border:0;background:transparent;color:var(--text,#fff);font:inherit;font-weight:700;letter-spacing:.08em;cursor:pointer;text-align:left}
+#ddPresetDock .ddp-title{display:flex;align-items:center;gap:8px}
+#ddPresetDock .ddp-chevron{font-size:14px;opacity:.8;transition:transform .18s ease}
+#ddPresetDock.open .ddp-chevron{transform:rotate(180deg)}
+#ddPresetDock .ddp-dot{width:7px;height:7px;border-radius:50%;background:var(--accent,var(--accent-bright,#fff));box-shadow:0 0 9px var(--accent,var(--accent-bright,#fff));flex:0 0 auto}
+#ddPresetDock .ddp-body{display:none;padding:0 11px 11px;border-top:1px solid var(--border,#444)}
+#ddPresetDock.open .ddp-body{display:block}
+#ddPresetDock .ddp-row{display:flex;gap:7px;margin-top:8px}
+#ddPresetDock input,#ddPresetDock select,#ddPresetDock button.ddp-action{min-width:0;box-sizing:border-box;border:1px solid var(--border,#444);background:var(--panel-2,#181818);color:var(--text,#fff);padding:9px 10px;font:inherit;border-radius:4px}
+#ddPresetDock select{width:100%;min-height:38px;font-size:13px}
+#ddPresetDock input{flex:1;min-height:38px}
+#ddPresetDock button.ddp-action{cursor:pointer;font-weight:700;letter-spacing:.04em}
+#ddPresetDock button.ddp-action:hover,#ddPresetDock select:focus,#ddPresetDock input:focus{border-color:var(--accent,#fff);box-shadow:0 0 10px color-mix(in srgb,var(--accent,#fff) 18%,transparent);outline:none}
+#ddPresetDock .ddp-msg{min-height:14px;margin-top:7px;opacity:.72;font-size:10px;line-height:1.35}
+@media(max-width:650px){#ddPresetDock{right:8px;left:8px;top:8px;width:auto}}
 </style>
 
 <script id="dreamdaw-presets">
@@ -1304,11 +1346,12 @@ function apply(s){
 function dock(){
   if(document.getElementById('ddPresetDock'))return;
   var d=document.createElement('div');d.id='ddPresetDock';
-  d.innerHTML='<div class="ddp-head"><span>INSTRUMENT PRESETS</span><span class="ddp-dot"></span></div>'+
-    '<div class="ddp-row"><select id="ddPresetList"><option>Loading…</option></select></div>'+
-    '<div class="ddp-row"><input id="ddPresetName" maxlength="48" placeholder="Preset name"><button id="ddPresetSave">SAVE</button></div>'+
-    '<div class="ddp-row"><button id="ddPresetLoad">LOAD</button><button id="ddPresetDelete">DELETE</button></div>'+
-    '<div class="ddp-msg" id="ddPresetMsg">DreamAPI presets follow your account.</div>';
+  d.innerHTML='<button type="button" class="ddp-toggle" id="ddPresetToggle" aria-expanded="false"><span class="ddp-title"><span class="ddp-dot"></span><span>INSTRUMENT PRESETS</span></span><span class="ddp-chevron">⌄</span></button>'+
+    '<div class="ddp-body" id="ddPresetBody"><div class="ddp-row"><select id="ddPresetList"><option>Loading…</option></select></div>'+
+    '<div class="ddp-row"><input id="ddPresetName" maxlength="48" placeholder="Preset name"><button class="ddp-action" id="ddPresetSave">SAVE</button></div>'+
+    '<div class="ddp-row"><button class="ddp-action" id="ddPresetLoad">LOAD</button><button class="ddp-action" id="ddPresetDelete">DELETE</button></div>'+
+    '<div class="ddp-msg" id="ddPresetMsg">DreamAPI presets follow your account.</div></div>';
+  document.getElementById('ddPresetToggle').onclick=function(){var open=!d.classList.contains('open');d.classList.toggle('open',open);this.setAttribute('aria-expanded',String(open));};
   document.body.appendChild(d);
   document.getElementById('ddPresetSave').onclick=save;
   document.getElementById('ddPresetLoad').onclick=load;

@@ -1,70 +1,9 @@
 {
   "plugins": [
     {
-      "name": "DREAMAXE",
-      "fileName": "DREAMAXE.html",
-      "url": "Pluggins Folder/DREAMAXE.html"
-    },
-    {
-      "name": "DREAMBASS",
-      "fileName": "DREAMBASS.html",
-      "url": "Pluggins Folder/DREAMBASS.html"
-    },
-    {
-    },
-    {
-      "name": "DREAMSSYYNNTTHH",
-      "fileName": "DREAMSSYYNNTTHH.html",
-      "url": "Pluggins Folder/DREAMSSYYNNTTHH.html"
-    },
-    {
-      "name": "DREAMSTRYNG",
-      "fileName": "DREAMSTRYNG.html",
-      "url": "Pluggins Folder/DREAMSTRYNG.html"
-    },
-    {
-      "name": "DREAMLEAD",
-      "fileName": "DREAMLEAD.html",
-      "url": "Pluggins Folder/DREAMLEAD.html"
-    },
-    {
-      "name": "DREAMPAD",
-      "fileName": "DREAMPAD.html",
-      "url": "Pluggins Folder/DREAMPAD.html"
-    },
-    {
-      "name": "DREAMARP",
-      "fileName": "DREAMARP.html",
-      "url": "Pluggins Folder/DREAMARP.html"
-    },
-    {
       "name": "DREAM3XOSC",
       "fileName": "DREAM3XOSC.html",
       "url": "Pluggins Folder/DREAM3XOSC.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMSINE",
-      "fileName": "DREAMSINE.html",
-      "url": "Pluggins Folder/DREAMSINE.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMSAW",
-      "fileName": "DREAMSAW.html",
-      "url": "Pluggins Folder/DREAMSAW.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMPULSE",
-      "fileName": "DREAMPULSE.html",
-      "url": "Pluggins Folder/DREAMPULSE.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMSUB",
-      "fileName": "DREAMSUB.html",
-      "url": "Pluggins Folder/DREAMSUB.html",
       "family": "Keys"
     },
     {
@@ -74,22 +13,25 @@
       "family": "Keys"
     },
     {
-      "name": "DREAMKEYS",
-      "fileName": "DREAMKEYS.html",
-      "url": "Pluggins Folder/DREAMKEYS.html",
+      "name": "DREAMARP",
+      "fileName": "DREAMARP.html",
+      "url": "Pluggins Folder/DREAMARP.html"
+    },
+    {
+      "name": "DREAMARPBOX",
+      "fileName": "DREAMARPBOX.html",
+      "url": "Pluggins Folder/DREAMARPBOX.html",
       "family": "Keys"
     },
     {
-      "name": "DREAMORGAN",
-      "fileName": "DREAMORGAN.html",
-      "url": "Pluggins Folder/DREAMORGAN.html",
-      "family": "Keys"
+      "name": "DREAMAXE",
+      "fileName": "DREAMAXE.html",
+      "url": "Pluggins Folder/DREAMAXE.html"
     },
     {
-      "name": "DREAMPLUCK",
-      "fileName": "DREAMPLUCK.html",
-      "url": "Pluggins Folder/DREAMPLUCK.html",
-      "family": "Strings"
+      "name": "DREAMBASS",
+      "fileName": "DREAMBASS.html",
+      "url": "Pluggins Folder/DREAMBASS.html"
     },
     {
       "name": "DREAMBELL",
@@ -104,33 +46,9 @@
       "family": "Keys"
     },
     {
-      "name": "DREAMFLUTE",
-      "fileName": "DREAMFLUTE.html",
-      "url": "Pluggins Folder/DREAMFLUTE.html",
-      "family": "Keys"
-    },
-    {
       "name": "DREAMCHOIR",
       "fileName": "DREAMCHOIR.html",
       "url": "Pluggins Folder/DREAMCHOIR.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMMARIMBA",
-      "fileName": "DREAMMARIMBA.html",
-      "url": "Pluggins Folder/DREAMMARIMBA.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMCLAV",
-      "fileName": "DREAMCLAV.html",
-      "url": "Pluggins Folder/DREAMCLAV.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMHORN",
-      "fileName": "DREAMHORN.html",
-      "url": "Pluggins Folder/DREAMHORN.html",
       "family": "Keys"
     },
     {
@@ -140,15 +58,9 @@
       "family": "Keys"
     },
     {
-      "name": "DREAMMONO",
-      "fileName": "DREAMMONO.html",
-      "url": "Pluggins Folder/DREAMMONO.html",
-      "family": "Keys"
-    },
-    {
-      "name": "DREAMARPBOX",
-      "fileName": "DREAMARPBOX.html",
-      "url": "Pluggins Folder/DREAMARPBOX.html",
+      "name": "DREAMCLAV",
+      "fileName": "DREAMCLAV.html",
+      "url": "Pluggins Folder/DREAMCLAV.html",
       "family": "Keys"
     },
     {
@@ -158,15 +70,67 @@
       "family": "Keys"
     },
     {
+      "name": "DREAMFLUTE",
+      "fileName": "DREAMFLUTE.html",
+      "url": "Pluggins Folder/DREAMFLUTE.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMHORN",
+      "fileName": "DREAMHORN.html",
+      "url": "Pluggins Folder/DREAMHORN.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMKEYS",
+      "fileName": "DREAMKEYS.html",
+      "url": "Pluggins Folder/DREAMKEYS.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMLEAD",
+      "fileName": "DREAMLEAD.html",
+      "url": "Pluggins Folder/DREAMLEAD.html"
+    },
+    {
+      "name": "DREAMMARIMBA",
+      "fileName": "DREAMMARIMBA.html",
+      "url": "Pluggins Folder/DREAMMARIMBA.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMMONO",
+      "fileName": "DREAMMONO.html",
+      "url": "Pluggins Folder/DREAMMONO.html",
+      "family": "Keys"
+    },
+    {
       "name": "DREAMNOISE",
       "fileName": "DREAMNOISE.html",
       "url": "Pluggins Folder/DREAMNOISE.html",
       "family": "FX"
     },
     {
-      "name": "DREAMTOY",
-      "fileName": "DREAMTOY.html",
-      "url": "Pluggins Folder/DREAMTOY.html",
+      "name": "DREAMORGAN",
+      "fileName": "DREAMORGAN.html",
+      "url": "Pluggins Folder/DREAMORGAN.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMPAD",
+      "fileName": "DREAMPAD.html",
+      "url": "Pluggins Folder/DREAMPAD.html"
+    },
+    {
+      "name": "DREAMPLUCK",
+      "fileName": "DREAMPLUCK.html",
+      "url": "Pluggins Folder/DREAMPLUCK.html",
+      "family": "Strings"
+    },
+    {
+      "name": "DREAMPULSE",
+      "fileName": "DREAMPULSE.html",
+      "url": "Pluggins Folder/DREAMPULSE.html",
       "family": "Keys"
     },
     {
@@ -174,6 +138,40 @@
       "fileName": "DREAMRACK.html",
       "url": "Pluggins Folder/DREAMRACK.html",
       "family": "Drums"
+    },
+    {
+      "name": "DREAMSAW",
+      "fileName": "DREAMSAW.html",
+      "url": "Pluggins Folder/DREAMSAW.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMSINE",
+      "fileName": "DREAMSINE.html",
+      "url": "Pluggins Folder/DREAMSINE.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMSSYYNNTTHH",
+      "fileName": "DREAMSSYYNNTTHH.html",
+      "url": "Pluggins Folder/DREAMSSYYNNTTHH.html"
+    },
+    {
+      "name": "DREAMSTRYNG",
+      "fileName": "DREAMSTRYNG.html",
+      "url": "Pluggins Folder/DREAMSTRYNG.html"
+    },
+    {
+      "name": "DREAMSUB",
+      "fileName": "DREAMSUB.html",
+      "url": "Pluggins Folder/DREAMSUB.html",
+      "family": "Keys"
+    },
+    {
+      "name": "DREAMTOY",
+      "fileName": "DREAMTOY.html",
+      "url": "Pluggins Folder/DREAMTOY.html",
+      "family": "Keys"
     }
   ],
   "samples": [
@@ -3261,153 +3259,6 @@
       "folder": "DreamSynth",
       "fileName": "DreamSoundPack (8).wav",
       "url": "samples/DreamSynth/DreamSoundPack (8).wav"
-    }
-  ],
-  "themes": [
-    {
-      "name": "ASH",
-      "fileName": "ASH.html",
-      "url": "Themes/ASH.html"
-    },
-    {
-      "name": "DEFAULT",
-      "fileName": "DEFAULT.html",
-      "url": "Themes/DEFAULT.html"
-    },
-    {
-      "name": "LIGHT",
-      "fileName": "LIGHT.html",
-      "url": "Themes/LIGHT.html"
-    },
-    {
-      "name": "SULFUR",
-      "fileName": "SULFUR.html",
-      "url": "Themes/SULFUR.html"
-    },
-    {
-      "name": "DAWN",
-      "fileName": "DAWN.html",
-      "url": "Themes/DAWN.html"
-    },
-    {
-      "name": "DUSK",
-      "fileName": "DUSK.html",
-      "url": "Themes/DUSK.html"
-    },
-    {
-      "name": "INK",
-      "fileName": "INK.html",
-      "url": "Themes/INK.html"
-    },
-    {
-      "name": "SAND",
-      "fileName": "SAND.html",
-      "url": "Themes/SAND.html"
-    },
-    {
-      "name": "PINE",
-      "fileName": "PINE.html",
-      "url": "Themes/PINE.html"
-    },
-    {
-      "name": "COPPER",
-      "fileName": "COPPER.html",
-      "url": "Themes/COPPER.html"
-    },
-    {
-      "name": "FOG",
-      "fileName": "FOG.html",
-      "url": "Themes/FOG.html"
-    },
-    {
-      "name": "PLUM",
-      "fileName": "PLUM.html",
-      "url": "Themes/PLUM.html"
-    },
-    {
-      "name": "MINT",
-      "fileName": "MINT.html",
-      "url": "Themes/MINT.html"
-    },
-    {
-      "name": "COBALT",
-      "fileName": "COBALT.html",
-      "url": "Themes/COBALT.html"
-    },
-    {
-      "name": "EMBER",
-      "fileName": "EMBER.html",
-      "url": "Themes/EMBER.html"
-    },
-    {
-      "name": "LILAC",
-      "fileName": "LILAC.html",
-      "url": "Themes/LILAC.html"
-    },
-    {
-      "name": "STEEL",
-      "fileName": "STEEL.html",
-      "url": "Themes/STEEL.html"
-    },
-    {
-      "name": "HONEY",
-      "fileName": "HONEY.html",
-      "url": "Themes/HONEY.html"
-    },
-    {
-      "name": "ABYSS",
-      "fileName": "ABYSS.html",
-      "url": "Themes/ABYSS.html"
-    },
-    {
-      "name": "PAPER",
-      "fileName": "PAPER.html",
-      "url": "Themes/PAPER.html"
-    },
-    {
-      "name": "CHERRY",
-      "fileName": "CHERRY.html",
-      "url": "Themes/CHERRY.html"
-    },
-    {
-      "name": "OLIVE",
-      "fileName": "OLIVE.html",
-      "url": "Themes/OLIVE.html"
-    },
-    {
-      "name": "GRAPHITE",
-      "fileName": "GRAPHITE.html",
-      "url": "Themes/GRAPHITE.html"
-    },
-    {
-      "name": "AURORA",
-      "fileName": "AURORA.html",
-      "url": "Themes/AURORA.html"
-    },
-    {
-      "name": "CINDER",
-      "fileName": "CINDER.html",
-      "url": "Themes/CINDER.html"
-    },
-    {
-      "name": "LAGOON",
-      "fileName": "LAGOON.html",
-      "url": "Themes/LAGOON.html"
-    },
-    {
-      "name": "MARROW",
-      "fileName": "MARROW.html",
-      "url": "Themes/MARROW.html"
-    },
-    {
-      "name": "STATIC",
-      "fileName": "STATIC.html",
-      "url": "Themes/STATIC.html"
-    },
-    {
-      "name": "VELVET",
-      "fileName": "VELVET.html",
-      "url": "Themes/VELVET.html"
     }
   ]
 }

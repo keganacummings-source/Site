@@ -191,15 +191,15 @@ input[type=range]::-moz-range-track{background:transparent!important;border:0!im
     </div>
     <div class="work">
       <div class="row">
-        <label>CUTOFF<input id="cut" type="range" min="200" max="12000" value="3200"></label>
-        <label>ATTACK<input id="atk" type="range" min="5" max="800" value="12"></label>
-        <label>DECAY<input id="dec" type="range" min="40" max="2000" value="280"></label>
-        <label>RELEASE<input id="rel" type="range" min="40" max="1500" value="180"></label>
-        <label>LEVEL<input id="vol" type="range" min="4" max="80" value="28"></label>
+        <label>CUTOFF<input id="cut" type="range" min="200" max="12000" value="2400"></label>
+        <label>ATTACK<input id="atk" type="range" min="5" max="800" value="32"></label>
+        <label>DECAY<input id="dec" type="range" min="40" max="2000" value="420"></label>
+        <label>RELEASE<input id="rel" type="range" min="40" max="1500" value="720"></label>
+        <label>LEVEL<input id="vol" type="range" min="4" max="80" value="20"></label>
         
         <label>PARTIAL<input id="part" type="range" min="1.5" max="4.5" value="2.76" step="0.01"></label>
-        <label>SHIMMER<input id="shim" type="range" min="0" max="80" value="40"></label>
-        <label>DECAY<input id="bdec" type="range" min="200" max="4000" value="1200"></label>
+        <label>SHIMMER<input id="shim" type="range" min="0" max="80" value="50"></label>
+        <label>DECAY<input id="bdec" type="range" min="200" max="4000" value="1700"></label>
       </div>
       <div class="keys" id="keys"></div>
       <div class="status" id="status">Keys A S D F row · Space = middle C · RANDOM reshapes the sound</div>
@@ -491,14 +491,22 @@ setInterval(function(){document.querySelectorAll('input[type=range]').forEach(sy
 </script>
 
 <style id="dreamdaw-preset-style">
-#ddPresetDock{position:fixed;right:14px;top:14px;z-index:99999;width:min(330px,calc(100vw - 28px));padding:10px;border:1px solid var(--border,#444);background:color-mix(in srgb,var(--panel,#111) 96%,transparent);box-shadow:0 12px 36px rgba(0,0,0,.35);font:12px var(--font,monospace);backdrop-filter:blur(10px)}
-#ddPresetDock .ddp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;letter-spacing:.08em}
-#ddPresetDock .ddp-dot{width:7px;height:7px;border-radius:50%;background:var(--accent,#fff);box-shadow:0 0 8px var(--accent,#fff)}
-#ddPresetDock .ddp-row{display:flex;gap:6px;margin-top:6px}
-#ddPresetDock input,#ddPresetDock select,#ddPresetDock button{min-width:0;box-sizing:border-box;border:1px solid var(--border,#444);background:var(--panel-2,#181818);color:var(--text,#fff);padding:7px 8px;font:inherit}
-#ddPresetDock input,#ddPresetDock select{flex:1}
-#ddPresetDock button{cursor:pointer}.ddp-msg{min-height:14px;margin-top:6px;opacity:.75;font-size:10px}
-@media(max-width:650px){#ddPresetDock{position:fixed;right:8px;left:8px;top:8px;width:auto}}
+#ddPresetDock{position:fixed;right:14px;top:14px;z-index:99999;width:min(360px,calc(100vw - 28px));border:1px solid var(--accent-dim,var(--border,#444));background:color-mix(in srgb,var(--panel,#111) 97%,transparent);box-shadow:0 14px 42px rgba(0,0,0,.5),0 0 20px color-mix(in srgb,var(--accent,#fff) 16%,transparent);font:12px var(--font,monospace);backdrop-filter:blur(12px);border-radius:7px;overflow:hidden}
+#ddPresetDock .ddp-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border:0;background:transparent;color:var(--text,#fff);font:inherit;font-weight:700;letter-spacing:.08em;cursor:pointer;text-align:left}
+#ddPresetDock .ddp-title{display:flex;align-items:center;gap:8px}
+#ddPresetDock .ddp-chevron{font-size:14px;opacity:.8;transition:transform .18s ease}
+#ddPresetDock.open .ddp-chevron{transform:rotate(180deg)}
+#ddPresetDock .ddp-dot{width:7px;height:7px;border-radius:50%;background:var(--accent,var(--accent-bright,#fff));box-shadow:0 0 9px var(--accent,var(--accent-bright,#fff));flex:0 0 auto}
+#ddPresetDock .ddp-body{display:none;padding:0 11px 11px;border-top:1px solid var(--border,#444)}
+#ddPresetDock.open .ddp-body{display:block}
+#ddPresetDock .ddp-row{display:flex;gap:7px;margin-top:8px}
+#ddPresetDock input,#ddPresetDock select,#ddPresetDock button.ddp-action{min-width:0;box-sizing:border-box;border:1px solid var(--border,#444);background:var(--panel-2,#181818);color:var(--text,#fff);padding:9px 10px;font:inherit;border-radius:4px}
+#ddPresetDock select{width:100%;min-height:38px;font-size:13px}
+#ddPresetDock input{flex:1;min-height:38px}
+#ddPresetDock button.ddp-action{cursor:pointer;font-weight:700;letter-spacing:.04em}
+#ddPresetDock button.ddp-action:hover,#ddPresetDock select:focus,#ddPresetDock input:focus{border-color:var(--accent,#fff);box-shadow:0 0 10px color-mix(in srgb,var(--accent,#fff) 18%,transparent);outline:none}
+#ddPresetDock .ddp-msg{min-height:14px;margin-top:7px;opacity:.72;font-size:10px;line-height:1.35}
+@media(max-width:650px){#ddPresetDock{right:8px;left:8px;top:8px;width:auto}}
 </style>
 
 <script id="dreamdaw-presets">
@@ -539,11 +547,12 @@ function apply(s){
 function dock(){
   if(document.getElementById('ddPresetDock'))return;
   var d=document.createElement('div');d.id='ddPresetDock';
-  d.innerHTML='<div class="ddp-head"><span>INSTRUMENT PRESETS</span><span class="ddp-dot"></span></div>'+
-    '<div class="ddp-row"><select id="ddPresetList"><option>Loading…</option></select></div>'+
-    '<div class="ddp-row"><input id="ddPresetName" maxlength="48" placeholder="Preset name"><button id="ddPresetSave">SAVE</button></div>'+
-    '<div class="ddp-row"><button id="ddPresetLoad">LOAD</button><button id="ddPresetDelete">DELETE</button></div>'+
-    '<div class="ddp-msg" id="ddPresetMsg">DreamAPI presets follow your account.</div>';
+  d.innerHTML='<button type="button" class="ddp-toggle" id="ddPresetToggle" aria-expanded="false"><span class="ddp-title"><span class="ddp-dot"></span><span>INSTRUMENT PRESETS</span></span><span class="ddp-chevron">⌄</span></button>'+
+    '<div class="ddp-body" id="ddPresetBody"><div class="ddp-row"><select id="ddPresetList"><option>Loading…</option></select></div>'+
+    '<div class="ddp-row"><input id="ddPresetName" maxlength="48" placeholder="Preset name"><button class="ddp-action" id="ddPresetSave">SAVE</button></div>'+
+    '<div class="ddp-row"><button class="ddp-action" id="ddPresetLoad">LOAD</button><button class="ddp-action" id="ddPresetDelete">DELETE</button></div>'+
+    '<div class="ddp-msg" id="ddPresetMsg">DreamAPI presets follow your account.</div></div>';
+  document.getElementById('ddPresetToggle').onclick=function(){var open=!d.classList.contains('open');d.classList.toggle('open',open);this.setAttribute('aria-expanded',String(open));};
   document.body.appendChild(d);
   document.getElementById('ddPresetSave').onclick=save;
   document.getElementById('ddPresetLoad').onclick=load;

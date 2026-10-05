@@ -1,0 +1,16 @@
+DREAMDAW API UPDATE
+===================
+
+WORKER_DREAMSHARE.js has been replaced with the latest API supplied by the project owner (API(1).txt).
+
+Preserved site features:
+- Dynamic plugin/theme discovery
+- Collapsed instrument preset selector
+- Account-backed preset save/load/delete
+- Existing plugin UIs and audio behavior
+- DreamShare authentication/presence
+
+The supplied API retains the same DreamShare endpoint:
+https://dreamshare-api.keganacummings.workers.dev/
+
+Syntax check: PASSED with Node.js.

@@ -1,0 +1,8 @@
+DREAMDAW auto-discovery + UI/audio update
+
+- Machine selector now discovers HTML plugins from the GitHub repository at runtime, with library.json fallback.
+- Themes are discovered from the Themes directory at runtime, with themes.json fallback.
+- DREAMCHPPA remains intentionally hidden from the selector.
+- Preset docks are collapsed by default and expand into a comfortable 360px max-width control panel.
+- DREAMAXE, DREAMBASS, DREAMSSYYNNTTHH and DREAMSTRYNG received a modern UI compatibility/rebuild layer while retaining their existing audio/interaction scripts.
+- Generic synth pages received calmer default envelopes, lower output levels, darker filtering, and more modulation/space/broken character where their existing controls support it.

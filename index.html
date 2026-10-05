@@ -115,7 +115,7 @@ main{flex:1;overflow-y:auto;padding:10px 8px 14px 0;margin-top:8px}
     <button class="btn a" id="site" type="button">DREAMDAW.COM</button>
     <div id="tw"><button class="btn a" id="tbtn" type="button">THEME: -</button><div id="themes"></div></div>
   </div>
-  <input id="q" placeholder="Search machines..." autocomplete="off">
+  <input id="q" placeholder="Search machines..." autocomplete="off"><div id="discoverNote" class="mini" style="margin-top:4px">AUTO-DISCOVERY · plugins and themes load from the site repository</div>
   <main><div id="grid"><div id="status">loading machines…</div></div></main>
 </div></div></div>
 
@@ -190,42 +190,56 @@ $("out").onclick=()=>leave();
 
 /* ---------- machines ---------- */
 let PLUG="Pluggins Folder/";
-(async()=>{for(const d of ["Pluggins Folder/","DreamSynth/Pluggins Folder/","DreamSynth/","Plugins/","Pluggins/"]){
-  try{const r=await fetch(BASE+(d+"DREAMSHARE.html").replace(/ /g,"%20"),{method:"HEAD"});if(r.ok){PLUG=d;if(typeof lib!=="undefined"&&lib.length)render();return}}catch(e){}}})();
-function openMachine(url,name){
-  native("openMachine",{url,name});
-  setTimeout(()=>{location.href=url},300);
+const BUILTIN_PLUGINS=[];
+const REPO_HINT={owner:"keganacummings-source",repo:"Daw",branch:"main"};
+const HIDDEN_MACHINES=new Set(["DREAMCHPPA","DREAMDRDRUM"]);
+function machineName(file){return String(file||"").replace(/\.html$/i,"").trim().toUpperCase()}
+function machineUrl(file){return BASE+"Pluggins Folder/"+String(file).replace(/ /g,"%20")}
+async function discoverPlugins(){
+  // GitHub Pages cannot enumerate a directory itself. Read the repository directory
+  // at runtime so adding an HTML file is enough to make a new machine appear.
+  const repo=location.hostname.endsWith("github.io") ? REPO_HINT : REPO_HINT;
+  try{
+    const u=`https://api.github.com/repos/${repo.owner}/${repo.repo}/contents/Pluggins%20Folder?ref=${encodeURIComponent(repo.branch)}`;
+    const r=await fetch(u,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
+    if(!r.ok)throw new Error("github directory "+r.status);
+    const a=await r.json();
+    return a.filter(x=>x&&x.type==="file"&&/\.html$/i.test(x.name))
+      .map(x=>({name:machineName(x.name),fileName:x.name,url:machineUrl(x.name)}))
+      .filter(x=>!HIDDEN_MACHINES.has(x.name));
+  }catch(e){
+    try{
+      const j=await (await fetch(BASE+"library.json?t="+Date.now(),{cache:"no-store"})).json();
+      const a=Array.isArray(j)?j:(j.plugins||j.machines||j.data||[]);
+      return a.filter(x=>x&&x.name&&!HIDDEN_MACHINES.has(String(x.name).toUpperCase()));
+    }catch(_){return BUILTIN_PLUGINS;}
+  }
 }
+function openMachine(url,name){native("openMachine",{url,name});setTimeout(()=>{location.href=url},300)}
 function render(){
   const f=$("q").value.trim().toLowerCase(),g=$("grid");g.innerHTML="";
   document.querySelectorAll("[data-f]").forEach(b=>b.classList.toggle("on",b.dataset.f===filt));
   const list=lib.filter(p=>{const n=(p.name||p.title||"");
-    if(n.toLowerCase().includes("dreamdrdrum")) return false;
-    return (!f||n.toLowerCase().includes(f))&&(filt==="all"||filt==="stable"||filt==="fav"&&favs.includes(n))}).sort((a,b)=>{
-      const an=favs.includes(a.name||a.title||"")?1:0, bn=favs.includes(b.name||b.title||"")?1:0;
-      return bn-an;
-    });
-  $("count").textContent=lib.filter(p=>String(p.name||p.title||"").toLowerCase()!=="dreamdrdrum").length;
+    return (!f||n.toLowerCase().includes(f))&&(filt==="all"||filt==="stable"||filt==="fav"&&favs.includes(n));
+  }).sort((a,b)=>{
+    const an=favs.includes(a.name||a.title||"")?1:0,bn=favs.includes(b.name||b.title||"")?1:0;
+    return bn-an||(String(a.name||a.title).localeCompare(String(b.name||b.title)));
+  });
+  $("count").textContent=lib.length;
   if(!list.length){g.innerHTML='<div id="status">no machines found</div>';return}
   list.forEach((p,i)=>{
     const name=p.name||p.title||"unnamed",file=p.fileName||p.file||"";
     const url=BASE+String(p.url||PLUG+file).replace(/ /g,"%20");
-    const b=document.createElement("div");b.className="card";b.tabIndex=0;
-    b.style.animationDelay=Math.min(i*25,500)+"ms";
+    const b=document.createElement("div");b.className="card";b.tabIndex=0;b.style.animationDelay=Math.min(i*25,500)+"ms";
     b.innerHTML='<div class="ct"><strong></strong><span class="fav"></span></div><small></small><div class="trk"><i></i></div>';
-    b.querySelector("strong").textContent=name;
-    b.querySelector("small").textContent=file;
+    b.querySelector("strong").textContent=name;b.querySelector("small").textContent=file;
     const fv=b.querySelector(".fav"),on=favs.includes(name);fv.textContent=on?"FAV ★":"FAV +";fv.classList.toggle("on",on);
     fv.onclick=e=>{e.stopPropagation();favs=favs.includes(name)?favs.filter(x=>x!==name):favs.concat(name);LS.setItem("dreamdaw.favs",JSON.stringify(favs));render()};
-    b.onclick=()=>openMachine(url,name);g.appendChild(b);
+    b.onclick=()=>openMachine(url,name);b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openMachine(url,name)}};g.appendChild(b);
   });
 }
 document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{filt=b.dataset.f;render()});
-$("site").onclick=()=>openMachine("https://www.dreamdaw.com/","DREAMDAW.COM");
-$("q").oninput=render;
-const BUILTIN_PLUGINS=[{"name":"DREAMAXE","fileName":"DREAMAXE.html"},{"name":"DREAMBASS","fileName":"DREAMBASS.html"},{"name":"DREAMFLUTE","fileName":"DREAMFLUTE.html"},{"name":"DREAMRACK","fileName":"DREAMRACK.html"},{"name":"DREAMSSYYNNTTHH","fileName":"DREAMSSYYNNTTHH.html"},{"name":"DREAMSTRYNG","fileName":"DREAMSTRYNG.html"},{"name":"DREAM3XOSC","fileName":"DREAM3XOSC.html"},{"name":"DREAMANALOG","fileName":"DREAMANALOG.html"},{"name":"DREAMARP","fileName":"DREAMARP.html"},{"name":"DREAMARPBOX","fileName":"DREAMARPBOX.html"},{"name":"DREAMBELL","fileName":"DREAMBELL.html"},{"name":"DREAMBRASS","fileName":"DREAMBRASS.html"},{"name":"DREAMCHOIR","fileName":"DREAMCHOIR.html"},{"name":"DREAMCHORD","fileName":"DREAMCHORD.html"},{"name":"DREAMCLAV","fileName":"DREAMCLAV.html"},{"name":"DREAMDRONE","fileName":"DREAMDRONE.html"},{"name":"DREAMHORN","fileName":"DREAMHORN.html"},{"name":"DREAMKEYS","fileName":"DREAMKEYS.html"},{"name":"DREAMLEAD","fileName":"DREAMLEAD.html"},{"name":"DREAMMARIMBA","fileName":"DREAMMARIMBA.html"},{"name":"DREAMMONO","fileName":"DREAMMONO.html"},{"name":"DREAMNOISE","fileName":"DREAMNOISE.html"},{"name":"DREAMORGAN","fileName":"DREAMORGAN.html"},{"name":"DREAMPAD","fileName":"DREAMPAD.html"},{"name":"DREAMPLUCK","fileName":"DREAMPLUCK.html"},{"name":"DREAMPULSE","fileName":"DREAMPULSE.html"},{"name":"DREAMSAW","fileName":"DREAMSAW.html"},{"name":"DREAMSINE","fileName":"DREAMSINE.html"},{"name":"DREAMSUB","fileName":"DREAMSUB.html"},{"name":"DREAMTOY","fileName":"DREAMTOY.html"}];
-fetch(BASE+"library.json?t="+Date.now()).then(r=>r.ok?r.json():null).then(j=>{const a=j&&(Array.isArray(j)?j:(j.plugins||j.machines||j.data));lib=(a&&a.length)?a:BUILTIN_PLUGINS;render()}).catch(()=>{lib=BUILTIN_PLUGINS;render()});
-
+$("site").onclick=()=>openMachine("https://www.dreamdaw.com/","DREAMDAW.COM");$("q").oninput=render;
 /* ---------- themes + motion ---------- */
 const FX={embers:"bloodmoon ember amber rust copper sulfur cinder honey sand dawn",
  snow:"ice fog ash bone paper light steel graphite static pine",
@@ -263,10 +277,17 @@ function apply(pk){
 }
 async function themes(){
   let files=[];
-  try{files=(await (await fetch(BASE+"Themes/themes.json")).json()).themes.map(t=>t.file)}catch(e){}
-  const all=await Promise.all(files.map(f=>fetch(BASE+"Themes/"+f).then(r=>r.text()).then(h=>{
+  try{
+    const u=`https://api.github.com/repos/${REPO_HINT.owner}/${REPO_HINT.repo}/contents/Themes?ref=${encodeURIComponent(REPO_HINT.branch)}`;
+    const r=await fetch(u,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
+    if(!r.ok)throw new Error();
+    files=(await r.json()).filter(x=>x&&x.type==="file"&&/\.html$/i.test(x.name)).map(x=>x.name);
+  }catch(e){
+    try{files=(await (await fetch(BASE+"Themes/themes.json?t="+Date.now(),{cache:"no-store"})).json()).themes.map(t=>t.file)}catch(_){files=[]}
+  }
+  const all=await Promise.all(files.map(f=>fetch(BASE+"Themes/"+encodeURIComponent(f)).then(r=>r.text()).then(h=>{
     const m=h.match(/<script type="application\/sleepwell-theme">([\s\S]*?)<\/script>/);return m?JSON.parse(m[1]):null}).catch(()=>null)));
-  packs=all.filter(Boolean);
+  packs=all.filter(Boolean);  packs=all.filter(Boolean);
   const box=$("themes");
   packs.forEach(pk=>{
     const c=document.createElement("button");c.type="button";c.className="chip";c.dataset.id=pk.id;

@@ -58,6 +58,10 @@
  *   set_role | clear_role
  *   set_custom_role | clear_custom_role   (Trippah/Goonr only — collective badge)
  *   presence|heartbeat
+ *
+ * Theme patch compatibility:
+ *   set_theme/theme, session/whoami/me, login themePack/themes
+ *   customRoles via GET/feed + set_custom_role/clear_custom_role
  */
 
 const BIN = 'https://extendsclass.com/api/json-storage/bin/abffdbc';
@@ -65,8 +69,15 @@ const BIN_API = 'https://extendsclass.com/api/json-storage/bin';
 const FEED_BIN_ID = 'abffdbc';
 const USERS_BIN = 'https://extendsclass.com/api/json-storage/bin/ffedede';
 const STORAGE = 'durable-v4';
+
+// DreamShare VST theme compatibility patch.
+// The compiled VST can authenticate against these APIs; the web UI can also
+// consume the same payload. The binary in the supplied ZIP does not contain
+// the source needed to add a native theme dropdown/effects renderer.
+const THEME_API_VERSION = 'v1';
+const VST_PATCH_VERSION = '0.4.0';
 const VST_RELEASE = {
-  version: '0.2.0',
+  version: '0.2.1',
   name: 'DreamShare-Windows-VST3.zip',
   label: 'DreamShare VST3 (Windows x64)',
   r2Key: 'releases/DreamShare-Windows-VST3.zip',
@@ -81,10 +92,13 @@ const CHUNK_B64 = 68000;
 const MAX_AUDIO_BYTES = 75 * 1024 * 1024;
 const MAX_PART_BYTES = 4 * 1024 * 1024;
 const SESSION_MS = 30 * 24 * 60 * 60 * 1000;
+
+// Instrument preset storage — account backed so presets survive FL/VST restarts.
 const PRESET_MAX_PER_USER = 60;
 const PRESET_MAX_STATE = 24000;
 const PRESET_NAME_MAX = 48;
 const PRESET_MACHINE_MAX = 64;
+
 
 const THEME_IDS = ['amber', 'ash', 'bloodmoon', 'bone', 'default', 'goonr', 'ice', 'light', 'moss', 'neon', 'rust', 'sulfur', 'trippah', 'violet', 'void', 'wine'];
 const THEMES = [{"id":"amber","name":"Amber","tag":"sodium lamp \u2014 honey light from the floor","file":"AMBER.html","vars":{"--bg":"#140e06","--panel":"#24180a","--accent":"#f5b042","--accent-dim":"#b45309","--accent-bright":"#fde68a","--accent2":"#ea580c","--text":"#fff7e8","--text-dim":"#c4a574","--border":"#4a3414","--glow":"rgba(245,176,66,0.28)","--panel-2":"#1a1208","--radius":"2px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(ellipse 50% 28% at 50% 110%, rgba(240,160,32,0.28), transparent 62%), radial-gradient(circle at 80% 12%, rgba(255,196,90,0.14), transparent 40%), repeating-linear-gradient(0deg, rgba(80,40,0,0.08) 0 1px, transparent 1px 4px), linear-gradient(180deg, #1c1206, #120c04)","veil":"radial-gradient(ellipse at center, transparent 56%, rgba(40,20,0,0.4) 100%)","effects":""},{"id":"ash","name":"Ash","tag":"cold smoke \u2014 steel grey, drifting ash","file":"ASH.html","vars":{"--bg":"#12151c","--panel":"#1b212b","--accent":"#9bb4c8","--accent-dim":"#5d7386","--accent-bright":"#d5e6f2","--accent2":"#7f96aa","--text":"#e7eef4","--text-dim":"#8b97a6","--border":"#2c3542","--glow":"rgba(155,180,200,0.2)","--panel-2":"#10141b","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(ellipse 40% 26% at 18% 0%, rgba(180,190,200,0.16), transparent 60%), radial-gradient(ellipse 30% 40% at 90% 100%, rgba(40,48,58,0.55), transparent 60%), repeating-linear-gradient(115deg, transparent 0 12px, rgba(255,255,255,0.02) 12px 13px), linear-gradient(180deg, #1a1e26, #0c0e14)","veil":"radial-gradient(ellipse at center, transparent 55%, rgba(8,10,14,0.45) 100%)","effects":""},{"id":"bloodmoon","name":"Bloodmoon","tag":"eclipse \u2014 one red moon, black sky","file":"BLOODMOON.html","vars":{"--bg":"#070203","--panel":"#16080c","--accent":"#e23a4a","--accent-dim":"#8a1424","--accent-bright":"#ff8a90","--accent2":"#ffd0c8","--text":"#f8e8e6","--text-dim":"#a07878","--border":"#3a1820","--glow":"rgba(226,58,74,0.28)","--panel-2":"#100408","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(circle at 78% 16%, rgba(255,214,206,0.95) 0 14px, rgba(196,36,48,0.55) 16px 42px, rgba(60,6,12,0.28) 44px 86px, transparent 110px), radial-gradient(ellipse 70% 36% at 50% 110%, rgba(90,0,16,0.45), transparent 62%), linear-gradient(185deg, #050103 0%, #140206 48%, #070203 100%)","veil":"radial-gradient(ellipse at center, transparent 52%, rgba(40,0,8,0.5) 100%)","effects":""},{"id":"bone","name":"Bone","tag":"ivory studio \u2014 dry parchment on charcoal","file":"BONE.html","vars":{"--bg":"#161310","--panel":"#24201b","--accent":"#f0e2c8","--accent-dim":"#a89878","--accent-bright":"#fff8ea","--accent2":"#d4b483","--text":"#f7f1e6","--text-dim":"#a39888","--border":"#3a332c","--glow":"rgba(240,226,200,0.16)","--panel-2":"#1c1814","--radius":"2px","--font":"Georgia, 'Iowan Old Style', serif"},"scene":"radial-gradient(ellipse 55% 24% at 50% 0%, rgba(255,244,220,0.08), transparent 60%), repeating-linear-gradient(90deg, transparent 0 18px, rgba(232,216,184,0.04) 18px 19px), linear-gradient(180deg, #221e1a, #141210)","veil":"radial-gradient(ellipse at center, transparent 62%, rgba(20,16,12,0.4) 100%)","effects":""},{"id":"default","name":"Default","tag":"night lamp \u2014 a red glow, no splatter","file":"DEFAULT.html","vars":{"--bg":"#0a0a0a","--panel":"#141414","--accent":"#e62020","--accent-dim":"#a01818","--accent-bright":"#ff5555","--accent2":"#ff3344","--text":"#f4f4f4","--text-dim":"#9a9a9a","--border":"#2c2c2c","--glow":"rgba(230,32,32,0.22)","--panel-2":"#0e0e0e","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(ellipse 42% 22% at 50% -8%, rgba(230,32,32,0.18), transparent 64%), repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0 1px, transparent 1px 3px), linear-gradient(180deg, #141414, #070707)","veil":"radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.4) 100%)","effects":""},{"id":"goonr","name":"GOONR","tag":"matrix rain \u2014 falling green letters, neon green, RGB edge","file":"GOONR.html","vars":{"--bg":"#020804","--panel":"#04140c","--accent":"#39ff14","--accent-dim":"#0d6b12","--accent-bright":"#b6ff9a","--accent2":"#00e5ff","--text":"#d8ffd0","--text-dim":"#5d8a62","--border":"#145c22","--glow":"rgba(57,255,20,0.35)","--panel-2":"#010a04","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"linear-gradient(180deg, rgba(57,255,20,0.07), transparent 16%), repeating-linear-gradient(0deg, rgba(57,255,20,0.05) 0 1px, transparent 1px 8px), repeating-linear-gradient(90deg, rgba(0,229,255,0.035) 0 1px, transparent 1px 32px), radial-gradient(ellipse at 50% 120%, rgba(0,48,12,0.65), transparent 52%), #020804","veil":"radial-gradient(ellipse at center, transparent 62%, rgba(0,12,4,0.55) 100%)","effects":"matrix-rain"},{"id":"ice","name":"Ice","tag":"frost glass \u2014 pale cyan, cold corners","file":"ICE.html","vars":{"--bg":"#07141a","--panel":"#10242c","--accent":"#9aebf5","--accent-dim":"#3d8b9c","--accent-bright":"#e0fbff","--accent2":"#67c6de","--text":"#e7f7fb","--text-dim":"#7f9aa4","--border":"#1e3a44","--glow":"rgba(154,235,245,0.22)","--panel-2":"#0c1c22","--radius":"2px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"linear-gradient(180deg, rgba(200,244,255,0.08), transparent 22%), radial-gradient(ellipse 36% 20% at 10% 0%, rgba(142,224,240,0.18), transparent 62%), radial-gradient(ellipse 40% 28% at 100% 100%, rgba(80,140,180,0.16), transparent 60%), repeating-linear-gradient(0deg, rgba(200,240,255,0.035) 0 1px, transparent 1px 9px), linear-gradient(180deg, #102028, #081014)","veil":"radial-gradient(ellipse at center, transparent 60%, rgba(4,16,24,0.42) 100%)","effects":""},{"id":"light","name":"Light","tag":"daylight paper \u2014 ruled desk, warm wash","file":"LIGHT.html","vars":{"--bg":"#efe6d6","--panel":"#f7f1e6","--accent":"#9a3412","--accent-dim":"#7c2d12","--accent-bright":"#c2410c","--accent2":"#b45309","--text":"#1c1410","--text-dim":"#6b5344","--border":"#ddcbb6","--glow":"rgba(154,52,18,0.16)","--panel-2":"#f3eadc","--radius":"2px","--font":"Georgia, 'Iowan Old Style', serif"},"scene":"radial-gradient(ellipse 50% 30% at 50% -10%, rgba(255,248,236,0.9), transparent 60%), repeating-linear-gradient(0deg, rgba(90,60,40,0.05) 0 1px, transparent 1px 28px), linear-gradient(180deg, #f7f1e6, #e7dccb)","veil":"radial-gradient(ellipse at center, transparent 64%, rgba(120,90,60,0.12) 100%)","effects":""},{"id":"moss","name":"Moss","tag":"wet forest \u2014 damp green and a little gold","file":"MOSS.html","vars":{"--bg":"#08110c","--panel":"#122016","--accent":"#6ecf6a","--accent-dim":"#3f7d3c","--accent-bright":"#bbf7d0","--accent2":"#d6b25e","--text":"#e7f6e4","--text-dim":"#7d9478","--border":"#24382a","--glow":"rgba(110,207,106,0.22)","--panel-2":"#0c1610","--radius":"2px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(ellipse 46% 30% at 0% 20%, rgba(110,207,106,0.18), transparent 60%), radial-gradient(ellipse 36% 28% at 100% 90%, rgba(200,160,64,0.12), transparent 58%), repeating-linear-gradient(28deg, transparent 0 10px, rgba(80,120,60,0.05) 10px 11px), linear-gradient(180deg, #102016, #08100a)","veil":"radial-gradient(ellipse at center, transparent 60%, rgba(4,16,8,0.42) 100%)","effects":""},{"id":"neon","name":"Neon","tag":"club grid \u2014 cyan streets, magenta sky","file":"NEON.html","vars":{"--bg":"#070812","--panel":"#101426","--accent":"#22f0e0","--accent-dim":"#0e8f86","--accent-bright":"#99fff6","--accent2":"#ff3dbe","--text":"#e8fbff","--text-dim":"#7d90a8","--border":"#243044","--glow":"rgba(34,240,224,0.28)","--panel-2":"#0a0e1c","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"linear-gradient(180deg, rgba(255,64,200,0.08), transparent 24%), repeating-linear-gradient(90deg, rgba(32,240,224,0.05) 0 1px, transparent 1px 48px), repeating-linear-gradient(0deg, rgba(255,64,200,0.04) 0 1px, transparent 1px 48px), radial-gradient(ellipse at 50% 120%, rgba(32,240,224,0.12), transparent 50%), #06080e","veil":"radial-gradient(ellipse at center, transparent 58%, rgba(4,0,16,0.55) 100%)","effects":""},{"id":"rust","name":"Rust","tag":"oxidized iron \u2014 orange streaks, dark metal","file":"RUST.html","vars":{"--bg":"#140a07","--panel":"#24140e","--accent":"#e07a3d","--accent-dim":"#9a4e22","--accent-bright":"#fdba74","--accent2":"#c2410c","--text":"#f6e7dc","--text-dim":"#b08974","--border":"#4a2c1e","--glow":"rgba(224,122,61,0.26)","--panel-2":"#1a0e0a","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"repeating-linear-gradient(118deg, rgba(208,96,40,0.05) 0 2px, transparent 2px 7px), radial-gradient(ellipse 40% 30% at 8% 90%, rgba(160,64,24,0.28), transparent 60%), radial-gradient(ellipse 30% 24% at 100% 10%, rgba(90,40,20,0.35), transparent 55%), linear-gradient(180deg, #1c0e0a, #120806)","veil":"radial-gradient(ellipse at center, transparent 58%, rgba(24,8,4,0.48) 100%)","effects":""},{"id":"sulfur","name":"Sulfur","tag":"chemical haze \u2014 sick lime over black","file":"SULFUR.html","vars":{"--bg":"#070804","--panel":"#12180c","--accent":"#c6f531","--accent-dim":"#6d8f14","--accent-bright":"#eaff9a","--accent2":"#d24a22","--text":"#f3f8d8","--text-dim":"#8d9a68","--border":"#2c3814","--glow":"rgba(198,245,49,0.22)","--panel-2":"#0c1008","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(ellipse 36% 22% at 12% 8%, rgba(200,255,51,0.16), transparent 62%), radial-gradient(ellipse 40% 30% at 100% 100%, rgba(230,32,32,0.12), transparent 55%), repeating-linear-gradient(0deg, rgba(200,255,51,0.04) 0 1px, transparent 1px 5px), linear-gradient(180deg, #12160a, #070804)","veil":"radial-gradient(ellipse at center, transparent 58%, rgba(20,28,4,0.45) 100%)","effects":""},{"id":"trippah","name":"TRIPPAH","tag":"wine cellar \u2014 soft falling spores, mushrooms & pills","file":"TRIPPAH.html","vars":{"--bg":"#0e0608","--panel":"#1a0c12","--accent":"#c04068","--accent-dim":"#7a2844","--accent-bright":"#e07090","--accent2":"#a02848","--text":"#f4e4ea","--text-dim":"#9a7884","--border":"#341820","--glow":"rgba(192,64,104,0.26)","--panel-2":"#12080c","--radius":"0px","--font":"'Fredoka', 'Share Tech Mono', ui-sans-serif, sans-serif"},"scene":"radial-gradient(ellipse 48% 28% at 6% -6%, rgba(192,64,104,0.34), transparent 62%), radial-gradient(ellipse 36% 24% at 100% 0%, rgba(90,20,48,0.45), transparent 58%), radial-gradient(circle at 22% 92%, rgba(224,112,144,0.1), transparent 36%), repeating-linear-gradient(0deg, rgba(0,0,0,0.14) 0 1px, transparent 1px 6px), linear-gradient(180deg, #1a0a10, #0e0608 42%, #070305)","veil":"radial-gradient(ellipse at center, transparent 58%, rgba(40,8,16,0.45) 100%)","effects":"spores-pills"},{"id":"violet","name":"Violet","tag":"ultraviolet room \u2014 bruise purple nebula","file":"VIOLET.html","vars":{"--bg":"#0c0814","--panel":"#181028","--accent":"#c084fc","--accent-dim":"#7e22ce","--accent-bright":"#e9d5ff","--accent2":"#a855f7","--text":"#f3e8ff","--text-dim":"#a78bb8","--border":"#342450","--glow":"rgba(192,132,252,0.28)","--panel-2":"#120c1c","--radius":"2px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(ellipse 40% 32% at 15% 10%, rgba(180,108,255,0.22), transparent 60%), radial-gradient(ellipse 32% 28% at 90% 80%, rgba(80,40,180,0.28), transparent 62%), repeating-linear-gradient(0deg, rgba(180,108,255,0.035) 0 1px, transparent 1px 7px), linear-gradient(180deg, #140c22, #0c0814)","veil":"radial-gradient(ellipse at center, transparent 58%, rgba(16,6,32,0.5) 100%)","effects":""},{"id":"void","name":"Void","tag":"deep space \u2014 almost black, two distant stars","file":"VOID.html","vars":{"--bg":"#03050c","--panel":"#0a1020","--accent":"#7aa2e3","--accent-dim":"#345084","--accent-bright":"#dbe7ff","--accent2":"#4c6cb5","--text":"#e6eefc","--text-dim":"#7d8eae","--border":"#1a2740","--glow":"rgba(122,162,227,0.22)","--panel-2":"#060a14","--radius":"0px","--font":"'Share Tech Mono', ui-monospace, monospace"},"scene":"radial-gradient(circle at 72% 22%, rgba(220,230,255,0.85) 0 1px, rgba(120,160,220,0.25) 2px 3px, transparent 8px), radial-gradient(circle at 30% 70%, rgba(180,200,255,0.5) 0 1px, transparent 4px), radial-gradient(ellipse 60% 40% at 50% 100%, rgba(20,40,80,0.45), transparent 60%), linear-gradient(180deg, #02040a, #04060c 50%, #010208)","veil":"radial-gradient(ellipse at center, transparent 46%, rgba(0,0,8,0.72) 100%)","effects":""},{"id":"wine","name":"Wine","tag":"cellar \u2014 bottles in the dark, one lamp","file":"WINE.html","vars":{"--bg":"#12060c","--panel":"#241018","--accent":"#a33b5c","--accent-dim":"#6e243c","--accent-bright":"#e7b0c0","--accent2":"#7a2038","--text":"#f6e6ea","--text-dim":"#b08a96","--border":"#3d2030","--glow":"rgba(163,59,92,0.24)","--panel-2":"#180810","--radius":"2px","--font":"Georgia, 'Iowan Old Style', serif"},"scene":"radial-gradient(ellipse 28% 40% at 14% 78%, rgba(90,20,36,0.55), transparent 70%), radial-gradient(ellipse 18% 22% at 84% 30%, rgba(192,64,104,0.2), transparent 70%), radial-gradient(ellipse 50% 18% at 50% 0%, rgba(160,60,80,0.18), transparent 70%), linear-gradient(180deg, #16080e, #0c0608)","veil":"radial-gradient(ellipse at center, transparent 58%, rgba(24,6,10,0.48) 100%)","effects":""}];
@@ -197,6 +211,7 @@ async function readAccounts(env) {
   if (!j || typeof j !== 'object') j = {};
   if (!j.users || typeof j.users !== 'object') j.users = {};
   if (!j.sessions || typeof j.sessions !== 'object') j.sessions = {};
+  ensureSocial(j);
   return j;
 }
 
@@ -204,6 +219,7 @@ async function writeAccounts(env, data) {
   const payload = JSON.stringify({
     users: data.users || {},
     sessions: data.sessions || {},
+    social: data.social || {},
     storage: 'accounts-v1',
     updated: Date.now()
   });
@@ -220,6 +236,59 @@ async function writeAccounts(env, data) {
     body: payload
   });
   if (!r.ok && !kvOk) throw new Error('accounts save ' + r.status);
+}
+
+
+function ensureSocial(db) {
+  if (!db.social || typeof db.social !== 'object') db.social = {};
+  if (!db.social.users || typeof db.social.users !== 'object') db.social.users = {};
+  return db.social;
+}
+function socialUser(db, user) {
+  const s = ensureSocial(db);
+  const key = String(user || '').toLowerCase();
+  if (!s.users[key] || typeof s.users[key] !== 'object') {
+    s.users[key] = { friends: [], incoming: [], outgoing: [], dms: [], wavRequests: [] };
+  }
+  const u = s.users[key];
+  if (!Array.isArray(u.friends)) u.friends = [];
+  if (!Array.isArray(u.incoming)) u.incoming = [];
+  if (!Array.isArray(u.outgoing)) u.outgoing = [];
+  if (!Array.isArray(u.dms)) u.dms = [];
+  if (!Array.isArray(u.wavRequests)) u.wavRequests = [];
+  return u;
+}
+function cleanName(x) { return normUser(x).slice(0, 20); }
+function socialMessageId() { return 'dm' + Date.now() + Math.floor(Math.random() * 999); }
+function socialRequestId(prefix) { return String(prefix || 'rq') + Date.now() + Math.floor(Math.random() * 999); }
+function accountExists(db, name) {
+  const n = cleanName(name);
+  return !!(n && db.users && db.users[n.toLowerCase()]);
+}
+function addUniqueName(arr, name) {
+  const n = cleanName(name);
+  if (!n) return;
+  if (!arr.some(x => String(x).toLowerCase() === n.toLowerCase())) arr.push(n);
+}
+function removeName(arr, name) {
+  return (arr || []).filter(x => String(x).toLowerCase() !== String(name || '').toLowerCase());
+}
+function addDm(db, from, to, message) {
+  const a = socialUser(db, from), b = socialUser(db, to);
+  const m = Object.assign({ id: socialMessageId(), from: cleanName(from), to: cleanName(to), at: Date.now() }, message || {});
+  a.dms.push(m); b.dms.push(m);
+  a.dms = a.dms.slice(-200); b.dms = b.dms.slice(-200);
+  return m;
+}
+function privateDmList(db, a, b) {
+  const u = socialUser(db, a);
+  return u.dms.filter(m =>
+    (String(m.from).toLowerCase() === String(a).toLowerCase() && String(m.to).toLowerCase() === String(b).toLowerCase()) ||
+    (String(m.from).toLowerCase() === String(b).toLowerCase() && String(m.to).toLowerCase() === String(a).toLowerCase())
+  ).slice(-100);
+}
+function socialDirectory(db) {
+  return Object.keys(db.users || {}).map(k => db.users[k] && db.users[k].name).filter(Boolean).sort((a,b)=>String(a).localeCompare(String(b))).slice(0, 500);
 }
 
 async function loginAccount(env, body) {
@@ -260,6 +329,8 @@ async function loginAccount(env, body) {
   const themeId = String(rec.theme || 'trippah').toLowerCase();
   db.sessions[token] = { user: rec.name, role: rec.role || 'user', theme: themeId, exp: now + SESSION_MS };
   await writeAccounts(env, db);
+  // Login is also a presence heartbeat so the API's live-user count is immediately accurate.
+  const online = await touchOnline(env, rec.name);
   const themePack = resolveTheme(themeId);
   // Shape matches DreamShare (token + role + user + theme) and the web UI
   return {
@@ -273,7 +344,11 @@ async function loginAccount(env, body) {
     created: created,
     accounts: 'unique-v1',
     clients: ['web', 'vst'],
-    storage: STORAGE
+    storage: STORAGE,
+    themeApi: THEME_API_VERSION,
+    vstPatch: VST_PATCH_VERSION,
+    online: online,
+    onlineCount: online.length
   };
 }
 
@@ -305,6 +380,28 @@ async function sessionFromBody(env, body, request) {
     token: token,
     theme: theme
   };
+}
+
+
+function cleanPresetMachine(x) {
+  return String(x || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, PRESET_MACHINE_MAX);
+}
+function cleanPresetName(x) {
+  return String(x || '').replace(/[\u0000-\u001f]/g, '').trim().slice(0, PRESET_NAME_MAX);
+}
+function ensurePresets(rec) {
+  if (!rec || typeof rec !== 'object') return [];
+  if (!Array.isArray(rec.presets)) rec.presets = [];
+  return rec.presets;
+}
+function publicPresets(rec, machine) {
+  const m = cleanPresetMachine(machine);
+  return ensurePresets(rec)
+    .filter(function (p) { return p && p.machine === m && p.name; })
+    .sort(function (a, b) { return (b.updated || b.created || 0) - (a.updated || a.created || 0); })
+    .map(function (p) {
+      return { name: p.name, machine: p.machine, state: p.state, created: p.created || 0, updated: p.updated || 0 };
+    });
 }
 
 function cleanChunkIds(list) {
@@ -879,6 +976,29 @@ async function handleAudioPart(request, env) {
   }
   return json({ ok: true, sink: sink, upload: upload, index: index, parts: parts, audioMaxBytes: MAX_AUDIO_BYTES });
 }
+async function handleAudioPartB64(env, body, user) {
+  const upload = String(body.upload || '').replace(/[^A-Za-z0-9_\-]/g, '').slice(0, 48);
+  const index = parseInt(body.index, 10), parts = parseInt(body.parts, 10);
+  const b64 = String(body.b64 || '').replace(/\s/g, '');
+  if (!/^[A-Za-z0-9][A-Za-z0-9_\-]{3,47}$/.test(upload)) return { ok:false, error:'bad upload' };
+  if (!Number.isFinite(index) || index < 0 || index > 49 || !Number.isFinite(parts) || parts < 1 || parts > 50 || index >= parts)
+    return { ok:false, error:'bad part' };
+  if (!b64 || b64.length > 3000000) return { ok:false, error:'audio piece too large' };
+  const sink = audioSink(env);
+  if (sink === 'bin') return { ok:false, error:'Bind DREAMSHARE_R2 or DREAMSHARE_KV for WAV sharing', code:'no-sink' };
+  let bytes;
+  try { bytes = b64ToBytes(b64); } catch (_) { return { ok:false, error:'bad audio encoding' }; }
+  if (bytes.byteLength > 2200000) return { ok:false, error:'audio piece too large' };
+  const key = sink === 'r2' ? ('wav/' + upload + '/' + index) : ('wav:' + upload + ':' + index);
+  try {
+    if (sink === 'r2') await env.DREAMSHARE_R2.put(key, bytes, { httpMetadata:{ contentType:'audio/wav' } });
+    else await env.DREAMSHARE_KV.put(key, bytes);
+  } catch (err) {
+    return { ok:false, error:'tape store failed: ' + String(err && err.message || err) };
+  }
+  return { ok:true, sink:sink, upload:upload, index:index, parts:parts, audioMaxBytes:MAX_AUDIO_BYTES };
+}
+
 
 export default {
   async fetch(request, env) {
@@ -951,6 +1071,38 @@ export default {
     }
 
     if (method === 'GET' || method === 'HEAD') {
+
+      const dmWavId = String(url.searchParams.get('dmwav') || '').replace(/[^A-Za-z0-9_\-]/g, '').slice(0, 64);
+      if (dmWavId) {
+        try {
+          const token = String(url.searchParams.get('token') || '');
+          const sess = await sessionFromBody(env, { token: token }, request);
+          if (!sess) return json({ ok:false, error:'Login required', code:'auth' }, 401);
+          const db = await readAccounts(env);
+          const me = socialUser(db, sess.user);
+          const msg = me.dms.find(m => m && m.id === dmWavId && m.audioUpload);
+          if (!msg) return json({ ok:false, error:'private wav missing' }, 404);
+          const other = String(msg.from).toLowerCase() === sess.user.toLowerCase() ? msg.to : msg.from;
+          if (String(msg.from).toLowerCase() !== sess.user.toLowerCase() && String(msg.to).toLowerCase() !== sess.user.toLowerCase())
+            return json({ ok:false, error:'not allowed' }, 403);
+          const sink = msg.audioStore || audioSink(env);
+          const part = parseInt(url.searchParams.get('part') || '0', 10);
+          if (!Number.isFinite(part) || part < 0 || part >= (parseInt(msg.audioParts,10)||0))
+            return json({ ok:false, error:'wav piece missing' }, 404);
+          const key = sink === 'r2' ? ('wav/' + msg.audioUpload + '/' + part) : ('wav:' + msg.audioUpload + ':' + part);
+          if (sink === 'r2') {
+            if (!env || !env.DREAMSHARE_R2) return json({ok:false,error:'R2 not bound'},502);
+            const obj = await env.DREAMSHARE_R2.get(key);
+            if (!obj) return json({ok:false,error:'wav piece missing'},404);
+            return new Response(obj.body,{status:200,headers:Object.assign({},CORS,{'Content-Type':msg.audioMime||'audio/wav','Cache-Control':'private, max-age=3600'})});
+          }
+          if (!env || !env.DREAMSHARE_KV) return json({ok:false,error:'KV not bound'},502);
+          const bytes = await env.DREAMSHARE_KV.get(key,'arrayBuffer');
+          if (!bytes) return json({ok:false,error:'wav piece missing'},404);
+          return new Response(bytes,{status:200,headers:Object.assign({},CORS,{'Content-Type':msg.audioMime||'audio/wav','Cache-Control':'private, max-age=3600'})});
+        } catch (err) { return json({ok:false,error:'private wav read failed'},502); }
+      }
+
       const wavId = String(url.searchParams.get('wav') || '').replace(/[^A-Za-z0-9_\-]/g, '').slice(0, 48);
       if (wavId) {
         try {
@@ -1037,9 +1189,14 @@ export default {
           roles: feed.roles || {},
           customRoles: cleanCustomRoles(feed.customRoles),
           online: online,
+          onlineCount: online.length,
+          activeUsers: online.length,
           supers: SUPER_ADMINS,
           updated: feed.updated || Date.now(),
-          kv: !!(env && env.DREAMSHARE_KV)
+          kv: !!(env && env.DREAMSHARE_KV),
+          themeApi: THEME_API_VERSION,
+          vstPatch: VST_PATCH_VERSION,
+          customRolesApi: 'v1'
         });
       } catch (err) {
         return json({ ok: false, error: 'store read failed', detail: String(err && err.message || err) }, 502);
@@ -1066,6 +1223,205 @@ export default {
       if (!sess) return json({ ok: false, error: 'Login required', code: 'auth' }, 401);
       const user = sess.user;
 
+      // ---- Instrument presets (account-backed; safe to use from web instruments or VST WebView) ----
+      if (action === 'preset_list' || action === 'preset_get') {
+        const machine = cleanPresetMachine(body.machine || body.instrument || body.plugin);
+        if (!machine) return json({ ok: false, error: 'missing instrument' }, 400);
+        const db = await readAccounts(env);
+        const rec = db.users && db.users[user.toLowerCase()];
+        if (!rec) return json({ ok: false, error: 'account missing' }, 404);
+        const presets = publicPresets(rec, machine);
+        return json({
+          ok: true,
+          storage: STORAGE,
+          user: user,
+          machine: machine,
+          presets: presets,
+          count: presets.length,
+          max: PRESET_MAX_PER_USER
+        });
+      }
+
+      if (action === 'preset_save') {
+        const machine = cleanPresetMachine(body.machine || body.instrument || body.plugin);
+        const name = cleanPresetName(body.name || body.presetName);
+        if (!machine) return json({ ok: false, error: 'missing instrument' }, 400);
+        if (!name) return json({ ok: false, error: 'preset name required' }, 400);
+
+        let state = body.state;
+        if (typeof state === 'string') {
+          try { state = JSON.parse(state); } catch (_) { return json({ ok: false, error: 'preset state must be valid JSON' }, 400); }
+        }
+        if (!state || typeof state !== 'object' || Array.isArray(state)) {
+          return json({ ok: false, error: 'preset state must be an object' }, 400);
+        }
+        let stateJson = '';
+        try { stateJson = JSON.stringify(state); } catch (_) { return json({ ok: false, error: 'preset state could not be saved' }, 400); }
+        if (stateJson.length > PRESET_MAX_STATE) return json({ ok: false, error: 'preset state is too large' }, 413);
+
+        const db = await readAccounts(env);
+        const rec = db.users && db.users[user.toLowerCase()];
+        if (!rec) return json({ ok: false, error: 'account missing' }, 404);
+        const presets = ensurePresets(rec);
+        const now = Date.now();
+        const existing = presets.find(function (p) {
+          return p && p.machine === machine && String(p.name).toLowerCase() === name.toLowerCase();
+        });
+        const entry = {
+          name: existing ? existing.name : name,
+          machine: machine,
+          state: state,
+          created: existing && existing.created ? existing.created : now,
+          updated: now
+        };
+        if (existing) {
+          const ix = presets.indexOf(existing);
+          presets[ix] = entry;
+        } else {
+          presets.push(entry);
+        }
+
+        // Enforce the account-wide cap, preserving the newest presets.
+        presets.sort(function (a, b) { return (b.updated || b.created || 0) - (a.updated || a.created || 0); });
+        if (presets.length > PRESET_MAX_PER_USER) presets.splice(PRESET_MAX_PER_USER);
+
+        db.users[user.toLowerCase()] = rec;
+        await writeAccounts(env, db);
+        return json({
+          ok: true,
+          storage: STORAGE,
+          user: user,
+          machine: machine,
+          preset: entry,
+          presets: publicPresets(rec, machine),
+          count: publicPresets(rec, machine).length,
+          max: PRESET_MAX_PER_USER
+        });
+      }
+
+      if (action === 'preset_load') {
+        const machine = cleanPresetMachine(body.machine || body.instrument || body.plugin);
+        const name = cleanPresetName(body.name || body.presetName);
+        if (!machine || !name) return json({ ok: false, error: 'instrument and preset name required' }, 400);
+        const db = await readAccounts(env);
+        const rec = db.users && db.users[user.toLowerCase()];
+        if (!rec) return json({ ok: false, error: 'account missing' }, 404);
+        const preset = ensurePresets(rec).find(function (p) {
+          return p && p.machine === machine && String(p.name).toLowerCase() === name.toLowerCase();
+        });
+        if (!preset) return json({ ok: false, error: 'preset not found' }, 404);
+        return json({ ok: true, storage: STORAGE, user: user, machine: machine, preset: preset });
+      }
+
+      if (action === 'preset_delete') {
+        const machine = cleanPresetMachine(body.machine || body.instrument || body.plugin);
+        const name = cleanPresetName(body.name || body.presetName);
+        if (!machine || !name) return json({ ok: false, error: 'instrument and preset name required' }, 400);
+        const db = await readAccounts(env);
+        const rec = db.users && db.users[user.toLowerCase()];
+        if (!rec) return json({ ok: false, error: 'account missing' }, 404);
+        const before = ensurePresets(rec).length;
+        rec.presets = ensurePresets(rec).filter(function (p) {
+          return !(p && p.machine === machine && String(p.name).toLowerCase() === name.toLowerCase());
+        });
+        if (rec.presets.length === before) return json({ ok: false, error: 'preset not found' }, 404);
+        db.users[user.toLowerCase()] = rec;
+        await writeAccounts(env, db);
+        return json({
+          ok: true,
+          storage: STORAGE,
+          user: user,
+          machine: machine,
+          deleted: name,
+          presets: publicPresets(rec, machine)
+        });
+      }
+
+      // ---- Private social layer: friends, DMs and approval-based WAV requests ----
+      if (action === 'social_list' || action === 'friends_list') {
+        const db = await readAccounts(env), me = socialUser(db, user);
+        return json({ ok:true, storage:STORAGE, user:user, friends:me.friends, incoming:me.incoming.slice(-50),
+          outgoing:me.outgoing.slice(-50), wavRequests:me.wavRequests.slice(-50), directory:socialDirectory(db) });
+      }
+      if (action === 'friend_request') {
+        const target = cleanName(body.target || body.to);
+        if (!accountExists(await readAccounts(env), target)) return json({ok:false,error:'User not found'},404);
+        if (target.toLowerCase() === user.toLowerCase()) return json({ok:false,error:'You cannot friend yourself'},400);
+        const db = await readAccounts(env), me = socialUser(db,user), them = socialUser(db,target);
+        if (me.friends.some(x=>x.toLowerCase()===target.toLowerCase())) return json({ok:true,status:'friends'});
+        if (!them.incoming.some(x=>x.from.toLowerCase()===user.toLowerCase() && x.status==='pending')) {
+          them.incoming.push({id:socialRequestId('fr'),from:user,to:target,at:Date.now(),status:'pending'});
+          me.outgoing.push({id:them.incoming[them.incoming.length-1].id,from:user,to:target,at:Date.now(),status:'pending'});
+          them.incoming=them.incoming.slice(-100); me.outgoing=me.outgoing.slice(-100);
+        }
+        await writeAccounts(env,db); return json({ok:true,status:'pending',target:target});
+      }
+      if (action === 'friend_accept' || action === 'friend_decline') {
+        const id=String(body.requestId||body.id||'').replace(/[^A-Za-z0-9_\-]/g,'').slice(0,64);
+        const db=await readAccounts(env), me=socialUser(db,user);
+        const req=me.incoming.find(x=>x.id===id);
+        if(!req) return json({ok:false,error:'Friend request not found'},404);
+        const sender=socialUser(db,req.from);
+        me.incoming=me.incoming.filter(x=>x.id!==id);
+        sender.outgoing=sender.outgoing.filter(x=>x.id!==id);
+        if(action==='friend_accept'){ addUniqueName(me.friends,req.from); addUniqueName(sender.friends,user); }
+        await writeAccounts(env,db); return json({ok:true,status:action==='friend_accept'?'friends':'declined'});
+      }
+      if (action === 'friend_remove') {
+        const target=cleanName(body.target||body.to), db=await readAccounts(env), me=socialUser(db,user), them=socialUser(db,target);
+        me.friends=removeName(me.friends,target); them.friends=removeName(them.friends,user);
+        await writeAccounts(env,db); return json({ok:true,status:'removed'});
+      }
+      if (action === 'dm_list') {
+        const peer=cleanName(body.peer||body.to);
+        const db=await readAccounts(env);
+        if(!accountExists(db,peer)) return json({ok:false,error:'User not found'},404);
+        return json({ok:true,peer:peer,messages:privateDmList(db,user,peer),friends:socialUser(db,user).friends});
+      }
+      if (action === 'dm_send' || action === 'dm') {
+        const peer=cleanName(body.to||body.peer||body.target), text=String(body.text||body.message||'').slice(0,1000).trim();
+        const db=await readAccounts(env);
+        if(!accountExists(db,peer)) return json({ok:false,error:'User not found'},404);
+        if(!text && !body.audioUpload) return json({ok:false,error:'empty message'},400);
+        const msg=addDm(db,user,peer,{text:text,audioId:body.audioId||null,audioUrl:null,audioStore:body.audioStore||'',audioUpload:String(body.audioUpload||'').slice(0,48),audioParts:Math.max(0,parseInt(body.audioParts,10)||0),audioBytes:Math.max(0,parseInt(body.audioBytes,10)||0),audioMime:String(body.audioMime||'audio/wav').slice(0,40)});
+        await writeAccounts(env,db); return json({ok:true,message:msg,messages:privateDmList(db,user,peer)});
+      }
+      if (action === 'wav_request') {
+        const target=cleanName(body.target||body.to||body.user), db=await readAccounts(env);
+        if(!accountExists(db,target)) return json({ok:false,error:'User not found'},404);
+        if(target.toLowerCase()===user.toLowerCase()) return json({ok:false,error:'You cannot request your own WAV'},400);
+        const recipient=socialUser(db,target), me=socialUser(db,user);
+        const rq={id:socialRequestId('wav'),from:user,to:target,at:Date.now(),status:'pending',source:String(body.source||'dm').slice(0,8),note:String(body.note||'').slice(0,300)};
+        recipient.wavRequests.push(rq); me.wavRequests.push(rq); recipient.wavRequests=recipient.wavRequests.slice(-100); me.wavRequests=me.wavRequests.slice(-100);
+        await writeAccounts(env,db); return json({ok:true,request:rq});
+      }
+      if (action === 'wav_request_approve' || action === 'wav_request_decline') {
+        const id=String(body.requestId||body.id||'').replace(/[^A-Za-z0-9_\-]/g,'').slice(0,64), db=await readAccounts(env), me=socialUser(db,user);
+        const rq=me.wavRequests.find(x=>x.id===id && String(x.to).toLowerCase()===user.toLowerCase());
+        if(!rq) return json({ok:false,error:'WAV request not found'},404);
+        rq.status=action==='wav_request_approve'?'approved':'declined'; rq.decidedAt=Date.now();
+        const sender=socialUser(db,rq.from), mirror=sender.wavRequests.find(x=>x.id===id); if(mirror){mirror.status=rq.status;mirror.decidedAt=rq.decidedAt;}
+        await writeAccounts(env,db); return json({ok:true,status:rq.status,request:rq});
+      }
+      if (action === 'wav_request_fulfill') {
+        const id=String(body.requestId||body.id||'').replace(/[^A-Za-z0-9_\-]/g,'').slice(0,64), db=await readAccounts(env), me=socialUser(db,user);
+        const rq=me.wavRequests.find(x=>x.id===id && String(x.to).toLowerCase()===user.toLowerCase() && x.status==='approved');
+        if(!rq) return json({ok:false,error:'Approved WAV request not found'},404);
+        if(!body.audioUpload || !parseInt(body.audioParts,10)) return json({ok:false,error:'Attach the approved WAV export first'},400);
+        const msg=addDm(db,user,rq.from,{text:'WAV export for your approved request',requestId:id,audioId:'a'+id,audioStore:body.audioStore,audioUpload:String(body.audioUpload).slice(0,48),audioParts:parseInt(body.audioParts,10),audioBytes:parseInt(body.audioBytes,10)||0,audioMime:String(body.audioMime||'audio/wav').slice(0,40)});
+        rq.status='fulfilled'; rq.fulfilledAt=Date.now();
+        const mirror=socialUser(db,rq.from).wavRequests.find(x=>x.id===id); if(mirror){mirror.status='fulfilled';mirror.fulfilledAt=rq.fulfilledAt;}
+        await writeAccounts(env,db); return json({ok:true,message:msg,request:rq});
+      }
+      if (action === 'wav_request_status') {
+        const db=await readAccounts(env), me=socialUser(db,user);
+        return json({ok:true,requests:me.wavRequests.slice(-100)});
+      }
+      if (action === 'audio_part_b64') {
+        const result=await handleAudioPartB64(env,body,user);
+        return json(result,result.ok?200:(result.code==='no-sink'?400:413));
+      }
+
       // Lightweight session check (VST / homepage can refresh role + user)
       if (action === 'session' || action === 'whoami' || action === 'me') {
         const themePack = resolveTheme(sess.theme || 'trippah');
@@ -1079,70 +1435,11 @@ export default {
           themes: THEMES.map(function (t) { return { id: t.id, name: t.name, tag: t.tag, effects: t.effects || '' }; }),
           storage: STORAGE,
           clients: ['web', 'vst'],
-          supers: SUPER_ADMINS
+          supers: SUPER_ADMINS,
+          themeApi: THEME_API_VERSION,
+          vstPatch: VST_PATCH_VERSION,
+          customRolesApi: 'v1'
         });
-      }
-
-      // Instrument presets — shared between DREAMDAW web and the VST WebView.
-      // Presets live on the authenticated account so a new FL/VST instance can
-      // still see the same instrument states.
-      if (action === 'preset_list' || action === 'preset_load' ||
-          action === 'preset_save' || action === 'preset_delete') {
-        const machine = String(body.machine || body.instrument || '').trim()
-          .replace(/[^A-Za-z0-9_\-]/g, '').slice(0, PRESET_MACHINE_MAX);
-        const wanted = String(body.name || body.preset || '').trim().slice(0, PRESET_NAME_MAX);
-        if (!machine) return json({ ok: false, error: 'missing machine' }, 400);
-        const db = await readAccounts(env);
-        const key = user.toLowerCase();
-        const rec = db.users[key];
-        if (!rec) return json({ ok: false, error: 'account missing' }, 404);
-        if (!rec.presets || typeof rec.presets !== 'object') rec.presets = {};
-
-        if (action === 'preset_list') {
-          const list = Array.isArray(rec.presets[machine]) ? rec.presets[machine] : [];
-          return json({ ok: true, machine: machine,
-            presets: list.map(function(p) { return { name: p.name, updated: p.updated || 0, state: p.state || {} }; }) });
-        }
-
-        if (!wanted) return json({ ok: false, error: 'preset name required' }, 400);
-
-        if (action === 'preset_delete') {
-          const list = Array.isArray(rec.presets[machine]) ? rec.presets[machine] : [];
-          rec.presets[machine] = list.filter(function(p) {
-            return String(p.name || '').toLowerCase() !== wanted.toLowerCase();
-          });
-          db.users[key] = rec;
-          await writeAccounts(env, db);
-          return json({ ok: true, machine: machine, presets: rec.presets[machine] });
-        }
-
-        if (action === 'preset_save') {
-          let state = body.state;
-          if (!state || typeof state !== 'object' || Array.isArray(state))
-            return json({ ok: false, error: 'invalid preset state' }, 400);
-          const packed = JSON.stringify(state);
-          if (packed.length > PRESET_MAX_STATE)
-            return json({ ok: false, error: 'preset is too large' }, 413);
-          let list = Array.isArray(rec.presets[machine]) ? rec.presets[machine].slice() : [];
-          list = list.filter(function(p) {
-            return String(p.name || '').toLowerCase() !== wanted.toLowerCase();
-          });
-          list.unshift({ name: wanted, state: state, updated: Date.now() });
-          rec.presets[machine] = list.slice(0, PRESET_MAX_PER_USER);
-          db.users[key] = rec;
-          await writeAccounts(env, db);
-          return json({ ok: true, machine: machine,
-            preset: rec.presets[machine][0], presets: rec.presets[machine] });
-        }
-
-        if (action === 'preset_load') {
-          const list = Array.isArray(rec.presets[machine]) ? rec.presets[machine] : [];
-          const found = list.find(function(p) {
-            return String(p.name || '').toLowerCase() === wanted.toLowerCase();
-          });
-          if (!found) return json({ ok: false, error: 'preset not found' }, 404);
-          return json({ ok: true, machine: machine, preset: found });
-        }
       }
 
       // Persist UI theme on the account (DreamShare web + VST dropdown)
@@ -1169,7 +1466,9 @@ export default {
           theme: themePack.id,
           themePack: themePack,
           themes: THEMES.map(function (t) { return { id: t.id, name: t.name, tag: t.tag, effects: t.effects || '' }; }),
-          user: user
+          user: user,
+          themeApi: THEME_API_VERSION,
+          vstPatch: VST_PATCH_VERSION
         });
       }
 
@@ -1400,7 +1699,15 @@ export default {
 
         if (action === 'presence' || action === 'heartbeat') {
           const online = await touchOnline(env, user);
-          return json({ ok: true, storage: STORAGE, online: online, user: user });
+          return json({
+            ok: true,
+            storage: STORAGE,
+            online: online,
+            onlineCount: online.length,
+            activeUsers: online.length,
+            user: user,
+            presenceTtlMs: ONLINE_TTL
+          });
         }
 
         if (action === 'set_role' || action === 'clear_role') {
