@@ -1,0 +1,205 @@
+{
+  "themes": [
+    {
+      "file": "DEFAULT.html"
+    },
+    {
+      "file": "LIGHT.html"
+    },
+    {
+      "file": "ASH.html"
+    },
+    {
+      "file": "SULFUR.html"
+    },
+    {
+      "file": "BLOODMOON.html"
+    },
+    {
+      "file": "VIOLET.html"
+    },
+    {
+      "file": "MOSS.html"
+    },
+    {
+      "file": "AMBER.html"
+    },
+    {
+      "file": "VOID.html"
+    },
+    {
+      "file": "NEON.html"
+    },
+    {
+      "file": "BONE.html"
+    },
+    {
+      "file": "RUST.html"
+    },
+    {
+      "file": "ICE.html"
+    },
+    {
+      "file": "WINE.html"
+    },
+    {
+      "file": "TRIPPAH.html"
+    },
+    {
+      "file": "GOONR.html"
+    },
+    {
+      "file": "DAWN.html",
+      "id": "dawn",
+      "name": "DAWN",
+      "tag": "first light \u2014 warm paper, copper line"
+    },
+    {
+      "file": "DUSK.html",
+      "id": "dusk",
+      "name": "DUSK",
+      "tag": "blue hour \u2014 indigo room"
+    },
+    {
+      "file": "INK.html",
+      "id": "ink",
+      "name": "INK",
+      "tag": "black paper, blue ink"
+    },
+    {
+      "file": "SAND.html",
+      "id": "sand",
+      "name": "SAND",
+      "tag": "desert noon \u2014 dry gold"
+    },
+    {
+      "file": "PINE.html",
+      "id": "pine",
+      "name": "PINE",
+      "tag": "deep forest"
+    },
+    {
+      "file": "COPPER.html",
+      "id": "copper",
+      "name": "COPPER",
+      "tag": "workshop metal"
+    },
+    {
+      "file": "FOG.html",
+      "id": "fog",
+      "name": "FOG",
+      "tag": "gray mist, soft edges"
+    },
+    {
+      "file": "PLUM.html",
+      "id": "plum",
+      "name": "PLUM",
+      "tag": "dark fruit"
+    },
+    {
+      "file": "MINT.html",
+      "id": "mint",
+      "name": "MINT",
+      "tag": "cool clinic"
+    },
+    {
+      "file": "COBALT.html",
+      "id": "cobalt",
+      "name": "COBALT",
+      "tag": "studio blue"
+    },
+    {
+      "file": "EMBER.html",
+      "id": "ember",
+      "name": "EMBER",
+      "tag": "coal and orange"
+    },
+    {
+      "file": "LILAC.html",
+      "id": "lilac",
+      "name": "LILAC",
+      "tag": "soft purple day"
+    },
+    {
+      "file": "STEEL.html",
+      "id": "steel",
+      "name": "STEEL",
+      "tag": "industrial gray"
+    },
+    {
+      "file": "HONEY.html",
+      "id": "honey",
+      "name": "HONEY",
+      "tag": "amber lamp"
+    },
+    {
+      "file": "ABYSS.html",
+      "id": "abyss",
+      "name": "ABYSS",
+      "tag": "deep sea"
+    },
+    {
+      "file": "PAPER.html",
+      "id": "paper",
+      "name": "PAPER",
+      "tag": "off-white desk"
+    },
+    {
+      "file": "CHERRY.html",
+      "id": "cherry",
+      "name": "CHERRY",
+      "tag": "pink night"
+    },
+    {
+      "file": "OLIVE.html",
+      "id": "olive",
+      "name": "OLIVE",
+      "tag": "army green"
+    },
+    {
+      "file": "GRAPHITE.html",
+      "id": "graphite",
+      "name": "GRAPHITE",
+      "tag": "neutral dark"
+    },
+    {
+      "file": "AURORA.html",
+      "id": "aurora",
+      "name": "AURORA",
+      "tag": "green violet night"
+    },
+    {
+      "file": "CINDER.html",
+      "id": "cinder",
+      "name": "CINDER",
+      "tag": "ash rose"
+    },
+    {
+      "file": "LAGOON.html",
+      "id": "lagoon",
+      "name": "LAGOON",
+      "tag": "teal water"
+    },
+    {
+      "file": "MARROW.html",
+      "id": "marrow",
+      "name": "MARROW",
+      "tag": "warm bone"
+    },
+    {
+      "file": "STATIC.html",
+      "id": "static",
+      "name": "STATIC",
+      "tag": "crt green"
+    },
+    {
+      "file": "VELVET.html",
+      "id": "velvet",
+      "name": "VELVET",
+      "tag": "deep burgundy"
+    },
+    {
+      "file": "VSTTRIPPAH.html"
+    }
+  ]
+}
