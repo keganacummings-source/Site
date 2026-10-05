@@ -1,0 +1,10 @@
+DREAMDAW AUDIO BALANCE UPDATE
+
+- Common instrument master level: 0.28 -> 0.18
+- DREAMBASS voice master: 0.68 -> 0.22
+- DREAMFLUTE master: 0.34 -> 0.20
+- DREAMRACK master: 0.85 -> 0.50
+- DREAMRACK default track level: 0.80 -> 0.62
+- DREAMSSYYNNTTHH voice master: 0.62 -> 0.22
+- Shared WAV/export peak normalizer is now attenuation-only: it will not boost quiet material.
+- The goal is a safer, more consistent instrument-to-instrument starting level with headroom for DAW mixing.
