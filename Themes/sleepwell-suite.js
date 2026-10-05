@@ -254,7 +254,9 @@
   /* Peak-normalize an AudioBuffer in-place (or copy channels) to target peak. */
   function dreamNormalizeBuffer(ab, targetPeak) {
     if (!ab || typeof ab.getChannelData !== 'function') return ab;
-    const target = (typeof targetPeak === 'number' && targetPeak > 0) ? targetPeak : 0.85;
+    // Shared output safety: never boost quiet material. Hot material is
+    // attenuated to the requested peak ceiling so instruments remain natural.
+    const target = (typeof targetPeak === 'number' && targetPeak > 0) ? targetPeak : 0.72;
     let peak = 0;
     const chs = ab.numberOfChannels | 0;
     const n = ab.length | 0;
@@ -266,9 +268,9 @@
       }
     }
     if (!(peak > 1e-8)) return ab;
-    const g = target / peak;
-    // Avoid tiny boosts that only add noise; always bring hot material down,
-    // and bring quiet material up so plugins sit at a similar loudness.
+    // Only attenuate. Do not normalize quiet renders upward.
+    const g = Math.min(1, target / peak);
+    if (g >= 0.999999) return ab;
     for (let c = 0; c < chs; c++) {
       const d = ab.getChannelData(c);
       for (let i = 0; i < n; i++) d[i] *= g;
